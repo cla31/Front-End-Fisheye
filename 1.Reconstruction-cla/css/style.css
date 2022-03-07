@@ -9,6 +9,12 @@ body {
     margin: 0;
 }
 
+.general-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
 header {
     display: flex;
     justify-content: center;
@@ -21,7 +27,7 @@ header {
     align-items: center;
     height: 90px;
     border: black solid 2px;
-    width: 90%;
+    width: 100%;
 }
 
 h1 {
@@ -44,23 +50,27 @@ h1 {
 }
 
 .photographer_section1 {
-    max-width: 1200px;
-    width: 80%;
+    /* max-width: 1200px; */
+    /* width: 80%; */
     display: grid;
-    /* grid-template-columns: 1fr 1fr 1fr; */
-    grid-template-columns: repeat(auto-fill, 300px);
-    gap: 70px;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-columns: repeat(auto-fill, 300px); */
+    /* gap: 70px; */
     margin-top: 100px;
     border: #901C1C solid;
+    width: 100%;
 }
 
 .photographer_section2 {
+    /* max-width: 1200px; */
+    /* width: 80%; */
     display: grid;
-    /* grid-template-columns: 1fr 1fr 1fr; */
-    /* grid-template-columns: repeat(auto-fill, 312px); */
-    gap: 70px;
-    margin-top: 100px;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-columns: repeat(auto-fill, 300px); */
+    /* gap: 70px; */
+    /* margin-top: 100px; */
     border: #901C1C solid;
+    width: 100%;
 }
 
 
@@ -75,8 +85,8 @@ h1 {
 .container-photographer {
     background-color: palevioletred;
     border: red 2px solid;
-    /* max-width: 300px;
-    width: 30%; */
+    /* max-width: 350px;
+    min-width: 220px; */
 }
 
 .container-photographer p {
@@ -107,17 +117,30 @@ h1 {
 
 .mimie-Kell-img {
     top: -40px;
-    clip-path: circle(30%);
+    clip-path: circle(40%);
 }
 
 .ellie-rose-container {
-    width: 250px;
+    width: 290px;
     height: 290px;
 }
 
 .ellie-rose-img {
-    /* top: -10px; */
-    clip-path: circle(38%);
+    width: 290px;
+    height: 290px;
+    object-fit: cover;
+    top: 8px;
+    clip-path: circle(46%);
+}
+
+.tracy-galindo-container {
+    width: 290px;
+    height: 290px;
+}
+
+.tracy-galindo-img {
+    top: 10px;
+    clip-path: circle(45%);
 }
 
 .photographer-name {
@@ -133,14 +156,36 @@ h1 {
     clip-path: circle(30%); */
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
     .photographer_section1 {
+        grid-template-columns: 1fr;
+    }
+    .photographer_section2 {
         grid-template-columns: 1fr;
     }
     .container-photographer {
         background-color: aqua;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .container-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+/* .container-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    border: black solid 2px;
+    width: 100%;
+} */
 
 
 /* .deux {
