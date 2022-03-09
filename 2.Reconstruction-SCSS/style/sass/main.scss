@@ -34,6 +34,7 @@
     }
 }
 
+//index.html
 .main {
     // background-color: black;
     display: flex;
@@ -88,6 +89,48 @@
         }
         &__photographer-name {
             text-align: center;
+        }
+    }
+}
+
+//Photographer.html
+.photograph-header {
+    // border: blue 2px solid;
+    // display: flex;
+    // flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    &__title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        border: red 2px solid;
+        padding-left: 5%;
+        p {
+            margin: 0;
+        }
+    }
+    &__button {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        border: orange 2px solid;
+    }
+    &__container-img {
+        overflow: hidden;
+        position: relative;
+        border: blueviolet 2px solid;
+        width: 290px;
+        height: 290px;
+        &__img {
+            width: 100%;
+            position: absolute;
+            width: 290px;
+            height: 290px;
+            object-fit: cover;
+            top: 8px;
+            clip-path: circle(46%);
         }
     }
 }
