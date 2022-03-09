@@ -2,10 +2,6 @@
     box-sizing: border-box;
 }
 
-// body {
-//     font-family: "DM Sans", sans-serif;
-//     margin: 0;
-// }
 .body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
@@ -75,10 +71,26 @@
             &__img {
                 width: 100%;
                 position: absolute;
-                &--mimie-kell {
-                    top: -40px;
-                    clip-path: circle(40%);
-                }
+                width: 290px;
+                height: 290px;
+                object-fit: cover;
+                top: 8px;
+                clip-path: circle(46%);
+                // &--mimie-kell {
+                //     top: -40px;
+                //     clip-path: circle(40%);
+                // }
+                // &--ellie-rose {
+                //     width: 290px;
+                //     height: 290px;
+                //     object-fit: cover;
+                //     top: 8px;
+                //     clip-path: circle(46%);
+                // }
+                // &--tracy-galindo {
+                //     top: 10px;
+                //     clip-path: circle(45%);
+                // }
             }
         }
         &__photographer-name {
