@@ -17,15 +17,15 @@
     justify-content: space-between;
     align-items: center;
     height: 90px;
-    border: black solid 2px;
+    // border: black solid 2px;
     width: 100%;
     h1 {
         color: #901C1C;
-        border: black solid 2px;
+        // border: black solid 2px;
     }
     &__logo {
         height: 50px;
-        border: black solid 2px;
+        // border: black solid 2px;
     }
     @media screen and (max-width: 768px) {
         display: flex;
@@ -35,41 +35,45 @@
 }
 
 .main {
-    background-color: black;
+    // background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: green solid 10px;
+    // border: green solid 10px;
     .row {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         margin-top: 100px;
-        border: #901C1C solid;
+        // border: #901C1C solid;
         width: 100%;
         @media screen and (max-width: 992px) {
             grid-template-columns: 1fr;
-            border: green solid;
+            // border: green solid;
         }
     }
 }
 
 .photographer {
-    background-color: palevioletred;
-    border: red 2px solid;
+    // background-color: palevioletred;
+    // border: red 2px solid;
+    a {
+        text-decoration: none;
+        color: black;
+    }
     p {
         text-align: center;
         margin-top: 0px;
         margin-bottom: 0px;
     }
     .card {
-        border: black 2px solid;
+        // border: black 2px solid;
         display: flex;
         flex-direction: column;
         align-items: center;
         .container-img {
             overflow: hidden;
             position: relative;
-            border: blueviolet 2px solid;
+            // border: blueviolet 2px solid;
             width: 290px;
             height: 290px;
             &__img {
@@ -85,8 +89,5 @@
         &__photographer-name {
             text-align: center;
         }
-    }
-    @media screen and (max-width: 992px) {
-        background-color: aqua;
     }
 }
