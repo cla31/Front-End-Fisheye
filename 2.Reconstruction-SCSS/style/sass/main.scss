@@ -21,13 +21,16 @@
     width: 100%;
     h1 {
         color: #901C1C;
-        /* margin-right: 100px; */
         border: black solid 2px;
     }
     &__logo {
         height: 50px;
-        /* margin-left: 100px; */
         border: black solid 2px;
+    }
+    @media screen and (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -43,15 +46,16 @@
         margin-top: 100px;
         border: #901C1C solid;
         width: 100%;
-        // background-color: pink;
+        @media screen and (max-width: 992px) {
+            grid-template-columns: 1fr;
+            border: green solid;
+        }
     }
 }
 
 .photographer {
     background-color: palevioletred;
     border: red 2px solid;
-    /* max-width: 350px;
-    min-width: 220px; */
     p {
         text-align: center;
         margin-top: 0px;
@@ -76,25 +80,13 @@
                 object-fit: cover;
                 top: 8px;
                 clip-path: circle(46%);
-                // &--mimie-kell {
-                //     top: -40px;
-                //     clip-path: circle(40%);
-                // }
-                // &--ellie-rose {
-                //     width: 290px;
-                //     height: 290px;
-                //     object-fit: cover;
-                //     top: 8px;
-                //     clip-path: circle(46%);
-                // }
-                // &--tracy-galindo {
-                //     top: 10px;
-                //     clip-path: circle(45%);
-                // }
             }
         }
         &__photographer-name {
             text-align: center;
         }
+    }
+    @media screen and (max-width: 992px) {
+        background-color: aqua;
     }
 }
