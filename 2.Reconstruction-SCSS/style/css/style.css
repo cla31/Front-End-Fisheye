@@ -121,4 +121,36 @@
   clip-path: circle(46%);
 }
 
+.sorting {
+  display: flex;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown:hover .dropdown-child {
+  display: block;
+}
+.dropdown .boutonmenuprincipal {
+  background-color: #e83737;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 20px;
+  margin-top: 20px;
+  font-size: 30px;
+}
+.dropdown .dropdown-child {
+  display: none;
+  background-color: #f28c8c;
+  min-width: 50px;
+}
+.dropdown .dropdown-child a {
+  color: white;
+  padding: 20px;
+  text-decoration: none;
+  display: block;
+}
+
 /*# sourceMappingURL=style.css.map */
