@@ -100,12 +100,13 @@
     // flex-direction: row;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    background-color: #fafafa;
     &__title {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        border: red 2px solid;
+        // border: red 2px solid;
         padding-left: 5%;
         p {
             margin: 0;
@@ -115,21 +116,32 @@
         display: flex;
         justify-content: start;
         align-items: center;
-        border: orange 2px solid;
+        // border: orange 2px solid;
+        .contact_button {
+            min-width: 170px;
+            background-color: #901c1c;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 1.25rem;
+            padding: 10px 10px;
+        }
     }
     &__container-img {
         overflow: hidden;
         position: relative;
-        border: blueviolet 2px solid;
+        // border: blueviolet 2px solid;
         width: 290px;
         height: 290px;
         &__img {
-            width: 100%;
             position: absolute;
-            width: 290px;
-            height: 290px;
+            width: 240px;
+            height: 240px;
             object-fit: cover;
-            top: 8px;
+            top: 20px;
+            left: 20px;
             clip-path: circle(46%);
         }
     }
@@ -138,7 +150,8 @@
 .sorting {
     display: flex;
     &__p {
-        width: 7%;
+        width: 8%;
+        // border: 2px solid black;
     }
     &__dropdown {
         position: relative;
@@ -147,13 +160,18 @@
             display: block;
         }
         &__sort-button {
-            background-color: #e83737;
+            min-width: 170px;
+            background-color: #901c1c;
             color: white;
+            border-radius: 5px;
             border: none;
             cursor: pointer;
-            padding: 20px;
-            margin-top: 20px;
-            font-size: 30px;
+            font-weight: 500;
+            font-size: 1.25rem;
+            padding: 10px 10px;
+            .fa-solid {
+                margin-left: 15px;
+            }
         }
         &__child {
             display: none;
@@ -169,6 +187,4 @@
     }
 }
 
-// .dropdown:hover .dropdown-child {
-//     display: block;
-// }
+// section gallery de photographe.html
