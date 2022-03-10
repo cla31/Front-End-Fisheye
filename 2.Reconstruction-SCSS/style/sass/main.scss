@@ -95,9 +95,6 @@
 
 //Photographer.html
 .photograph-header {
-    // border: blue 2px solid;
-    // display: flex;
-    // flex-direction: row;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #fafafa;
@@ -127,6 +124,13 @@
             font-weight: 500;
             font-size: 1.25rem;
             padding: 10px 10px;
+            @media screen and (max-width: 992px) {
+                position: fixed;
+                bottom: 220px;
+                left: 50%;
+                transform: translate3d(-50%, 0, 0);
+                z-index: 10;
+            }
         }
     }
     &__container-img {
@@ -143,15 +147,25 @@
             top: 20px;
             left: 20px;
             clip-path: circle(46%);
+            @media screen and (max-width: 992px) {
+                width: 190px;
+                height: 190px;
+            }
         }
     }
 }
 
 .sorting {
     display: flex;
+    @media screen and (max-width: 992px) {
+        flex-direction: column;
+    }
     &__p {
         width: 8%;
         // border: 2px solid black;
+        @media screen and (max-width: 992px) {
+            width: 100%;
+        }
     }
     &__dropdown {
         position: relative;
