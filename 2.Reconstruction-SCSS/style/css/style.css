@@ -254,4 +254,21 @@
   margin-top: 18px;
 }
 
+.card-infos {
+  position: fixed;
+  display: flex;
+  gap: 65px;
+  bottom: 0;
+  right: 35px;
+  background-color: #db8876;
+  border-radius: 5px 5px 0 0;
+  padding: 20px 30px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  height: 60px;
+}
+.card-infos p {
+  margin: 0px;
+}
+
 /*# sourceMappingURL=style.css.map */
