@@ -237,20 +237,19 @@
   object-fit: cover;
   border-radius: 5px;
 }
-
-.items-photo {
+.card-photo .items-photo {
   display: flex;
   justify-content: space-between;
   width: 290px;
 }
-.items-photo__note {
+.card-photo .items-photo__note {
   display: flex;
   justify-content: space-between;
 }
-.items-photo__note p {
+.card-photo .items-photo__note p {
   margin-right: 5px;
 }
-.items-photo__note .fa-regular {
+.card-photo .items-photo__note .fa-regular {
   margin-top: 18px;
 }
 
