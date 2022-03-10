@@ -124,15 +124,17 @@
 .sorting {
   display: flex;
 }
-
-.dropdown {
+.sorting__p {
+  width: 7%;
+}
+.sorting__dropdown {
   position: relative;
   display: inline-block;
 }
-.dropdown:hover .dropdown-child {
+.sorting__dropdown:hover .sorting__dropdown__child {
   display: block;
 }
-.dropdown .boutonmenuprincipal {
+.sorting__dropdown__sort-button {
   background-color: #e83737;
   color: white;
   border: none;
@@ -141,12 +143,12 @@
   margin-top: 20px;
   font-size: 30px;
 }
-.dropdown .dropdown-child {
+.sorting__dropdown__child {
   display: none;
   background-color: #f28c8c;
   min-width: 50px;
 }
-.dropdown .dropdown-child a {
+.sorting__dropdown__child a {
   color: white;
   padding: 20px;
   text-decoration: none;

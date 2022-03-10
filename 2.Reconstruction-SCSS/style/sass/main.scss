@@ -137,32 +137,34 @@
 
 .sorting {
     display: flex;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-    &:hover .dropdown-child {
-        display: block;
+    &__p {
+        width: 7%;
     }
-    .boutonmenuprincipal {
-        background-color: #e83737;
-        color: white;
-        border: none;
-        cursor: pointer;
-        padding: 20px;
-        margin-top: 20px;
-        font-size: 30px;
-    }
-    .dropdown-child {
-        display: none;
-        background-color: #f28c8c;
-        min-width: 50px;
-        a {
-            color: white;
-            padding: 20px;
-            text-decoration: none;
+    &__dropdown {
+        position: relative;
+        display: inline-block;
+        &:hover &__child {
             display: block;
+        }
+        &__sort-button {
+            background-color: #e83737;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 30px;
+        }
+        &__child {
+            display: none;
+            background-color: #f28c8c;
+            min-width: 50px;
+            a {
+                color: white;
+                padding: 20px;
+                text-decoration: none;
+                display: block;
+            }
         }
     }
 }
