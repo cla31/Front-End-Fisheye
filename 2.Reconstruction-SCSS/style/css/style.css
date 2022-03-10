@@ -159,14 +159,22 @@
 }
 .sorting__dropdown__child {
   display: none;
-  background-color: #f28c8c;
-  min-width: 50px;
+  background-color: #901c1c;
+  position: absolute;
+  min-width: 170px;
+  border-radius: 5px;
 }
 .sorting__dropdown__child a {
   color: white;
-  padding: 20px;
+  padding: 10px 10px;
   text-decoration: none;
   display: block;
+  font-size: 1.25rem;
+  border-radius: 5px;
+}
+.sorting__dropdown__child .date {
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
 }
 
 /*# sourceMappingURL=style.css.map */
