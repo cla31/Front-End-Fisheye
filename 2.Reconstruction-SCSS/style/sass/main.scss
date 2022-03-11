@@ -284,3 +284,16 @@
                     margin: 0px;
                 }
             }
+            
+            // Test fetch
+            .test-fetch {
+                height: 100%;
+                border: red 2px solid;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                button {
+                    height: 20px;
+                }
+            }

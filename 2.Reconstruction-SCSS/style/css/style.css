@@ -270,4 +270,16 @@
   margin: 0px;
 }
 
+.test-fetch {
+  height: 100%;
+  border: red 2px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.test-fetch button {
+  height: 20px;
+}
+
 /*# sourceMappingURL=style.css.map */
