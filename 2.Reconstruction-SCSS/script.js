@@ -1,4 +1,32 @@
 // Fetch classique
+function askHello() {
+    fetch("https://mockbin.com/request?greetings=salut")
+        .then(function(res) {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .then(function(value) {
+            document
+                .getElementById("hello-result")
+                .innerText = value.queryString.greetings;
+        })
+        .catch(function(err) {
+            // Une erreur est survenue
+        });
+}
+
+document
+    .getElementById("ask-hello")
+    .addEventListener("click", askHello);
+
+
+setTimeout(function() {
+    console.log("I'm here!")
+}, 5000);
+// Fetch classique pour le projet
+console.log("Where are you?");
+
 // function testFetch() {
 //     fetch("./data/photographers.json")
 //         .then(function(response) {
@@ -24,7 +52,7 @@ async function printData() {
     try {
         const data = await fetch("./data/photographers.json");
         // console.log("data", data);
-        let response = await data.json()
+        const response = await data.json()
             // console.log("La réponse", response);
         return response;
     } catch (erreur) {
@@ -33,9 +61,9 @@ async function printData() {
 }
 // printData().then(response => console.log(response));
 //Ou
-printData().then(function(response) {
-    console.log(response);
-});
+// printData().then(function(response) {
+//     console.log("La réponse", response);
+// });
 
 //ça ça fonctionne aussi:
 // async function getData() {
@@ -43,3 +71,46 @@ printData().then(function(response) {
 //     let data = await response.json()
 //     return data;
 // }
+
+
+//Dans le code ci-dessous, map va créer un array avec chacun 
+//des items de response.photographers
+//https://www.youtube.com/watch?v=DG4obitDvUA
+
+
+//Fonctionnement de map:
+// const array1 = [1, 4, 9, 16];
+// pass a function to map
+// const map1 = array1.map(x => x * 2);
+// console.log(map1);
+// expected output: Array [2, 8, 18, 32]
+
+
+//Pour afficher les données ds le html
+printData().then(function(response) {
+    console.log("La réponse", response);
+
+    function template(photographersName) {
+        return `
+            <div class="testDataHtml">
+                <p>${photographersName.name}</p>
+                <h2>${photographersName.city} <span class="country">(${photographersName.country})</span></h2>
+            </div>
+            `
+    }
+    document.getElementById("app").innerHTML = `
+        <p>Ici je ne récupère qu'un élément:</p>
+        ${response.photographers[0].name};
+        <h1 class="app-title">Photogaphers(${response.photographers.length} results)</h1>   
+        Photographers will go here:       
+        ${response.photographers.map(template).join(' ')}
+        <p class="footer">These ${response.photographers.length} photographers were added recently. Check back soon for updates.</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        `;
+});
