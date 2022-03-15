@@ -3,7 +3,6 @@
 
 // chemin du json ds une variable
 const path = "./data/photographers.json";
-const source = "assets/photographers/Photographers ID Photos/MimiKeel.jpg";
 // Fonction pour récupérer les données via le fetch
 async function getDatas(pathJson) {
     const fetchJson = await fetch(pathJson);
@@ -12,28 +11,29 @@ async function getDatas(pathJson) {
     return backFetch;
 }
 
+//Fonction qui gère l'affichage html
+async function displayHTML(id, variable) {
+    function template(photographersName) {
+        return `
+            <div class="testDataHtml">
+                <p>${photographersName.name}</p>
+                <h2>${photographersName.city} <span class="country">(${photographersName.country})</span></h2>
+            </div>
+            `
+    }
+    document.getElementById(id).innerHTML = `
+    <h1 class="app-title">Photogaphers(${variable.length} results)</h1>   
+        Photographers will go here:       
+        ${variable.map(template).join(' ')}`
 
+}
 
 // Fonction qui récupère les données et les affiche
 async function renderDatas(pathJson) {
     const jsonDatas = await getDatas(pathJson);
     console.log("Réponse de renderDatas", jsonDatas);
     console.log(jsonDatas.photographers[0].name);
-    document.getElementById("row").innerHTML = `
-    <div class="photographer">
-    <a href="photographer.html">
-        <div class="card">
-            <div class="container-img">
-                <img class="container-img__img" src="assets/photographers/Photographers ID Photos/${jsonDatas.photographers[0].portrait}" />
-            </div>
-            <h2 class="card__photographer-name">${jsonDatas.photographers[0].name}</h2>
-        </div>
-    </a>
-    <p>${jsonDatas.photographers[0].city}</p>
-    <p>${jsonDatas.photographers[0].tagline}</p>
-    <p>${jsonDatas.photographers[0].price}</p>
-</div>`
-
+    displayHTML("app", jsonDatas.photographers);
 }
 renderDatas(path);
 // const resultFetch = getDatas(path);
