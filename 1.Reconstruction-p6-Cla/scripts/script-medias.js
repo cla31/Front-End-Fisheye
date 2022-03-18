@@ -21,28 +21,36 @@ async function datas_with_id(pathJson, getId) {
         console.log(erreur);
     }
 }
-
-// Accès aux données grâce à l'ID
-const printDataMedias = async() => {
-    const datas_medias = await datas_with_id(pathJsonProject, id_number);
-    console.log("Affichage test", datas_medias.name);
-    document.getElementById("photograph-header").innerHTML = `<h1>${datas_medias.name}</h1>`
-}
-printDataMedias();
-
-
 //Fonction qui gère l'affichage du template
-async function displayHTML(id, boxDatasMedia) {
+async function displayHeader(id, boxDatasHeader) {
     try {
-        document.getElementById(id).innerHTML = `<h1>${boxDatasMedia.name}</h1>`
+        document.getElementById(id).innerHTML = `
+        
+        <div class="photograph-header__title">
+                <h1>${boxDatasHeader.name}</h1>
+                <p>${boxDatasHeader.city}, ${boxDatasHeader.country}</p>
+                <p>${boxDatasHeader.tagline}</p>
+            </div>
+            <div class="photograph-header__button">
+                <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+            </div>
+            <div class="photograph-header__container-img">
+                <img class="photograph-header__container-img__img" src="assets/photographers/Photographers ID Photos/${boxDatasHeader.portrait}" />
+            </div>`
     } catch (erreur) {
         console.log(erreur);
     }
 }
+// Accès aux données grâce à l'ID
+const printDataMedias = async() => {
+    try {
+        const datas_medias = await datas_with_id(pathJsonProject, id_number);
+        console.log("Affichage test", datas_medias.name);
+        // document.getElementById("photograph-header").innerHTML = `<h1>${datas_medias.name}</h1>`
+        displayHeader("photograph-header", datas_medias);
+    } catch (erreur) {
+        console.log(erreur);
+    }
 
-// //Fonction qui récupère les données de l'id et les affiche
-// async function orchDatasMedia(pathJson, id) {
-//     const datas_medias = datas_with_id(pathJson, id);
-//     displayHTML("photograph-header", datas_medias);
-// }
-// orchDatasMedia(pathJsonProject, id_number);
+}
+printDataMedias();
