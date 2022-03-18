@@ -12,15 +12,24 @@ async function datas_with_id(pathJson, getId) {
     try {
         const jsonDatas = await getDatas(pathJson, getId);
         console.log("1 élément ds la fonction", jsonDatas.photographers);
-        const select_id = jsonDatas.photographers.filter(element => element.id == getId);
+        const select_id = jsonDatas.photographers.find(element => element.id == getId);
         //Récupération des clés/valeurs correspondant à l'id selectionné
         console.log("en selectionnant l'id", select_id);
-        console.log("en selectionnant l'id", select_id.name);
+        console.log("en selectionnant l'id et le name", select_id.name);
         return select_id;
     } catch (erreur) {
         console.log(erreur);
     }
 }
+
+// Accès aux données grâce à l'ID
+const printDataMedias = async() => {
+    const datas_medias = await datas_with_id(pathJsonProject, id_number);
+    console.log("Affichage test", datas_medias.name);
+    document.getElementById("photograph-header").innerHTML = `<h1>${datas_medias.name}</h1>`
+}
+printDataMedias();
+
 
 //Fonction qui gère l'affichage du template
 async function displayHTML(id, boxDatasMedia) {
@@ -31,9 +40,9 @@ async function displayHTML(id, boxDatasMedia) {
     }
 }
 
-// Fonction qui récupère les données de l'id et les affiche
-async function orchDatasMedia(pathJson, id) {
-    const datas_medias = datas_with_id(pathJson, id);
-    displayHTML("photograph-header", datas_medias);
-}
-orchDatasMedia(pathJsonProject, id_number);
+// //Fonction qui récupère les données de l'id et les affiche
+// async function orchDatasMedia(pathJson, id) {
+//     const datas_medias = datas_with_id(pathJson, id);
+//     displayHTML("photograph-header", datas_medias);
+// }
+// orchDatasMedia(pathJsonProject, id_number);
