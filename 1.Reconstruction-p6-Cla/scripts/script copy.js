@@ -60,11 +60,12 @@ async function printData() {
     }
 }
 const resultats = printData();
-// printData().then(response => console.log(response));
-//Ou
-// printData().then(function(response) {
-//     console.log("La réponse", response);
-// });
+console.log("Affiche la variable résultat", resultats)
+    // printData().then(response => console.log(response));
+    //Ou
+    // printData().then(function(response) {
+    //     console.log("La réponse", response);
+    // });
 
 //ça ça fonctionne aussi:
 // async function getData() {

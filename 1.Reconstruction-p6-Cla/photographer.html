@@ -18,17 +18,7 @@
     </header>
     <main id="main">
         <div class="photograph-header">
-            <div class="photograph-header__title">
-                <h1>Mimie Keel</h1>
-                <p>London, UK</p>
-                <p>Voir le beau dans le quotidien</p>
-            </div>
-            <div class="photograph-header__button">
-                <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-            </div>
-            <div class="photograph-header__container-img">
-                <img class="photograph-header__container-img__img" src="assets/photographers/Photographers ID Photos/MimiKeel.jpg" />
-            </div>
+
         </div>
         <section class="sorting">
             <div class="sorting__p">
@@ -43,138 +33,7 @@
             </div>
         </section>
         <section class="gallery">
-            <div class="row">
-                <div class="row__photographer">
-                    <div class="card-photo">
-                        <div class="container-photo">
-                            <img class="container-photo__photo" src="assets/photographers/Mimi/Animals_Rainbow.jpg" />
-                        </div>
-                        <div class="items-photo">
-                            <div class="items-photo__title">
-                                <p>title photo</p>
-                            </div>
-                            <div class="items-photo__note">
-                                <p>3</p>
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="row__photographer">
-                    <div class="card-photo">
-                        <div class="container-photo">
-                            <img class="container-photo__photo" src="assets/photographers/Mimi/Event_BenevidesWedding.jpg" />
-                        </div>
-                        <div class="items-photo">
-                            <div class="items-photo__title">
-                                <p>title photo</p>
-                            </div>
-                            <div class="items-photo__note">
-                                <p>3</p>
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="row__photographer">
-                    <div class="card-photo">
-                        <div class="container-photo">
-                            <img class="container-photo__photo" src="assets/photographers/Mimi/Event_PintoWedding.jpg" />
-                        </div>
-                        <div class="items-photo">
-                            <div class="items-photo__title">
-                                <p>title photo</p>
-                            </div>
-                            <div class="items-photo__note">
-                                <p>3</p>
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="row__photographer">
-                    <div class="card-photo">
-                        <div class="container-photo">
-                            <img class="container-photo__photo" src="assets/photographers/Mimi/Animals_Rainbow.jpg" />
-                        </div>
-                        <div class="items-photo">
-                            <div class="items-photo__title">
-                                <p>title photo</p>
-                            </div>
-                            <div class="items-photo__note">
-                                <p>3</p>
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="row__photographer">
-                    <div class="card-photo">
-                        <div class="container-photo">
-                            <img class="container-photo__photo" src="assets/photographers/Mimi/Event_BenevidesWedding.jpg" />
-                        </div>
-                        <div class="items-photo">
-                            <div class="items-photo__title">
-                                <p>title photo</p>
-                            </div>
-                            <div class="items-photo__note">
-                                <p>3</p>
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="row__photographer">
-                    <div class="card-photo">
-                        <div class="container-photo">
-                            <img class="container-photo__photo" src="assets/photographers/Mimi/Event_PintoWedding.jpg" />
-                        </div>
-                        <div class="items-photo">
-                            <div class="items-photo__title">
-                                <p>title photo</p>
-                            </div>
-                            <div class="items-photo__note">
-                                <p>3</p>
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!-- Partie vidéo -->
-            <div class="row">
-                <div class="row__photographer">
-                    <div class="card-photo">
-                        <div class="container-video">
-                            <video width="290" height="290" controls>
-                            <source type=video/ogg> <source src="assets/photographers/Mimi/Animals_Wild_Horses_in_the_mountains.mp4" type=video/mp4>
-                          </video>
-                        </div>
-                        <div class="items-photo">
-                            <div class="items-photo__title">
-                                <p>title photo</p>
-                            </div>
-                            <div class="items-photo__note">
-                                <p>3</p>
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row__photographer">
-                    <div class="test-fetch">
-                        <button id="ask-hello">Bien le bonjour</button>
-                        <div id="hello-result"></div>
-                    </div>
-                </div>
+            <div id="row">
             </div>
         </section>
     </main>
@@ -185,33 +44,9 @@
         </div>
         <p>400€ / jour</p>
     </aside>
-    <!-- test template literals -->
-    <div id="app"></div>
-    <div id="myData"></div>
-    <h1>Where is my datas???</h1>
-    <p>
-        Name: <span id="nom"></span><br /> Ville: <span id="ville"></span>
-    </p>
+    <script type="text/javascript" src="./scripts/getDatas.js"></script>
+    <script type="text/javascript" src="./scripts/script-medias.js"></script>
 
-    <!-- script test fetch -->
-    <script type="text/javascript" src="script.js"></script>
-    <!-- Attention, ci-dessous, code qui était ds fichier de base -->
-    <!-- <div id="contact_modal">
-        <div class="modal">
-            <header>
-                <h2>Contactez-moi</h2>
-                <img src="assets/icons/close.svg" onclick="closeModal()" />
-            </header>
-            <form>
-                <div>
-                    <label>Prénom</label>
-                    <input />
-                </div>
-                <button class="contact_button">Envoyer</button>
-            </form>
-        </div>
-    </div> -->
-    <!-- <script src="/scripts/utils/contactForm.js"></script> -->
 </body>
 
 </html>

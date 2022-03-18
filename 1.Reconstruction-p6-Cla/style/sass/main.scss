@@ -216,7 +216,7 @@
                 flex-direction: column;
                 align-items: center;
                 // border: green solid 10px;
-                .row {
+                #row {
                     display: grid;
                     grid-template-columns: 1fr 1fr 1fr;
                     margin-top: 100px;
@@ -285,44 +285,40 @@
                 }
             }
             
-            // Test fetch
-            .test-fetch {
-                height: 100%;
-                border: red 2px solid;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                button {
-                    height: 20px;
-                }
-            }
-            
-            // test template litteral
-            .app-title {
-                text-align: center;
-                font-weight: normal;
-                font-size: 2.6rem;
-            }
-            
-            .footer {
-                font-size: .7rem;
-                color: #888;
-                text-align: center;
-                margin: 0;
-            }
-            
-            .testDataHtml {
-                max-width: 650px;
-                padding: 20px;
-                margin: 30px auto;
-                background-color: #FFF;
-                box-shadow: 3px 3px 3px rgba(0, 0, 0, .1);
-                overflow: hidden;
-            }
-            
-            .country {
-                font-size: .9rem;
-                color: #888;
-                vertical-align: middle;
-            }
+            // // Test fetch
+            // .test-fetch {
+            //     height: 100%;
+            //     border: red 2px solid;
+            //     display: flex;
+            //     flex-direction: column;
+            //     justify-content: center;
+            //     align-items: center;
+            //     button {
+            //         height: 20px;
+            //     }
+            // }
+            // // test template litteral
+            // .app-title {
+            //     text-align: center;
+            //     font-weight: normal;
+            //     font-size: 2.6rem;
+            // }
+            // .footer {
+            //     font-size: .7rem;
+            //     color: #888;
+            //     text-align: center;
+            //     margin: 0;
+            // }
+            // .testDataHtml {
+            //     max-width: 650px;
+            //     padding: 20px;
+            //     margin: 30px auto;
+            //     background-color: #FFF;
+            //     box-shadow: 3px 3px 3px rgba(0, 0, 0, .1);
+            //     overflow: hidden;
+            // }
+            // .country {
+            //     font-size: .9rem;
+            //     color: #888;
+            //     vertical-align: middle;
+            // }
