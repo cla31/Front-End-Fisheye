@@ -1,3 +1,4 @@
+const pathJsonProject = "./data/photographers.json";
 // Fonction pour récupérer les données via le fetch
 async function getDatas(pathJson) {
     try {

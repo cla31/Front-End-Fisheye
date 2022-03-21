@@ -5,7 +5,7 @@ const id_number = queryString_url_id.slice(1);
 console.log(id_number);
 
 // chemin du json ds une variable
-const pathJsonProject = "./data/photographers.json";
+// const pathJsonProject = "./data/photographers.json";
 
 //Fonction qui récupère les données en fonction de l'id
 async function datas_with_id(pathJson, getId) {
