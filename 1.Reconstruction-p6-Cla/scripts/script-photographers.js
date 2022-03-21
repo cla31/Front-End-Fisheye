@@ -1,13 +1,3 @@
-// chemin du json ds une variable
-// const pathJsonProject = "./data/photographers.json";
-
-//fonction template
-//????????????????????????????
-//Pourquoi pas besoin d'écrire cette ligne de code ci-dessous pour
-// que la fonction templatePhotographers comprenne qu'elle prend en paramètre
-// un tableau ?
-// const photographersTemplate = [];
-
 function templatePhotographers(photographersTemplate) {
     return `
     <div class="photographer">
@@ -38,7 +28,7 @@ async function orchestratorDatas(pathJson) {
     try {
         const jsonDatas = await getDatas(pathJson);
         // console.log(jsonDatas.photographers[0].name);
-        displayHTML("row", jsonDatas.photographers);
+        displayHTML("photographers", jsonDatas.photographers);
     } catch (erreur) {
         console.log(erreur);
     }
