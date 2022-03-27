@@ -27,6 +27,7 @@ async function displayHTML(id, boxDataJson) {
 async function orchestratorDatas(pathJson) {
     try {
         const jsonDatas = await getDatas(pathJson);
+        console.log("JSONDATAS ARRAY?", jsonDatas.photographers);
         // console.log(jsonDatas.photographers[0].name);
         displayHTML("photographers", jsonDatas.photographers);
     } catch (erreur) {

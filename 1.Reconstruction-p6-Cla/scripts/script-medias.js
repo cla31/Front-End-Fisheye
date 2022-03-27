@@ -1,6 +1,9 @@
 // Les données de la gallerie pour le photographe sélectionné sont affichés ds le console.log
+// Ds le dossier photographers, pour avoir accès dynamiquement au dossier correspondant à un photographe
+// j'ai mis id plutôt que nom photographe, expl: 243 au lieu de mimi
+
 // RAF:
-//     - Résoudre le pb d 'affichage de la gallerie dans tout le html. 
+//     - Résoudre le pb d 'affichage de la gallerie dans tout le html. (cf fonction displayGallery) 
 //     - Faire un if selon si média = vidéo ou photo
 
 //Récupération de l'id dans la chaîne de requête de l'url
@@ -61,8 +64,33 @@ async function displayHeader(id, boxDatasHeader) {
     }
 }
 
+//fonction template séparée en plusieurs morceaux comme ds script-photographers
+// function templateGalleryHTML(boxDatasMedias) {
+//     return `
+//             <div class="card-media">
+//                 <div class="container-photo">
+//                     <img class="container-photo__photo" src="assets/photographers/${boxDatasMedias.photographerId}/${boxDatasMedias.image}" />
+//                 </div>
+//                 <div class="items-media">
+//                     <div class="items-media__title">
+//                         <p>${boxDatasMedias.title}</p>
+//                     </div>
+//                     <div class="items-media__note">
+//                         <p>${boxDatasMedias.likes}</p>
+//                         <i class="fa-regular fa-heart"></i>
+//                     </div>
+//                 </div>
+//             </div>`
+// }
+// async function displayGallery(id, boxDatasMedias) {
+//     try {
+//         document.getElementById(id).innerHTML = `${boxDatasMedias.map(templateGalleryHTML).join(' ')}`
+//     } catch (erreur) {
+//         console.log(erreur);
+//     }
+// }
 //Fonction qui gère l'affichage du template de la gallerie:
-//******Elle affiche un 404.not found qd elle tombe sur la vidéo
+// ******Elle affiche un 404.not found qd elle tombe sur la vidéo
 async function displayGallery(id, boxDatasMedias) {
     try {
         // `<h1>${boxDatasMedias.title} </h1>`
@@ -100,12 +128,11 @@ const printDataMedias = async() => {
         for (let i of datas_medias_gallery) {
             console.log("Test affichage du titre: " + i.title);
             //*********Alors pourquoi ici il n'affiche pas tous les titres?
+            //Il faut peut-être faire un for pour afficher les éléments?
             document.getElementById("medias").innerHTML = `<p>${i.title}</p>`
                 //*********Et du coup la fonction displayGallery ne fonctionne pas....?
                 // displayGallery("medias", i);
         }
-
-
         // displayGallery("medias", datas_medias_gallery)
     } catch (erreur) {
         console.log(erreur);
