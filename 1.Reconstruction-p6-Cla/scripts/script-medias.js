@@ -91,11 +91,11 @@ async function displayHeader(id, boxDatasHeader) {
 // }
 //Fonction qui gère l'affichage du template de la gallerie:
 // ******Elle affiche un 404.not found qd elle tombe sur la vidéo
-async function displayGallery(id, boxDatasMedias) {
+function displayGallery(boxDatasMedias) {
     try {
         // `<h1>${boxDatasMedias.title} </h1>`
-        document.getElementById(id).innerHTML =
-            `
+        // document.getElementById(id).innerHTML =
+        return `
             <div class="card-media">
                 <div class="container-photo">
                     <img class="container-photo__photo" src="assets/photographers/${boxDatasMedias.photographerId}/${boxDatasMedias.image}" />
@@ -110,8 +110,14 @@ async function displayGallery(id, boxDatasMedias) {
                     </div>
                 </div>
             </div>`
-
-
+    } catch (erreur) {
+        console.log(erreur);
+    }
+}
+//Fonction qui gère l'affichage du template
+async function displayHTMLmedias(id, boxDatas) {
+    try {
+        document.getElementById(id).innerHTML = ` ${boxDatas.map(displayGallery).join(' ')}`
     } catch (erreur) {
         console.log(erreur);
     }
@@ -125,14 +131,15 @@ const printDataMedias = async() => {
         displayHeader("photograph-header", datas_medias);
         const datas_medias_gallery = await datas_with_id_media(pathJsonProject, id_number);
         console.log("Affichage datas media gallery", datas_medias_gallery);
-        for (let i of datas_medias_gallery) {
-            console.log("Test affichage du titre: " + i.title);
-            //*********Alors pourquoi ici il n'affiche pas tous les titres?
-            //Il faut peut-être faire un for pour afficher les éléments?
-            document.getElementById("medias").innerHTML = `<p>${i.title}</p>`
-                //*********Et du coup la fonction displayGallery ne fonctionne pas....?
-                // displayGallery("medias", i);
-        }
+        displayHTMLmedias("medias", datas_medias_gallery);
+        // for (let i of datas_medias_gallery) {
+        //     console.log("Test affichage du titre: " + i.title);
+        //     //*********Alors pourquoi ici il n'affiche pas tous les titres?
+        //     //Il faut peut-être faire un for pour afficher les éléments?
+        //     document.getElementById("medias").innerHTML = `<p>${i.title}</p>`
+        //         //*********Et du coup la fonction displayGallery ne fonctionne pas....?
+        //         // displayGallery("medias", i);
+        // }
         // displayGallery("medias", datas_medias_gallery)
     } catch (erreur) {
         console.log(erreur);
