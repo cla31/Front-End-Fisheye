@@ -57,7 +57,6 @@ async function displayHeader(id, boxDatasHeader) {
 }
 
 //Fonction qui gère l'affichage du template de la gallerie:
-// ******Elle affiche un 404.not found qd elle tombe sur la vidéo
 function displayGallery(boxDatasMedias) {
     try {
         // `<h1>${boxDatasMedias.title} </h1>`
