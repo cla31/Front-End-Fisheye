@@ -6,8 +6,6 @@ class Photographer {
         this.city = city;
         this.tagline = tagline;
         this.price = price;
-        // this.arrayJson = [this.id, this.portrait, this.name, this.city, this.tagline, this.price]
-
     }
 
     template() {
@@ -35,7 +33,7 @@ async function displayHTML(id, boxDataJson) {
         console.log("Affichage de box data ds display", boxDataJson);
         // test = boxDataJson.map(x => new Photographer(x.id, x.portrait, x.name, x.city, x.tagline, x.price));
         // même fonction mais écrite sans raccourcit...
-        test = boxDataJson.map(function instance(objetPhotographer) {
+        photographers = boxDataJson.map(function instance(objetPhotographer) {
                 return new Photographer(objetPhotographer.id, objetPhotographer.portrait, objetPhotographer.name, objetPhotographer.city, objetPhotographer.tagline, objetPhotographer.price);
             })
             //affichage mais une ligne sur 2
@@ -43,11 +41,10 @@ async function displayHTML(id, boxDataJson) {
             //     return new Photographer(objetPhotographer.id, objetPhotographer.portrait, objetPhotographer.name, objetPhotographer.city, objetPhotographer.tagline, objetPhotographer.price).template()
             // })}`
 
-        document.getElementById(id).innerHTML = ` ${boxDataJson.map(function instance(objetPhotographer) {
-            return new Photographer(objetPhotographer.id, objetPhotographer.portrait, objetPhotographer.name, objetPhotographer.city, objetPhotographer.tagline, objetPhotographer.price).template()
-        }).join(' ')}`
+        document.getElementById(id).innerHTML = ` ${photographers.map( photograph =>  {return photograph.template()
+        }).join('')}`
 
-        console.log("affichage de test", test);
+        // console.log("affichage de test", test);
         console.log("affichage du premier élément de  test", test[0].template());
         // return new Photographer(objetPhotographer.id, objetPhotographer.portrait, objetPhotographer.name, objetPhotographer.city, objetPhotographer.tagline, objetPhotographer.price)`
 
@@ -55,26 +52,6 @@ async function displayHTML(id, boxDataJson) {
         console.log(erreur);
     }
 }
-//Fonction qui gère l'affichage du template
-//Cela fonctionne aussi comme ça, avec la boucle for et le join(' ') au tableau ligne 72:
-// async function displayHTML(id, boxDataJson) {
-//     try {
-//         console.log("Affichage de box data ds display", boxDataJson);
-//         photographer = [];
-//         photographersTemplate = [];
-//         for (let i = 0; i < boxDataJson.length; i++) {
-//             console.log("parcours" + i, boxDataJson[i].name);
-//             photographer[i] = new Photographer(boxDataJson[i].id, boxDataJson[i].portrait, boxDataJson[i].name, boxDataJson[i].city, boxDataJson[i].tagline, boxDataJson[i].price);
-//             photographersTemplate.push(photographer[i].template());
-//             // document.getElementById(id).innerHTML = `${ photographer[i].template()}`;
-//         }
-//         console.log("tableau des templates", photographersTemplate);
-//         document.getElementById(id).innerHTML = ` ${photographersTemplate.join(' ')}`;
-
-//     } catch (erreur) {
-//         console.log(erreur);
-//     }
-// }
 
 // Fonction qui récupère les données et les affiche
 async function orchestratorDatas(pathJson) {

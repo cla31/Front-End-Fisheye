@@ -4,19 +4,65 @@ console.log(queryString_url_id);
 const id_number = queryString_url_id.slice(1);
 console.log(id_number);
 
-async function datas_with_id(pathJson, getId) {
+//non, pas placé au bon endroit:
+// function choiceElementArray(elements) {
+//     if (elements == elements.photographers) {
+//         // console.log(elements.photographers)
+//         const select_id = elements.photographers.find(element => element.id == getId);
+//     } else {
+//         const select_id = elements.media.filter(element => element.photographerId == getId);
+//     }
+//     return select_id;
+// }
+
+
+//Fonction qui récupère les données en fonction de l'id pour le header
+async function datas_with_id_header(pathJson, getId) {
     try {
         const jsonDatas = await getDatas(pathJson, getId);
-        console.log(jsonDatas);
-        const select_id_photogaphers = jsonDatas.photographers.find(element => element.id == getId);
-        console.log("select_id_photographers", select_id_photogaphers)
-        const select_id_medias = jsonDatas.media.filter(element => element.photographerId == getId);
-        console.log("medias", medias)
-        return [select_id_photogaphers, select_id_medias];
+        //test pour DRY
+        // getPhotographers = jsonDatas.photographers;
+        // console.log("1 élément ds la fonction", getPhotographers);
+        // select_id = choiceElementArray(getPhotographers);
+        //code qui fonctionne:
+        // console.log("1 élément ds la fonction", jsonDatas.photographers);
+        // const select_id = jsonDatas.photographers.find(element => element.id == getId);
+        // //Récupération des clés/valeurs correspondant à l'id selectionné
+        // console.log("en selectionnant l'id", select_id);
+        // console.log("en selectionnant l'id et le name", select_id.name);
+        // return select_id;
+        //Test avec if:
+        if (jsonDatas.photographers) {
+            const select_id = jsonDatas.photographers.find(element => element.id == getId);
+            return select_id;
+
+        } else if (jsonDatas.media) {
+            const select_id = jsonDatas.media.filter(element => element.photographerId == getId);
+            return select_id;
+        } else {
+            console.log("No!")
+        }
+    } catch (erreur) {
+
+        console.log(erreur);
+    }
+}
+//Fonction qui récupère les données en fonction de l'id pour la gallerie
+async function datas_with_id_media(pathJson, getId) {
+    try {
+        const jsonDatas = await getDatas(pathJson, getId);
+        console.log("1 élément ds la fonction", jsonDatas.media);
+        const select_id = jsonDatas.media.filter(element => element.photographerId == getId);
+        console.log("select_id", select_id);
+        //Récupération d'un élément
+        console.log("en selectionnant l'id", select_id[3].title);
+        // console.log("en selectionnant l'id et le name", select_id.title);
+        return select_id;
     } catch (erreur) {
         console.log(erreur);
     }
 }
+
 
 //Fonction qui gère l'affichage du template du header
 async function displayHeader(id, boxDatasHeader) {
@@ -84,36 +130,26 @@ function displayGallery(boxDatasMedias) {
         console.log(erreur);
     }
 }
-
-
-
 //Fonction qui gère l'affichage du template
 async function displayHTMLmedias(id, boxDatas) {
     try {
-        document.getElementById(id).innerHTML = ` ${boxDatas.map(displayGallery).join(' ')}`;
+        document.getElementById(id).innerHTML = ` ${boxDatas.map(displayGallery).join(' ')}`
     } catch (erreur) {
         console.log(erreur);
     }
 }
-//Pour test join ds le html
-// let guests = ["Sarah Kate", "Audrey Simon", "Will Alexander"];
 // Accès aux données grâce à l'ID
 const printDataMedias = async() => {
     try {
-        const datas_medias = await datas_with_id(pathJsonProject, id_number);
-        console.log("Affichage test", datas_medias[0]);
-        displayHeader("photograph-header", datas_medias[0]);
-        displayHTMLmedias("medias", datas_medias[1]);
-        // document.getElementById("medias").innerHTML = `${guests.join('  ')}`;
-
+        const datas_medias = await datas_with_id_header(pathJsonProject, id_number);
+        console.log("Affichage test", datas_medias.name);
+        // document.getElementById("photograph-header").innerHTML = `<h1>${datas_medias.name}</h1>`
+        displayHeader("photograph-header", datas_medias);
+        const datas_medias_gallery = await datas_with_id_media(pathJsonProject, id_number);
+        console.log("Affichage datas media gallery", datas_medias_gallery);
+        displayHTMLmedias("medias", datas_medias_gallery);
     } catch (erreur) {
         console.log(erreur);
     }
 }
-
 printDataMedias();
-
-//test join
-// let guests = ["Sarah Kate", "Audrey Simon", "Will Alexander"];
-// console.log(guests);
-// console.log(guests.join(' '));
