@@ -1,3 +1,4 @@
+//affichage de la page photographe.html en procédural
 //Récupération de l'id dans la chaîne de requête de l'url
 const queryString_url_id = window.location.search;
 console.log(queryString_url_id);
