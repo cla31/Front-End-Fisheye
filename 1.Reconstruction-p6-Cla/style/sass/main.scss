@@ -250,6 +250,20 @@
                         border-radius: 5px;
                     }
                 }
+                .container-video {
+                    overflow: hidden;
+                    position: relative;
+                    // border: blueviolet 2px solid;
+                    width: 290px;
+                    height: 290px;
+                    &__video {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        object-fit: cover;
+                        border-radius: 5px;
+                    }
+                }
                 .items-media {
                     display: flex;
                     justify-content: space-between;

@@ -63,8 +63,8 @@ function displayGallery(boxDatasMedias) {
             return `
             <div class="card-media">
                 <div class="container-video">
-                <video width="290" height="290" controls>
-                <source type=video/ogg> <source src="assets/photographers/${boxDatasMedias.photographerId}/${boxDatasMedias.video}" type=video/mp4>
+                    <video class="container-video__video" controls>
+                    <source  type=video/ogg> <source src="assets/photographers/${boxDatasMedias.photographerId}/${boxDatasMedias.video}" type=video/mp4>
                 </div>
                 <div class="items-media">
                     <div class="items-media__title">
