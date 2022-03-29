@@ -31,33 +31,24 @@ class Photographer {
 async function displayHTML(id, boxDataJson) {
     try {
         console.log("Affichage de box data ds display", boxDataJson);
-        // test = boxDataJson.map(x => new Photographer(x.id, x.portrait, x.name, x.city, x.tagline, x.price));
-        // même fonction mais écrite sans raccourcit...
         photographers = boxDataJson.map(function instance(objetPhotographer) {
-                return new Photographer(objetPhotographer.id, objetPhotographer.portrait, objetPhotographer.name, objetPhotographer.city, objetPhotographer.tagline, objetPhotographer.price);
-            })
-            //affichage mais une ligne sur 2
-            // document.getElementById(id).innerHTML = ` ${boxDataJson.map(function instance(objetPhotographer) {
-            //     return new Photographer(objetPhotographer.id, objetPhotographer.portrait, objetPhotographer.name, objetPhotographer.city, objetPhotographer.tagline, objetPhotographer.price).template()
-            // })}`
+            return new Photographer(objetPhotographer.id, objetPhotographer.portrait, objetPhotographer.name, objetPhotographer.city, objetPhotographer.tagline, objetPhotographer.price);
+        })
 
         document.getElementById(id).innerHTML = ` ${photographers.map( photograph =>  {return photograph.template()
         }).join('')}`
 
-        // console.log("affichage de test", test);
         console.log("affichage du premier élément de  test", test[0].template());
-        // return new Photographer(objetPhotographer.id, objetPhotographer.portrait, objetPhotographer.name, objetPhotographer.city, objetPhotographer.tagline, objetPhotographer.price)`
 
     } catch (erreur) {
         console.log(erreur);
     }
 }
 
-// Fonction qui récupère les données et les affiche
+
 async function orchestratorDatas(pathJson) {
     try {
         const jsonDatas = await getDatas(pathJson);
-        // console.log("JSONDATAS ARRAY?", jsonDatas.photographers);
         displayHTML("photographers", jsonDatas.photographers);
 
     } catch (erreur) {

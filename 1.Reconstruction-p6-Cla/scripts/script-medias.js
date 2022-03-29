@@ -42,8 +42,6 @@ async function displayHeader(id, boxDatasHeader) {
 //Fonction qui gère l'affichage du template de la gallerie:
 function displayGallery(boxDatasMedias) {
     try {
-        // `<h1>${boxDatasMedias.title} </h1>`
-        // document.getElementById(id).innerHTML =
         if (boxDatasMedias.image) {
             return `
             <div class="card-media">
@@ -87,7 +85,7 @@ function displayGallery(boxDatasMedias) {
 
 
 
-//Fonction qui gère l'affichage du template
+
 async function displayHTMLmedias(id, boxDatas) {
     try {
         document.getElementById(id).innerHTML = ` ${boxDatas.map(displayGallery).join(' ')}`;
@@ -95,16 +93,14 @@ async function displayHTMLmedias(id, boxDatas) {
         console.log(erreur);
     }
 }
-//Pour test join ds le html
-// let guests = ["Sarah Kate", "Audrey Simon", "Will Alexander"];
-// Accès aux données grâce à l'ID
+
 const printDataMedias = async() => {
     try {
         const datas_medias = await datas_with_id(pathJsonProject, id_number);
         console.log("Affichage test", datas_medias[0]);
         displayHeader("photograph-header", datas_medias[0]);
         displayHTMLmedias("medias", datas_medias[1]);
-        // document.getElementById("medias").innerHTML = `${guests.join('  ')}`;
+
 
     } catch (erreur) {
         console.log(erreur);
@@ -112,8 +108,3 @@ const printDataMedias = async() => {
 }
 
 printDataMedias();
-
-//test join
-// let guests = ["Sarah Kate", "Audrey Simon", "Will Alexander"];
-// console.log(guests);
-// console.log(guests.join(' '));

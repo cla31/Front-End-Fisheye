@@ -13,8 +13,6 @@ class Medias {
     //Fonction qui gère l'affichage du template de la gallerie:
     displayGallery(media) {
         try {
-            // `<h1>${boxDatasMedias.title} </h1>`
-            // document.getElementById(id).innerHTML =
             if (media == this.image) {
                 return `
             <div class="card-media">
