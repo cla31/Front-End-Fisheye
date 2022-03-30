@@ -1,4 +1,4 @@
-class Images {
+class Image {
     constructor(id, photographerId, title, image, likes, date, price) {
         this.id = id;
         this.photographerId = photographerId;
@@ -15,14 +15,14 @@ class Images {
         return `
             <div class="card-media">
                 <div class="container-photo">
-                    <img class="container-photo__photo" src="assets/photographers/${boxDatasMedias.photographerId}/${boxDatasMedias.image}" />
+                    <img class="container-photo__photo" src="assets/photographers/${this.photographerId}/${this.image}" />
                 </div>
                 <div class="items-media">
                     <div class="items-media__title">
-                        <p>${boxDatasMedias.title}</p>
+                        <p>${this.title}</p>
                     </div>
                     <div class="items-media__note">
-                        <p>${boxDatasMedias.likes}</p>
+                        <p>${this.likes}</p>
                         <i class="fa-regular fa-heart"></i>
                     </div>
                 </div>

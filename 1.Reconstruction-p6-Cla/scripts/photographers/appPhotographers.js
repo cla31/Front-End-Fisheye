@@ -4,10 +4,9 @@ async function displayHTML(id, boxDataJson) {
         console.log("Affichage de box data ds display", boxDataJson);
         photographers = boxDataJson.map(function instance(objectPhotographer) {
             return new Photographer(objectPhotographer.id, objectPhotographer.portrait, objectPhotographer.name, objectPhotographer.city, objectPhotographer.tagline, objectPhotographer.price);
-        })
-
-        document.getElementById(id).innerHTML = ` ${photographers.map( photograph =>  {return photograph.template()
-        }).join('')}`
+        });
+        document.getElementById(id).innerHTML = ` ${photographers.map( photograph =>  {return photograph.templateIndexHTML()
+        }).join('')}`;
 
     } catch (erreur) {
         console.log(erreur);

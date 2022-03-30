@@ -16,14 +16,14 @@ class Video {
             <div class="card-media">
                 <div class="container-video">
                 <video width="290" height="290" controls>
-                <source type=video/ogg> <source src="assets/photographers/${boxDatasMedias.photographerId}/${boxDatasMedias.video}" type=video/mp4>
+                <source type=video/ogg> <source src="assets/photographers/${this.photographerId}/${this.video}" type=video/mp4>
                 </div>
                 <div class="items-media">
                     <div class="items-media__title">
-                        <p>${boxDatasMedias.title}</p>
+                        <p>${this.title}</p>
                     </div>
                     <div class="items-media__note">
-                        <p>${boxDatasMedias.likes}</p>
+                        <p>${this.likes}</p>
                         <i class="fa-regular fa-heart"></i>
                     </div>
                 </div>
