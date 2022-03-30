@@ -30,27 +30,38 @@ async function displayHTMLheader(id, boxDatas) {
     }
 }
 
+async function ObjectImages(boxDatas) {
+    //********* Les objets image
+    var images = boxDatas.filter(function(img) {
+        return img.image;
+    });
+    // console.log("images", images)
+    photos = images.map(function instance(objectPhoto) {
+        return new Image(objectPhoto.id, objectPhoto.photographerId, objectPhoto.title, objectPhoto.image, objectPhoto.likes, objectPhoto.date, objectPhoto.price);
+    });
+    // console.log("photos", photos);
+    const arrayTemplatePhotos = photos.map(img => { return img.displayImage() });
+    return arrayTemplatePhotos;
+}
+
 async function displayHTMLmedias(id, boxDatas) {
     try {
         // console.log("displayHTMLmedias", boxDatas[8].video);
         arrayGalleryPhotosVideos = [];
         //********* Les objets image
-        var images = boxDatas.filter(function(img) {
-            return img.image;
-        });
-        //test pour la lightbox si objet fonctionnel:
-        // lightbox = new Lightbox(images, "medias");
-        // // lightbox.init();
-        // lightbox.play();
-        // console.log("lightbox", lightbox);
-        // console.log("images", images)
-        photos = images.map(function instance(objectPhoto) {
-            return new Image(objectPhoto.id, objectPhoto.photographerId, objectPhoto.title, objectPhoto.image, objectPhoto.likes, objectPhoto.date, objectPhoto.price);
-        });
-        // console.log("photos", photos);
-        const arrayTemplatePhotos = photos.map(img => { return img.displayImage() });
-        // document.getElementById(id).innerHTML = `${arrayTemplatePhotos.join('')}`;
-        //********* Les objets video
+        // var images = boxDatas.filter(function(img) {
+        //     return img.image;
+        // });
+        // // console.log("images", images)
+        // photos = images.map(function instance(objectPhoto) {
+        //     return new Image(objectPhoto.id, objectPhoto.photographerId, objectPhoto.title, objectPhoto.image, objectPhoto.likes, objectPhoto.date, objectPhoto.price);
+        // });
+        // // console.log("photos", photos);
+        // const arrayTemplatePhotos = photos.map(img => { return img.displayImage() });
+        // // document.getElementById(id).innerHTML = `${arrayTemplatePhotos.join('')}`;
+        arrayTemplatePhotos = await ObjectImages(boxDatas);
+        console.log("Retour fonction objet photo", arrayTemplatePhotos)
+            //********* Les objets video
         var videos = boxDatas.filter(function(film) {
             return film.video;
         });
@@ -86,3 +97,9 @@ const printDataMedias = async() => {
 }
 
 printDataMedias();
+
+//test pour la lightbox si objet fonctionnel:
+// lightbox = new Lightbox(images, "medias");
+// // lightbox.init();
+// lightbox.play();
+// console.log("lightbox", lightbox);
