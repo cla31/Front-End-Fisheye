@@ -34,43 +34,23 @@ async function ObjectImages(boxDatas) {
 }
 
 async function ObjectVideos(boxDatas) {
-    //********* Les objets video
     var videos = boxDatas.filter(function(film) {
         return film.video;
     });
-    // console.log("videos", videos);
     var films = videos.map(function instance(objectVideo) {
         return new Video(objectVideo.id, objectVideo.photographerId, objectVideo.title, objectVideo.video, objectVideo.likes, objectVideo.date, objectVideo.price);
     });
-    // console.log("films", films);
     const arrayTemplateVideo = films.map(movie => { return movie.displayVideo() });
-    // document.getElementById(id).innerHTML = `${arrayTemplateVideo.join('')}`;
     return arrayTemplateVideo;
-
 }
+
 async function displayHTMLmedias(id, boxDatas) {
     try {
         arrayGalleryPhotosVideos = [];
         arrayTemplatePhotos = await ObjectImages(boxDatas);
         arrayTemplateVideo = await ObjectVideos(boxDatas);
-        //********* Les objets video
-        // var videos = boxDatas.filter(function(film) {
-        //     return film.video;
-        // });
-        // // console.log("videos", videos);
-        // var films = videos.map(function instance(objectVideo) {
-        //     return new Video(objectVideo.id, objectVideo.photographerId, objectVideo.title, objectVideo.video, objectVideo.likes, objectVideo.date, objectVideo.price);
-        // });
-        // // console.log("films", films);
-        // const arrayTemplateVideo = films.map(movie => { return movie.displayVideo() });
-        // // document.getElementById(id).innerHTML = `${arrayTemplateVideo.join('')}`;
-
-        //Les images et vidéos:
         arrayGalleryPhotosVideos = arrayTemplatePhotos.concat(arrayTemplateVideo);
-        // console.log("La gallerie de photos et de vidéo", arrayGalleryPhotosVideos)
         document.getElementById(id).innerHTML = `${arrayGalleryPhotosVideos.join('')}`;
-
-
     } catch (erreur) {
         console.log(erreur);
     }
