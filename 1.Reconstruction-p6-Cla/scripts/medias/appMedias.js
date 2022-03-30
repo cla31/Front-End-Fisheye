@@ -38,6 +38,11 @@ async function displayHTMLmedias(id, boxDatas) {
         var images = boxDatas.filter(function(img) {
             return img.image;
         });
+        //test pour la lightbox si objet fonctionnel:
+        // lightbox = new Lightbox(images, "medias");
+        // // lightbox.init();
+        // lightbox.play();
+        // console.log("lightbox", lightbox);
         // console.log("images", images)
         photos = images.map(function instance(objectPhoto) {
             return new Image(objectPhoto.id, objectPhoto.photographerId, objectPhoto.title, objectPhoto.image, objectPhoto.likes, objectPhoto.date, objectPhoto.price);
@@ -59,7 +64,7 @@ async function displayHTMLmedias(id, boxDatas) {
 
         //Les images et vidéos:
         arrayGalleryPhotosVideos = arrayTemplatePhotos.concat(arrayTemplateVideo);
-        console.log("La gallerie de photos et de vidéo", arrayGalleryPhotosVideos)
+        // console.log("La gallerie de photos et de vidéo", arrayGalleryPhotosVideos)
         document.getElementById(id).innerHTML = `${arrayGalleryPhotosVideos.join('')}`;
 
 
