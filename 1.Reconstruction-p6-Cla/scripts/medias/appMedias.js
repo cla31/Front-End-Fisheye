@@ -32,8 +32,8 @@ async function displayHTMLheader(id, boxDatas) {
 
 async function displayHTMLmedias(id, boxDatas) {
     try {
+        // console.log("displayHTMLmedias", boxDatas[8].video);
         arrayGalleryPhotosVideos = [];
-        // console.log("displayHTMLmedias", boxDatas);
         //********* Les objets image
         var images = boxDatas.filter(function(img) {
             return img.image;
@@ -44,17 +44,22 @@ async function displayHTMLmedias(id, boxDatas) {
         });
         // console.log("photos", photos);
         const arrayTemplatePhotos = photos.map(img => { return img.displayImage() });
+        // document.getElementById(id).innerHTML = `${arrayTemplatePhotos.join('')}`;
         //********* Les objets video
         var videos = boxDatas.filter(function(film) {
             return film.video;
         });
         // console.log("videos", videos);
         var films = videos.map(function instance(objectVideo) {
-            return new Video(objectVideo.id, objectVideo.photographerId, objectVideo.title, objectVideo.image, objectVideo.likes, objectVideo.date, objectVideo.price);
+            return new Video(objectVideo.id, objectVideo.photographerId, objectVideo.title, objectVideo.video, objectVideo.likes, objectVideo.date, objectVideo.price);
         });
         // console.log("films", films);
         const arrayTemplateVideo = films.map(movie => { return movie.displayVideo() });
+        // document.getElementById(id).innerHTML = `${arrayTemplateVideo.join('')}`;
+
+        //Les images et vidéos:
         arrayGalleryPhotosVideos = arrayTemplatePhotos.concat(arrayTemplateVideo);
+        console.log("La gallerie de photos et de vidéo", arrayGalleryPhotosVideos)
         document.getElementById(id).innerHTML = `${arrayGalleryPhotosVideos.join('')}`;
 
 
