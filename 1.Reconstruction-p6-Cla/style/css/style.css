@@ -283,4 +283,16 @@
   margin: 0px;
 }
 
+#diaporama li {
+  list-style-type: none;
+}
+
+#diaporama li.activ img {
+  display: block;
+}
+
+#diaporama li img {
+  display: none;
+}
+
 /*# sourceMappingURL=style.css.map */

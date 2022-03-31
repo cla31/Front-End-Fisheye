@@ -71,7 +71,6 @@ const printDataMedias = async() => {
 printDataMedias();
 
 //test pour la lightbox si objet fonctionnel:
-// lightbox = new Lightbox(images, "medias");
-// // lightbox.init();
-// lightbox.play();
-// console.log("lightbox", lightbox);
+var diapo = new Diaporama(["./scripts/medias/img/P1.jpg", "./scripts/medias/img/P2.jpg", "./scripts/medias/img/P3.jpg"], "#diaporama");
+diapo.init();
+diapo.play();

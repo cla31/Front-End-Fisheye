@@ -299,3 +299,29 @@
                     margin: 0px;
                 }
             }
+            
+            // #diaporama li.activ img {
+            //     // display: block;
+            //     background-color: #901C1C;
+            // }
+            // #diaporama li {
+            //     list-style-type: none;
+            // }
+            // #diaporama li img {
+            //     display: none;
+            // }
+            //Avec celui-là ça fonctionne
+            // #diaporama {
+            //     color: red;
+            // }
+            #diaporama li {
+                list-style-type: none;
+            }
+            
+            #diaporama li.activ img {
+                display: block;
+            }
+            
+            #diaporama li img {
+                display: none;
+            }
