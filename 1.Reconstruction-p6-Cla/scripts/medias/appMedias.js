@@ -26,14 +26,11 @@ async function ObjectImages(boxDatas) {
     var images = boxDatas.filter(function(img) {
         return img.image;
     });
-    // console.log("images", images)
     photos = images.map(function instance(objectPhoto) {
         return new Image(objectPhoto.id, objectPhoto.photographerId, objectPhoto.title, objectPhoto.image, objectPhoto.likes, objectPhoto.date, objectPhoto.price);
     });
     const arrayTemplatePhotos = photos.map(img => { return img.displayImage() });
     return arrayTemplatePhotos;
-    // const tests = photos.map(img => { return img.showDom() });
-    // return console.log("tests", tests);
 }
 
 async function ObjectVideos(boxDatas) {
@@ -51,23 +48,22 @@ async function displayHTMLmedias(id, boxDatas) {
     try {
         arrayGalleryPhotosVideos = [];
         arrayTemplatePhotos = await ObjectImages(boxDatas);
-        // console.log("Template photos", arrayTemplatePhotos);
-        //test pour récupérer les éléments dans le DOM
-        // const links2 = document.getElementsByTagName('a');
-        // console.log("links2", links2);
         arrayTemplateVideo = await ObjectVideos(boxDatas);
         arrayGalleryPhotosVideos = arrayTemplatePhotos.concat(arrayTemplateVideo);
         document.getElementById(id).innerHTML = `${arrayGalleryPhotosVideos.join('')}`;
         //On récupère les liens ds le dom avec les extensions jpg et mp4       
         const test = document.getElementById(id);
         // const links = test.querySelector('.card-media');
-        const match = test.querySelectorAll('a[href$=".jpg"],a[href$=".mp4"]');
+        // const jpg = 'a[href$=".jpg"]';
+        // const mp4 = 'a[href$=".mp4"]';
+        // const match = test.querySelectorAll(jpg, mp4);
+        // console.log("Array recup", arrayGalleryPhotosVideos);
 
 
         //vérifications
-        console.log("TEST", match);
+        // console.log("TEST", match);
         // console.log("links", links);
-        // console.log("match", match);
+        // console.log("match", match.values);
         //test objet lightbox: fonctionne que sur le premier élément de la grille
         Lightbox.init();
 
@@ -87,7 +83,7 @@ const printDataMedias = async() => {
         console.log(erreur);
     }
 }
-printDataMedias()
+printDataMedias();
 
 
 

@@ -3,11 +3,23 @@ class Lightbox {
         //Il faut selectionner tous les liens qui mènent vers les jpeg.
         // const links = document.querySelectorAll('a[href$=.jpg]')
         // const links = document.querySelector('.card-media');
-        const match = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
+        const jpg = ".jpg";
+        const mp4 = ".mp4";
+        const match = document.querySelectorAll('a[href$=".jpg"],a[href$=".mp4"]')
             .forEach(link => link.addEventListener('click', e => {
                 e.preventDefault();
-                new Lightbox(e.currentTarget.getAttribute('href'))
+                new Lightbox(e.currentTarget.getAttribute('href'));
+                // console.log("url static", e.currentTarget.getAttribute('href'));
+                // console.log("match", link);
+                // console.log("target", e.currentTarget);
+                // if (e.currentTarget == jpg) {
+                //     return console.log("ok");
+                // } else {
+                //     console.log("NOOO!");
+                // }
+
             }))
+
     }
     constructor(url) {
             //je v construire la structure html de la lightbox
@@ -16,6 +28,15 @@ class Lightbox {
         }
         // Cette meth prend en paramètre même url que constructeur et renverra
         // un  élément html.
+
+    urlExtension(url) {
+        const urlToSplit = url;
+        const urlSplitSlash = url.split('/').pop();
+        console.log("url", urlSplitSlash);
+        const urlSplitPoint = urlSplitSlash.split('.').pop();
+        console.log("url", urlSplitPoint);
+        return urlSplitPoint;
+    }
     buildDOM(url) {
         //Création de la div qui aura la classe lightbox
         const dom = document.createElement('div');
@@ -31,7 +52,16 @@ class Lightbox {
                             </div>
                         </div>         
                         `
-            //Lorsque le traitement est finit je peux retourner le dom:
+        const valueMedia = this.urlExtension(url);
+        console.log("valeur du média:", valueMedia);
+        // const urlToSplit = url;
+        // const urlSplitSlash = url.split('/').pop();
+        // console.log("url", urlSplitSlash);
+        // const urlSplitPoint = urlSplitSlash.split('.').pop();
+        // console.log("url", urlSplitPoint);
+
+
+        //Lorsque le traitement est finit je peux retourner le dom:
         return dom
     }
 }
