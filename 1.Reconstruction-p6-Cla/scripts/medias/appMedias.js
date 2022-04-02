@@ -51,20 +51,6 @@ async function displayHTMLmedias(id, boxDatas) {
         arrayTemplateVideo = await ObjectVideos(boxDatas);
         arrayGalleryPhotosVideos = arrayTemplatePhotos.concat(arrayTemplateVideo);
         document.getElementById(id).innerHTML = `${arrayGalleryPhotosVideos.join('')}`;
-        //On récupère les liens ds le dom avec les extensions jpg et mp4       
-        const test = document.getElementById(id);
-        // const links = test.querySelector('.card-media');
-        // const jpg = 'a[href$=".jpg"]';
-        // const mp4 = 'a[href$=".mp4"]';
-        // const match = test.querySelectorAll(jpg, mp4);
-        // console.log("Array recup", arrayGalleryPhotosVideos);
-
-
-        //vérifications
-        // console.log("TEST", match);
-        // console.log("links", links);
-        // console.log("match", match.values);
-        //test objet lightbox: fonctionne que sur le premier élément de la grille
         Lightbox.init();
 
     } catch (erreur) {
@@ -75,10 +61,8 @@ async function displayHTMLmedias(id, boxDatas) {
 const printDataMedias = async() => {
     try {
         const datas_medias = await datas_with_id(pathJsonProject, id_number);
-        // console.log("Affichage test", datas_medias[0]);
         displayHTMLheader("photograph-header", datas_medias[0]);
         displayHTMLmedias("medias", datas_medias[1]);
-        // console.log("Affichage test", datas_medias[1]);
     } catch (erreur) {
         console.log(erreur);
     }
