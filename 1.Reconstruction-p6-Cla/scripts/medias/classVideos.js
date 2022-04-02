@@ -15,8 +15,10 @@ class Video {
         return `
         <div class="card-media">
             <div class="container-video">
-                <video class="container-video__video" controls>
-                <source  type=video/ogg> <source src="assets/photographers/${this.photographerId}/${this.video}" type=video/mp4>
+                <a href="assets/photographers/${this.photographerId}/${this.video}">
+                    <video class="container-video__video"controls>
+                    <source src="assets/photographers/${this.photographerId}/${this.video}" type=video/ogg> <source  type=video/mp4>
+                </a>
             </div>
             <div class="items-media">
                 <div class="items-media__title">

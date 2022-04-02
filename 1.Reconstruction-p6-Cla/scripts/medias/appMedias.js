@@ -26,11 +26,14 @@ async function ObjectImages(boxDatas) {
     var images = boxDatas.filter(function(img) {
         return img.image;
     });
+    // console.log("images", images)
     photos = images.map(function instance(objectPhoto) {
         return new Image(objectPhoto.id, objectPhoto.photographerId, objectPhoto.title, objectPhoto.image, objectPhoto.likes, objectPhoto.date, objectPhoto.price);
     });
     const arrayTemplatePhotos = photos.map(img => { return img.displayImage() });
     return arrayTemplatePhotos;
+    // const tests = photos.map(img => { return img.showDom() });
+    // return console.log("tests", tests);
 }
 
 async function ObjectVideos(boxDatas) {
@@ -48,9 +51,21 @@ async function displayHTMLmedias(id, boxDatas) {
     try {
         arrayGalleryPhotosVideos = [];
         arrayTemplatePhotos = await ObjectImages(boxDatas);
+        // console.log("Template photos", arrayTemplatePhotos);
+        //test pour récupérer les éléments dans le DOM
+        // const links2 = document.getElementsByTagName('a');
+        // console.log("links2", links2);
         arrayTemplateVideo = await ObjectVideos(boxDatas);
         arrayGalleryPhotosVideos = arrayTemplatePhotos.concat(arrayTemplateVideo);
         document.getElementById(id).innerHTML = `${arrayGalleryPhotosVideos.join('')}`;
+        //On récupère les liens ds le dom avec les extensions jpg et mp4
+        // const links = document.querySelector('.card-media');
+        // const match = links.querySelectorAll('a[href$=".jpg"],a[href$=".mp4"]');
+        //vérifications
+        // console.log("links", links);
+        // console.log("match", match);
+        //test objet lightbox
+        Lightbox.init();
     } catch (erreur) {
         console.log(erreur);
     }
@@ -62,15 +77,25 @@ const printDataMedias = async() => {
         // console.log("Affichage test", datas_medias[0]);
         displayHTMLheader("photograph-header", datas_medias[0]);
         displayHTMLmedias("medias", datas_medias[1]);
-
+        // console.log("Affichage test", datas_medias[1]);
     } catch (erreur) {
         console.log(erreur);
     }
 }
+const printMediasAndLightbox = async() => {
+    try {
+        printDataMedias();
+    } catch (erreur) {
+        console.log(erreur);
+    }
+}
+printMediasAndLightbox();
 
-printDataMedias();
+// const links = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
+// console.log("links", links);
+
 
 //test pour la lightbox si objet fonctionnel:
-var diapo = new Diaporama(["./scripts/medias/img/P1.jpg", "./scripts/medias/img/P2.jpg", "./scripts/medias/img/P3.jpg"], "#diaporama");
-diapo.init();
-diapo.play();
+// var diapo = new Diaporama(["./scripts/medias/img/P1.jpg", "./scripts/medias/img/P2.jpg", "./scripts/medias/img/P3.jpg"], "#diaporama");
+// diapo.init();
+// diapo.play();
