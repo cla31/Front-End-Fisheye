@@ -2,11 +2,11 @@ class Lightbox {
     static init() {
         //Il faut selectionner tous les liens qui mènent vers les jpeg.
         // const links = document.querySelectorAll('a[href$=.jpg]')
-        const links = document.querySelectorAll('a[href$=".jpg"]');
-        // .forEach(link => link.addEventListener('click', e => {
-        //     e.preventDefault();
-        //     new Lightbox(e.currentTarget.getAttribute('href'))
-        // }))
+        const links = document.querySelectorAll('a[href$=".jpg"]')
+            .forEach(link => link.addEventListener('click', e => {
+                e.preventDefault();
+                new Lightbox(e.currentTarget.getAttribute('href'))
+            }))
         console.log("Links", links);
     }
     constructor(url) {

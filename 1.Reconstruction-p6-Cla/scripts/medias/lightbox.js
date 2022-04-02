@@ -2,8 +2,8 @@ class Lightbox {
     static init() {
         //Il faut selectionner tous les liens qui mènent vers les jpeg.
         // const links = document.querySelectorAll('a[href$=.jpg]')
-        const links = document.querySelector('.card-media');
-        const match = links.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
+        // const links = document.querySelector('.card-media');
+        const match = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
             .forEach(link => link.addEventListener('click', e => {
                 e.preventDefault();
                 new Lightbox(e.currentTarget.getAttribute('href'))

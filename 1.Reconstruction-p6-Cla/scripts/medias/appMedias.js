@@ -58,14 +58,19 @@ async function displayHTMLmedias(id, boxDatas) {
         arrayTemplateVideo = await ObjectVideos(boxDatas);
         arrayGalleryPhotosVideos = arrayTemplatePhotos.concat(arrayTemplateVideo);
         document.getElementById(id).innerHTML = `${arrayGalleryPhotosVideos.join('')}`;
-        //On récupère les liens ds le dom avec les extensions jpg et mp4
-        // const links = document.querySelector('.card-media');
-        // const match = links.querySelectorAll('a[href$=".jpg"],a[href$=".mp4"]');
+        //On récupère les liens ds le dom avec les extensions jpg et mp4       
+        const test = document.getElementById(id);
+        // const links = test.querySelector('.card-media');
+        const match = test.querySelectorAll('a[href$=".jpg"],a[href$=".mp4"]');
+
+
         //vérifications
+        console.log("TEST", match);
         // console.log("links", links);
         // console.log("match", match);
-        //test objet lightbox
+        //test objet lightbox: fonctionne que sur le premier élément de la grille
         Lightbox.init();
+
     } catch (erreur) {
         console.log(erreur);
     }
@@ -82,17 +87,8 @@ const printDataMedias = async() => {
         console.log(erreur);
     }
 }
-const printMediasAndLightbox = async() => {
-    try {
-        printDataMedias();
-    } catch (erreur) {
-        console.log(erreur);
-    }
-}
-printMediasAndLightbox();
+printDataMedias()
 
-// const links = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
-// console.log("links", links);
 
 
 //test pour la lightbox si objet fonctionnel:
