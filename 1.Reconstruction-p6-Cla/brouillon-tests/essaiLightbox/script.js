@@ -10,9 +10,21 @@ class Lightbox {
         console.log("Links", links);
     }
     constructor(url) {
-            //je v construire la structure html de la lightbox
-            const element = this.buildDOM(url);
-            document.body.appendChild(element);
+        //je v construire la structure html de la lightbox
+        const element = this.buildDOM(url);
+        document.body.appendChild(element);
+    }
+
+    //fonction pour charger une image
+    loadImage(url) {
+            //On crée une nouvelle image
+            const image = new Image();
+            //lorsque l'image sera bien chargée, tu lanceras une fonction... 27mn48
+            image.onload = function() {
+
+            }
+            image.src = url;
+
         }
         // Cette meth prend en paramètre même url que constructeur et renverra
         // un  élément html.
@@ -27,10 +39,9 @@ class Lightbox {
                             <button class="lightbox__next">Suivant</button>
                             <button class="lightbox__prev">Précédent</button>
                             <div class="lightbox__container">
-                                <img src="${url}" alt="">
+                                <div class="lightbox__loader"></div>
                             </div>
-                        </div> 
-        
+                        </div>         
                         `
             //Lorsque le traitement est finit je peux retourner le dom:
         return dom
