@@ -11,17 +11,28 @@ class Lightbox {
     }
     constructor(url) {
         //je v construire la structure html de la lightbox
-        const element = this.buildDOM(url);
-        document.body.appendChild(element);
+        this.element = this.buildDOM(url);
+        this.loadImage(url);
+        document.body.appendChild(this.element);
     }
 
     //fonction pour charger une image
     loadImage(url) {
             //On crée une nouvelle image
             const image = new Image();
+            const container = this.element.querySelector('.lightbox__container');
+            //Création du loader
+            const loader = document.createElement('div');
+            loader.classList.add('lightbox__loader');
+            //Rajouter ds le container l'enfant qui sera le loader:
+            container.appendChild(loader);
             //lorsque l'image sera bien chargée, tu lanceras une fonction... 27mn48
             image.onload = function() {
-
+                console.log("Chargé");
+                //on enlève le loader
+                container.removeChild(loader);
+                //on ajoute l'image
+                container.appendChild(image);
             }
             image.src = url;
 
@@ -39,7 +50,6 @@ class Lightbox {
                             <button class="lightbox__next">Suivant</button>
                             <button class="lightbox__prev">Précédent</button>
                             <div class="lightbox__container">
-                                <div class="lightbox__loader"></div>
                             </div>
                         </div>         
                         `

@@ -1,18 +1,18 @@
-class Image {
-    constructor(id, photographerId, title, image, likes, date, price) {
-            this.id = id;
-            this.photographerId = photographerId;
-            this.title = title;
-            this.image = image;
-            this.likes = likes;
-            this.date = date;
-            this.price = price;
+class ImageMedia {
+    constructor(datas) {
+            this.id = datas.id;
+            this.photographerId = datas.photographerId;
+            this.title = datas.title;
+            this.image = datas.image;
+            this.likes = datas.likes;
+            this.date = datas.date;
+            this.price = datas.price;
 
         }
         // <img class="container-photo__photo" src="assets/photographers/${this.photographerId}/${this.image}" />
 
     //Fonction qui gère l'affichage du template de la gallerie:
-    displayImage() {
+    display() {
         return `
             <div class="card-media">
                 <div class="container-photo">

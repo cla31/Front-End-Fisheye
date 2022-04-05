@@ -85,6 +85,13 @@
     min-height: 100vh;
 }
 
+.lightbox__loader {
+    width: 38px;
+    height: 38px;
+    opacity: .5;
+    background: url(svg/loader.svg)center center no-repeat;
+}
+
 @keyframes lightboxIn {
     from {
         opacity: 0;

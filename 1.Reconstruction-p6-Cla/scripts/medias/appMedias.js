@@ -24,12 +24,13 @@ async function displayHTMLheader(id, boxDatas) {
 
 async function ObjectImages(boxDatas) {
     var images = boxDatas.filter(function(img) {
+        console.log("img.image", img.image)
         return img.image;
     });
     photos = images.map(function instance(objectPhoto) {
-        return new Image(objectPhoto.id, objectPhoto.photographerId, objectPhoto.title, objectPhoto.image, objectPhoto.likes, objectPhoto.date, objectPhoto.price);
+        return new ImageMedia(objectPhoto);
     });
-    const arrayTemplatePhotos = photos.map(img => { return img.displayImage() });
+    const arrayTemplatePhotos = photos.map(img => { return img.display() });
     return arrayTemplatePhotos;
 }
 
@@ -38,9 +39,9 @@ async function ObjectVideos(boxDatas) {
         return film.video;
     });
     var films = videos.map(function instance(objectVideo) {
-        return new Video(objectVideo.id, objectVideo.photographerId, objectVideo.title, objectVideo.video, objectVideo.likes, objectVideo.date, objectVideo.price);
+        return new VideoMedia(objectVideo);
     });
-    const arrayTemplateVideo = films.map(movie => { return movie.displayVideo() });
+    const arrayTemplateVideo = films.map(movie => { return movie.display() });
     return arrayTemplateVideo;
 }
 
@@ -51,7 +52,7 @@ async function displayHTMLmedias(id, boxDatas) {
         arrayTemplateVideo = await ObjectVideos(boxDatas);
         arrayGalleryPhotosVideos = arrayTemplatePhotos.concat(arrayTemplateVideo);
         document.getElementById(id).innerHTML = `${arrayGalleryPhotosVideos.join('')}`;
-        Lightbox.init();
+        // Lightbox.init();
 
     } catch (erreur) {
         console.log(erreur);

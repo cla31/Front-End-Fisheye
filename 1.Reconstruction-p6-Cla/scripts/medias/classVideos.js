@@ -1,17 +1,16 @@
-class Video {
-    constructor(id, photographerId, title, video, likes, date, price) {
-        this.id = id;
-        this.photographerId = photographerId;
-        this.title = title;
-        this.video = video;
-        this.likes = likes;
-        this.date = date;
-        this.price = price;
-
+class VideoMedia {
+    constructor(datas) {
+        this.id = datas.id;
+        this.photographerId = datas.photographerId;
+        this.title = datas.title;
+        this.video = datas.video;
+        this.likes = datas.likes;
+        this.date = datas.date;
+        this.price = datas.price;
     }
 
     //Fonction qui gère l'affichage du template de la gallerie:
-    displayVideo() {
+    display() {
         return `
         <div class="card-media">
             <div class="container-video">

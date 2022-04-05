@@ -10,59 +10,81 @@ class Lightbox {
     }
     constructor(url) {
             //je v construire la structure html de la lightbox
-            const element = this.buildDOM(url);
-            document.body.appendChild(element);
+            this.element = this.buildDOMimage(url);
+            this.loadImage(url);
+            document.body.appendChild(this.element);
 
         }
         // Cette meth prend en paramètre même url que constructeur et renverra
         // un  élément html.
 
     urlExtension(url) {
-        const urlToSplit = url;
-        const urlSplitSlash = url.split('/').pop();
-        console.log("url", urlSplitSlash);
-        const urlSplitPoint = urlSplitSlash.split('.').pop();
-        console.log("url", urlSplitPoint);
-        return urlSplitPoint;
-    }
-    buildDOM(url) {
-        console.log("valeur de l'url:", url);
-        //Pour récupérer juste l'extension de l'url
-        const valueMedia = this.urlExtension(url);
-        console.log("valeur du média:", valueMedia);
-        //Création de la div qui aura la classe lightbox
-        const dom = document.createElement('div');
-        //On lui rajoute la classe
-        dom.classList.add('lightbox');
-        //Maintenant que j'ai cet élément je v modifier son innerHTML:
-        if (valueMedia == "jpg") {
-            dom.innerHTML = `<div class="lightbox">
-                            <button class="lightbox__close">Fermer</button>
-                            <button class="lightbox__next">Suivant</button>
-                            <button class="lightbox__prev">Précédent</button>
-                            <div class="lightbox__container">
-                                <img src="${url}" alt="">
-                            </div>
-                        </div>         
-                        `
-        } else if (valueMedia == "mp4") {
-            dom.innerHTML = `<div class="lightbox">
-                            <button class="lightbox__close">Fermer</button>
-                            <button class="lightbox__next">Suivant</button>
-                            <button class="lightbox__prev">Précédent</button>
-                            <div class="lightbox__container">
-                                <video controls>
-                                <source class="lightbox__video" src="${url}" type=video/ogg> <source  type=video/mp4>
-                            </div>
-                        </div>         
-                        `
-
-        } else {
-            console.log("Ne fonctionne pas!!!!")
+            const urlToSplit = url;
+            const urlSplitSlash = url.split('/').pop();
+            console.log("url", urlSplitSlash);
+            const urlSplitPoint = urlSplitSlash.split('.').pop();
+            console.log("url", urlSplitPoint);
+            return urlSplitPoint;
         }
+        //fonction pour charger une image
+    loadImage(url) {
+        //On crée une nouvelle image
+        const image = new Image();
+        const container = this.element.querySelector('.lightbox__container');
+        //Création du loader
+        const loader = document.createElement('div');
+        loader.classList.add('lightbox__loader');
+        //Rajouter ds le container l'enfant qui sera le loader:
+        container.appendChild(loader);
+        //lorsque l'image sera bien chargée, tu lanceras une fonction... 27mn48
+        image.onload = function() {
+            console.log("Chargé");
+            //on enlève le loader
+            container.removeChild(loader);
+            //on ajoute l'image
+            container.appendChild(image);
+        }
+        image.src = url;
+    }
+    loadVideo(url) {
+        const containerVideo = this.element.getElementById("myVideo");
+        //Création du loader
+        const loader = document.createElement('div');
+        loader.classList.add('lightbox__loader');
+        //Rajouter ds le container l'enfant qui sera le loader:
+        containerVideo.appendChild(loader);
+        containerVideo.src = url;
+        //lorsque l'image sera bien chargée, tu lanceras une fonction...
+        containerVideo.onload();
 
 
-        //Lorsque le traitement est finit je peux retourner le dom:
+    }
+
+    buildDOMimage(url) {
+        dom.innerHTML = `<div class="lightbox">
+                            <button class="lightbox__close">Fermer</button>
+                            <button class="lightbox__next">Suivant</button>
+                            <button class="lightbox__prev">Précédent</button>
+                            <div class="lightbox__container">
+                            
+                            </div>
+                        </div>         
+                        `
+            //Lorsque le traitement est finit je peux retourner le dom:
+        return dom
+    }
+
+    buildDOMvideo(url) {
+        dom.innerHTML = `<div class="lightbox">
+                            <button class="lightbox__close">Fermer</button>
+                            <button class="lightbox__next">Suivant</button>
+                            <button class="lightbox__prev">Précédent</button>
+                            <div class="lightbox__container id='myVideo'">
+                            
+                            </div>
+                        </div>         
+                        `
+            //Lorsque le traitement est finit je peux retourner le dom:
         return dom
     }
 }
