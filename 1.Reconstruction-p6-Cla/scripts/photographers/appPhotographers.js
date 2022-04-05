@@ -2,7 +2,7 @@ async function instancePhotographers(boxDataJson) {
     try {
         const dataPhotographers = boxDataJson.photographers;
         photographers = dataPhotographers.map(function instance(objectPhotographer) {
-            return new Photographer(objectPhotographer.id, objectPhotographer.portrait, objectPhotographer.name, objectPhotographer.city, objectPhotographer.tagline, objectPhotographer.price);
+            return new Photographer(objectPhotographer);
         });
         return photographers;
 
