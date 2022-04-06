@@ -22,7 +22,6 @@ async function displayHTMLheader(id, boxDatas) {
     }
 }
 
-
 async function filterElements(boxDatas, elements) {
     try {
         if (elements == "image") {
@@ -39,17 +38,6 @@ async function filterElements(boxDatas, elements) {
         console.log(erreur);
     }
 }
-
-// async function arrayObject(elements, Instance) {
-//     try {
-//         objectElements = elements.map(function instance(media) {
-//             return new Instance(media);
-//         });
-//         return objectElements;
-//     } catch (erreur) {
-//         console.log(erreur);
-//     }
-// }
 
 
 async function arrayTemplatesObjects(arrayObjectsElements) {
@@ -79,11 +67,45 @@ async function displayHTMLmedias(id, boxTemplates) {
     }
 }
 
-const printDataMedias = async() => {
+// const printDataMedias = async() => {
+//     try {
+//         const datas_medias = await datas_with_id(pathJsonProject, id_number);
+//         const datasPhotographers = datas_medias[0];
+//         // console.log("datas medias 2ème élément", datas_medias[1]);
+//         const datasImages = await filterElements(datas_medias[1], "image");
+//         // console.log("images filtrées", datasImages);
+//         const datasVideos = await filterElements(datas_medias[1], "video");
+//         // console.log("vidéos filtrées", datasVideos);
+//         const objImages = await arrayObject(datasImages, ImageMedia);
+//         // console.log("images en objet", objImages);
+//         const objVideos = await arrayObject(datasVideos, VideoMedia);
+//         // console.log("videos en objet", objVideos);
+//         const templatesImages = await arrayTemplatesObjects(objImages);
+//         // console.log("les templates d'images", templatesImages);
+//         const templatesVideos = await arrayTemplatesObjects(objVideos);
+//         // console.log("les templates de videos", templatesVideos);
+//         templatesForGallery = await concatArray(templatesImages, templatesVideos);
+//         // console.log("les templates des éléments", templatesForGallery);
+//         displayHTMLheader("photograph-header", datasPhotographers);
+//         displayHTMLmedias("medias", templatesForGallery);
+//     } catch (erreur) {
+//         console.log(erreur);
+//     }
+// }
+// printDataMedias();
+async function printHeader() {
     try {
         const datas_medias = await datas_with_id(pathJsonProject, id_number);
         const datasPhotographers = datas_medias[0];
-        // console.log("datas medias 2ème élément", datas_medias[1]);
+        displayHTMLheader("photograph-header", datasPhotographers);
+
+    } catch (erreur) {
+        console.log(erreur);
+    }
+}
+async function printGallery() {
+    try {
+        const datas_medias = await datas_with_id(pathJsonProject, id_number);
         const datasImages = await filterElements(datas_medias[1], "image");
         // console.log("images filtrées", datasImages);
         const datasVideos = await filterElements(datas_medias[1], "video");
@@ -98,13 +120,23 @@ const printDataMedias = async() => {
         // console.log("les templates de videos", templatesVideos);
         templatesForGallery = await concatArray(templatesImages, templatesVideos);
         // console.log("les templates des éléments", templatesForGallery);
-        displayHTMLheader("photograph-header", datasPhotographers);
         displayHTMLmedias("medias", templatesForGallery);
+
     } catch (erreur) {
         console.log(erreur);
     }
 }
-printDataMedias();
+
+const orchestratorPhotographerHTML = async() => {
+    try {
+        printHeader();
+        printGallery();
+    } catch (erreur) {
+        console.log(erreur);
+    }
+}
+
+orchestratorPhotographerHTML();
 
 //test pour la lightbox si objet fonctionnel:
 // var diapo = new Diaporama(["./scripts/medias/img/P1.jpg", "./scripts/medias/img/P2.jpg", "./scripts/medias/img/P3.jpg"], "#diaporama");
