@@ -40,16 +40,16 @@ async function filterElements(boxDatas, elements) {
     }
 }
 
-async function arrayObject(elements, Instance) {
-    try {
-        objectElements = elements.map(function instance(media) {
-            return new Instance(media);
-        });
-        return objectElements;
-    } catch (erreur) {
-        console.log(erreur);
-    }
-}
+// async function arrayObject(elements, Instance) {
+//     try {
+//         objectElements = elements.map(function instance(media) {
+//             return new Instance(media);
+//         });
+//         return objectElements;
+//     } catch (erreur) {
+//         console.log(erreur);
+//     }
+// }
 
 
 async function arrayTemplatesObjects(arrayObjectsElements) {

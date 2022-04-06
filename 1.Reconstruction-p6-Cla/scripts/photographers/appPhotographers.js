@@ -1,26 +1,14 @@
-// async function instancePhotographers(boxDataJson) {
+// async function arrayObject(elements, Instance) {
 //     try {
-//         const dataPhotographers = boxDataJson.photographers;
-//         photographers = dataPhotographers.map(function instance(objectPhotographer) {
-//             return new Photographer(objectPhotographer);
+//         objectElements = elements.map(function instance(media) {
+//             return new Instance(media);
 //         });
-//         return photographers;
-
+//         return objectElements;
 //     } catch (erreur) {
 //         console.log(erreur);
 //     }
-// }
-async function arrayObject(elements, Instance) {
-    try {
-        objectElements = elements.map(function instance(media) {
-            return new Instance(media);
-        });
-        return objectElements;
-    } catch (erreur) {
-        console.log(erreur);
-    }
 
-}
+// }
 
 async function displayPhotographers(id, photographers) {
     try {
