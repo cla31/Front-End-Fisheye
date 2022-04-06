@@ -1,14 +1,25 @@
-async function instancePhotographers(boxDataJson) {
-    try {
-        const dataPhotographers = boxDataJson.photographers;
-        photographers = dataPhotographers.map(function instance(objectPhotographer) {
-            return new Photographer(objectPhotographer);
-        });
-        return photographers;
+// async function instancePhotographers(boxDataJson) {
+//     try {
+//         const dataPhotographers = boxDataJson.photographers;
+//         photographers = dataPhotographers.map(function instance(objectPhotographer) {
+//             return new Photographer(objectPhotographer);
+//         });
+//         return photographers;
 
+//     } catch (erreur) {
+//         console.log(erreur);
+//     }
+// }
+async function arrayObject(elements, Instance) {
+    try {
+        objectElements = elements.map(function instance(media) {
+            return new Instance(media);
+        });
+        return objectElements;
     } catch (erreur) {
         console.log(erreur);
     }
+
 }
 
 async function displayPhotographers(id, photographers) {
@@ -20,10 +31,12 @@ async function displayPhotographers(id, photographers) {
     }
 }
 
-async function orchestratorDatas(pathJson) {
+async function orchestratorIndexHTML(pathJson) {
     try {
         const jsonDatas = await getDatas(pathJson);
-        const objectPhotographers = await instancePhotographers(jsonDatas);
+        const dataPhotos = jsonDatas.photographers;
+        console.log("Les datas des photographes: ", dataPhotos);
+        const objectPhotographers = await arrayObject(dataPhotos, Photographer);
         // console.log("Les objets photographes: ", objectPhotographers);
         displayPhotographers("photographers", objectPhotographers);
 
@@ -31,4 +44,4 @@ async function orchestratorDatas(pathJson) {
         console.log(erreur);
     }
 }
-orchestratorDatas(pathJsonProject);
+orchestratorIndexHTML(pathJsonProject);
