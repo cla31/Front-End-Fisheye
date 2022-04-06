@@ -35,7 +35,7 @@ async function orchestratorIndexHTML(pathJson) {
     try {
         const jsonDatas = await getDatas(pathJson);
         const dataPhotos = jsonDatas.photographers;
-        console.log("Les datas des photographes: ", dataPhotos);
+        // console.log("Les datas des photographes: ", dataPhotos);
         const objectPhotographers = await arrayObject(dataPhotos, Photographer);
         // console.log("Les objets photographes: ", objectPhotographers);
         displayPhotographers("photographers", objectPhotographers);
