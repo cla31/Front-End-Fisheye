@@ -48,64 +48,6 @@ async function arrayObject(elements, Instance) {
 
 }
 
-// async function arrayObjectElements(images, videos) {
-//     try {
-//         const arrayObjectMedias = [];
-//         objectImg = images.map(function instance(img) {
-//             return new ImageMedia(img);
-//         });
-//         objectMovie = videos.map(function instance(mov) {
-//             return new VideoMedia(mov);
-//         });
-//         arrayObjectElements = objectImg.concat(objectMovie);
-//         return arrayObjectElements;
-
-
-//     } catch (erreur) {
-//         console.log(erreur);
-//     }
-// }
-
-// async function objectEl(boxDatas) {
-//     const arrayObject = [];
-//     var videos = boxDatas.filter(function(film) {
-//         return film.video;
-//     });
-//     var images = boxDatas.filter(function(img) {
-//         return img.image;
-//     });
-//     photos = images.map(function instance(objectPhoto) {
-//         return new ImageMedia(objectPhoto);
-//     });
-//     console.log("videos********", videos);
-//     console.log("images********", images);
-// }
-
-// async function ObjectImages(boxDatas) {
-//     var images = boxDatas.filter(function(img) {
-//         console.log("img.image", img.image)
-//         return img.image;
-//     });
-//     photos = images.map(function instance(objectPhoto) {
-//         return new ImageMedia(objectPhoto);
-//     });
-//     const arrayTemplatePhotos = photos.map(img => { return img.display() });
-//     return arrayTemplatePhotos;
-// }
-
-
-
-// async function ObjectVideos(boxDatas) {
-//     var videos = boxDatas.filter(function(film) {
-//         console.log("film.video", film.video);
-//         return film.video;
-//     });
-//     var films = videos.map(function instance(objectVideo) {
-//         return new VideoMedia(objectVideo);
-//     });
-//     const arrayTemplateVideo = films.map(movie => { return movie.display() });
-//     return arrayTemplateVideo;
-// }
 
 async function arrayTemplatesObjects(arrayObjectsElements) {
     arrayTemplates = arrayObjectsElements.map(element => { return element.display() });
@@ -113,7 +55,6 @@ async function arrayTemplatesObjects(arrayObjectsElements) {
 }
 
 async function concatArray(myArray1, myArray2) {
-    // const arrayConcat = [];
     arrayConcat = myArray1.concat(myArray2);
     return arrayConcat;
 }
@@ -121,12 +62,7 @@ async function concatArray(myArray1, myArray2) {
 
 async function displayHTMLmedias(id, boxTemplates) {
     try {
-        // arrayGalleryPhotosVideos = [];
-        // arrayTemplatePhotos = await ObjectImages(boxDatas);
-        // arrayTemplateVideo = await ObjectVideos(boxDatas);
-        // arrayGalleryPhotosVideos = arrayTemplatePhotos.concat(arrayTemplateVideo);
         document.getElementById(id).innerHTML = `${boxTemplates.join('')}`;
-        // Lightbox.init();
     } catch (erreur) {
         console.log(erreur);
     }
@@ -149,15 +85,8 @@ const printDataMedias = async() => {
         console.log("les templates d'images", templatesImages);
         const templatesVideos = await arrayTemplatesObjects(objVideos);
         console.log("les templates de videos", templatesVideos);
-        // const templatesForGallery = [];
-        // templatesForGallery = templatesImages.concat(templatesVideos);
         templatesForGallery = await concatArray(templatesImages, templatesVideos);
         console.log("les templates des éléments", templatesForGallery);
-        // const arrayMedias = await arrayObjectElements(datasImages, datasVideos);
-        // console.log("tableau d'objets", arrayMedias);
-        // const elements = await arrayObject(datas_medias[1]);
-        // console.log("elements", elements);
-        // const elements = await objectEl(datas_medias[1]);
         displayHTMLheader("photograph-header", datasPhotographers);
         displayHTMLmedias("medias", templatesForGallery);
     } catch (erreur) {
