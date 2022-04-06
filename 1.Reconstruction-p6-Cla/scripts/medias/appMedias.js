@@ -67,32 +67,6 @@ async function displayHTMLmedias(id, boxTemplates) {
     }
 }
 
-// const printDataMedias = async() => {
-//     try {
-//         const datas_medias = await datas_with_id(pathJsonProject, id_number);
-//         const datasPhotographers = datas_medias[0];
-//         // console.log("datas medias 2ème élément", datas_medias[1]);
-//         const datasImages = await filterElements(datas_medias[1], "image");
-//         // console.log("images filtrées", datasImages);
-//         const datasVideos = await filterElements(datas_medias[1], "video");
-//         // console.log("vidéos filtrées", datasVideos);
-//         const objImages = await arrayObject(datasImages, ImageMedia);
-//         // console.log("images en objet", objImages);
-//         const objVideos = await arrayObject(datasVideos, VideoMedia);
-//         // console.log("videos en objet", objVideos);
-//         const templatesImages = await arrayTemplatesObjects(objImages);
-//         // console.log("les templates d'images", templatesImages);
-//         const templatesVideos = await arrayTemplatesObjects(objVideos);
-//         // console.log("les templates de videos", templatesVideos);
-//         templatesForGallery = await concatArray(templatesImages, templatesVideos);
-//         // console.log("les templates des éléments", templatesForGallery);
-//         displayHTMLheader("photograph-header", datasPhotographers);
-//         displayHTMLmedias("medias", templatesForGallery);
-//     } catch (erreur) {
-//         console.log(erreur);
-//     }
-// }
-// printDataMedias();
 async function printHeader() {
     try {
         const datas_medias = await datas_with_id(pathJsonProject, id_number);
@@ -103,6 +77,19 @@ async function printHeader() {
         console.log(erreur);
     }
 }
+async function arrayObjectMedias(datasImages, datasVideos) {
+    try {
+        const objImages = await arrayObject(datasImages, ImageMedia);
+        // console.log("images en objet", objImages);
+        const objVideos = await arrayObject(datasVideos, VideoMedia);
+        // console.log("videos en objet", objVideos);
+        arrayElements = await concatArray(objImages, objVideos);
+        return arrayElements;
+    } catch (erreur) {
+        console.log(erreur);
+    }
+}
+
 async function printGallery() {
     try {
         const datas_medias = await datas_with_id(pathJsonProject, id_number);
@@ -110,17 +97,21 @@ async function printGallery() {
         // console.log("images filtrées", datasImages);
         const datasVideos = await filterElements(datas_medias[1], "video");
         // console.log("vidéos filtrées", datasVideos);
-        const objImages = await arrayObject(datasImages, ImageMedia);
-        // console.log("images en objet", objImages);
-        const objVideos = await arrayObject(datasVideos, VideoMedia);
-        // console.log("videos en objet", objVideos);
-        const templatesImages = await arrayTemplatesObjects(objImages);
-        // console.log("les templates d'images", templatesImages);
-        const templatesVideos = await arrayTemplatesObjects(objVideos);
-        // console.log("les templates de videos", templatesVideos);
-        templatesForGallery = await concatArray(templatesImages, templatesVideos);
-        // console.log("les templates des éléments", templatesForGallery);
-        displayHTMLmedias("medias", templatesForGallery);
+        const arrayMedias = await arrayObjectMedias(datasImages, datasVideos);
+        console.log("tableau d'objets médias en brutes", arrayMedias);
+        const arrayTemplate = await arrayTemplatesObjects(arrayMedias);
+        console.log("tableau des templates", arrayTemplate);
+        // const objImages = await arrayObject(datasImages, ImageMedia);
+        // // console.log("images en objet", objImages);
+        // const objVideos = await arrayObject(datasVideos, VideoMedia);
+        // // console.log("videos en objet", objVideos);
+        // const templatesImages = await arrayTemplatesObjects(objImages);
+        // // console.log("les templates d'images", templatesImages);
+        // const templatesVideos = await arrayTemplatesObjects(objVideos);
+        // // console.log("les templates de videos", templatesVideos);
+        // templatesForGallery = await concatArray(templatesImages, templatesVideos);
+        // // console.log("les templates des éléments", templatesForGallery);
+        displayHTMLmedias("medias", arrayTemplate);
 
     } catch (erreur) {
         console.log(erreur);
