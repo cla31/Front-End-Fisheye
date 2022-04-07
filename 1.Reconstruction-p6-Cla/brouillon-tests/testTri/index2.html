@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select id="language"> 
+    	<option value="en" selected>English</option> 
+    	<option value="es">Español</option> 
+    	<option value="pt">Português</option> 
+    </select>
+    <script>
+        var select = document.getElementById('language');
+        var value = select.options[select.selectedIndex].value;
+        console.log(value); // en
+        var text = select.options[select.selectedIndex].text;
+        console.log(text); // English
+        const lang = document.getElementById('language');
+        lang.addEventListener('click', function() {
+            console.log("C'est cliqué!");
+            var value = select.options[select.selectedIndex].value;
+            console.log(value);
+            var text = select.options[select.selectedIndex].text;
+            console.log(text); // English
+            // if (text == "Português") {
+            //     console.log("T'as cliqué sur le Portugais!!");
+            // } else if (text == "Español") {
+            //     console.log("T'as cliqué sur l'espagnol!!");
+            // } else {
+            //     console.log("T'as cliqué sur l'anglais!!");
+            // }
+            switch (text) {
+                case 'English':
+                    console.log("T'as cliqué sur l'anglais!!");
+                    break;
+                case 'Español':
+                    console.log("T'as cliqué sur l'espagnol!!");
+                    break;
+                case 'Português':
+                    console.log("T'as cliqué sur le Portugais!!");
+                    break;
+                default:
+                    null;
+            }
+
+        });
+    </script>
+</body>
+
+</html>

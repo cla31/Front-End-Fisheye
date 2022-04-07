@@ -26,11 +26,16 @@
                 <p>Trier par</p>
             </div>
             <div class="sorting__dropdown">
-                <button class="sorting__dropdown__sort-button">Popularité <i class="fa-solid fa-sort-down"></i></button>
+                <!-- <button class="sorting__dropdown__sort-button" id="pop">Popularité <i class="fa-solid fa-sort-down"></i></button>
                 <div class="sorting__dropdown__child">
-                    <a class="date" href="">Date</a>
+                    <a class="date" id="date" href="">Date</a>
                     <a href="">Titre</a>
-                </div>
+                </div> -->
+                <select class="sorting__dropdown__sort-button" id="toSort"> 
+                    <option value="pop" selected>Popularité</option> 
+                    <option value="date">Date</option> 
+                    <option value="title">Titre</option> 
+                </select>
             </div>
         </section>
         <section class="gallery">

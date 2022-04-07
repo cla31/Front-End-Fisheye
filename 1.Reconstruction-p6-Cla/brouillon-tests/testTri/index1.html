@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var homes = [{
+            "h_id": "3",
+            "city": "Dallas",
+            "state": "TX",
+            "zip": "75201",
+            "price": "162500"
+        }, {
+            "h_id": "4",
+            "city": "Bevery Hills",
+            "state": "CA",
+            "zip": "90210",
+            "price": "319250"
+        }, {
+            "h_id": "6",
+            "city": "Dallas",
+            "state": "TX",
+            "zip": "75000",
+            "price": "556699"
+        }, {
+            "h_id": "5",
+            "city": "New York",
+            "state": "NY",
+            "zip": "00010",
+            "price": "962500"
+        }];
+        const result = homes.sort(
+            function(a, b) {
+                if (a.city === b.city) {
+                    // Price is only important when cities are the same
+                    return b.price - a.price;
+                }
+                return a.city > b.city ? 1 : -1;
+            });
+        console.log("resultat", result)
+    </script>
+</body>
+
+</html>
