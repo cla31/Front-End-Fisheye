@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="lightbox-modal">
+        <div class="dialog">
+            <div class="previous-button"></div>
+            <div class="container-img">
+                <ul>
+                    <li class="activ">
+                        <img src="../essaiLightbox/img/Architecture_Connected_Curves.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="../essaiLightbox/img/Architecture_Cross_Bar.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="../essaiLightbox/img/Architecture_Horseshoe.jpg" alt="">
+                    </li>
+                </ul>
+                <div class="description">
+                    Arc-en-ciel
+                </div>
+            </div>
+            <div class="next-button"></div>
+            <div class="close"></div>
+        </div>
+    </div>
+    <button id="test">Test</button>
+    <div class="testDeux">
+        Hello
+    </div>
+    <script>
+        const eltTest = document.querySelector(".testDeux");
+        //Création de la fonction déclenchée au clic du bouton
+        function launchMod() {
+            eltTest.style.display = "block";
+        }
+        // Selection du bouton + fonction rattachée au bouton
+        const btnTest = document.getElementById("test");
+        btnTest.addEventListener("click", function(event) {
+            console.log("Hellooooo!");
+            event.preventDefault();
+            launchMod();
+        })
+    </script>
+</body>
+
+</html>

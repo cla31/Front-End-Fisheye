@@ -27,7 +27,7 @@ class Photographer {
     }
 
     //Fonction qui gère l'affichage du template du header
-    templateHeaderPhotographerHTML() {
+    templateHeaderPhotographers() {
         return `        
         <div class="photograph-header__title">
                 <h1>${this.name}</h1>

@@ -16,7 +16,7 @@ class ImageMedia {
         return `
             <div class="card-media">
                 <div class="container-photo">
-                    <a href="assets/photographers/${this.photographerId}/${this.image}">
+                    <a href="assets/photographers/${this.photographerId}/${this.image}" class="lien-media">
                         <img class="container-photo__photo" src="assets/photographers/${this.photographerId}/${this.image}" />
                     </a>
                 </div>
@@ -30,5 +30,8 @@ class ImageMedia {
                     </div>
                 </div>
             </div>`
+    }
+    path() {
+        return `assets/photographers/${this.photographerId}/${this.image}`;
     }
 }

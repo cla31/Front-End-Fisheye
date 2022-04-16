@@ -14,8 +14,8 @@ class VideoMedia {
         return `
         <div class="card-media">
             <div class="container-video">
-                <a href="assets/photographers/${this.photographerId}/${this.video}">
-                    <video class="container-video__video"controls>
+                <a href="assets/photographers/${this.photographerId}/${this.video}"class="lien-media">
+                    <video class="container-video__video" controls>
                     <source src="assets/photographers/${this.photographerId}/${this.video}" type=video/ogg> <source  type=video/mp4>
                 </a>
             </div>
@@ -29,5 +29,8 @@ class VideoMedia {
                 </div>
             </div>
         </div>`
+    }
+    path() {
+        return `assets/photographers/${this.photographerId}/${this.video}`;
     }
 }

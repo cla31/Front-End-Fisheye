@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Test query selector</title>
+</head>
+
+<body>
+    <div id="myId">
+        <p>
+            <span><a href="#">Lien 1</a></span>
+            <a href="#">Lien 2</a>
+            <span><a href="#">Lien 3</a></span>
+        </p>
+        <p class="article">
+            <span><a href="#">Lien 4</a></span>
+            <span><a href="#">Lien 5</a></span>
+            <a href="#">Lien 6</a>
+        </p>
+        <p>
+            <a href="#">Lien 7</a>
+            <span><a href="#">Lien 8</a></span>
+            <span><a href="#">Lien 9</a></span>
+        </p>
+    </div>
+
+
+    <script>
+        const elet = document.querySelector("#myId p.article > a");
+        console.log("element", elet)
+    </script>
+</body>
+
+</html>

@@ -13,7 +13,6 @@ class Lightbox {
             this.element = this.buildDOMimage(url);
             this.loadImage(url);
             document.body.appendChild(this.element);
-
         }
         // Cette meth prend en paramètre même url que constructeur et renverra
         // un  élément html.
