@@ -187,12 +187,6 @@ function lightbox(objectsMedias) {
             });
             //Suppression du premier élément du tableau.
             paths.shift();
-            // console.log("Paths après le tri", paths);
-            //1ère version de la lightbox training dev
-            // var diapo = new Diaporama(paths, ".lightbox");
-            // diapo.init();
-            // diapo.play();
-            //2ème version de la lightbox training dev
             console.log("vue sur paths", paths)
             var diapo = new Diapo(paths, "modBox");
             diapo.init();
@@ -204,24 +198,6 @@ function lightbox(objectsMedias) {
         console.log(erreur);
     }
 }
-// var data= ["email","role","type","name"];
-// if ("role" in data) data.remove(data.indexOf("role")); data.unshift("role")
-// data;
-
-// var data = ["email", "role", "type", "name"];
-// var first = "role";
-// data.sort(function(x, y) { return x == first ? -1 : y == first ? 1 : 0; });
-
-// data.sort((x, y) => {
-//     if (x == first) {
-//         return -1;
-//     } else if (y == first) {
-//         return 1;
-//     } else {
-//         return 0;
-//     }
-// });
-
 
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //initialisation de la page

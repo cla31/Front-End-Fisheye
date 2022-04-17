@@ -71,25 +71,13 @@ class Diapo {
             ul.appendChild(li);
         }
         containerImg.appendChild(ul);
-        // Modèle html pout vidéo:
-        // <video class="container-video__video" controls>
-        // <source src="assets/photographers/${this.photographerId}/${this.video}" type=video/ogg> <source  type=video/mp4>
-
-        // // Selection des liens 
-        // const btnTest = document.getElementById("test");
-        // console.log("btnTest", btnTest);
-
-        // //launch modal event
-        // btnTest.addEventListener("click", function(event) {
-        //     event.preventDefault();
-        //     console.log("Je teste le clic");
-        //     lightboxModal.style.display = "block";
-
-        // });
-        // Fermeture de la modale
-        // function closeWind() {
-        //     lightboxModal.style.display = "none";
-        // }
+        //************************** */
+        //************************** */
+        //************************** */
+        // A REVOIR
+        //************************** */
+        //************************** */
+        //************************** */
         //fermeture de la modale avec la croix
         const closeWbtn = this.element.querySelector(".close");
         console.log("close btn", closeWbtn);
@@ -119,10 +107,8 @@ class Diapo {
     }
     play() {
         this.current = this.listImage[0];
-        // document.querySelector(this.selector + " li:first-child").setAttribute("class", "activ");
         document.querySelector("#modBox div.container-img li:first-child").setAttribute("class", "activ");
-        // const foundDom = document.querySelector("#modBox div.container-img li:first-child");
-        // console.log("foundDom", foundDom);
+
     }
     next() {
         for (let i = 0; i <= this.listImage.length; i++) {
@@ -130,13 +116,10 @@ class Diapo {
                 if (i == (this.listImage.length - 1)) {
                     this.current = this.listImage[0];
                     var activ = this.element.querySelector("#modBox div.container-img li.activ");
-                    // var activ = this.element.querySelector(this.selector + " li.activ");
-                    // this.element.querySelector("li:first-child").setAttribute("class", "activ");
                     this.element.querySelector("#modBox div.container-img li:first-child").setAttribute("class", "activ");
                 } else {
                     this.current = this.listImage[++i];
                     var activ = this.element.querySelector("#modBox div.container-img li.activ");
-                    // var activ = this.element.querySelector(this.selector + " li.activ");
                     activ.nextSibling.setAttribute("class", "activ");
                 }
                 activ.setAttribute("class", "");
@@ -151,13 +134,10 @@ class Diapo {
                 if (i == 0) {
                     this.current = this.listImage.length - 1;
                     var activ = this.element.querySelector("#modBox div.container-img li.activ");
-                    // var activ = this.element.querySelector(this.selector + " li.activ");
-                    // this.element.querySelector("li:last-child").setAttribute("class", "activ");
                     this.element.querySelector("#modBox div.container-img li:last-child").setAttribute("class", "activ");
                 } else {
                     this.current = this.listImage[--i];
                     var activ = this.element.querySelector("#modBox div.container-img li.activ");
-                    // var activ = this.element.querySelector(this.selector + " li.activ");
                     activ.previousSibling.setAttribute("class", "activ");
                 }
                 activ.setAttribute("class", "");
