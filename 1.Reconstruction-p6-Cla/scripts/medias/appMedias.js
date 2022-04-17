@@ -174,13 +174,6 @@ function lightbox(objectsMedias) {
             console.log("Index", index);
             console.log("Paths", paths);
             console.log("recherche 1de l'élément séléctionné dans le tableau", paths[index]);
-            // const newPaths =
-            //     function() {
-            //         if (paths[index] in paths) paths.remove(paths.indexOf(paths[index]));
-            //         paths.unshift(paths[index])
-            //         return paths;
-            //     }
-            //Autre façon de récupérer l'index en premier ds le diapo (mais ne fonctionne pas super...)
             var first = paths[index];
             paths.unshift(paths[index]);
             paths.sort((x, y) => {
@@ -192,6 +185,7 @@ function lightbox(objectsMedias) {
                     return 0;
                 }
             });
+            //Suppression du premier élément du tableau.
             paths.shift();
             // console.log("Paths après le tri", paths);
             //1ère version de la lightbox training dev

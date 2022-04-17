@@ -9,6 +9,14 @@ class Diapo {
         console.log("La liste des images", this.listImage);
 
     }
+    urlExtension(url) {
+        const urlToSplit = url;
+        const urlSplitSlash = url.split('/').pop();
+        console.log("url", urlSplitSlash);
+        const urlSplitPoint = urlSplitSlash.split('.').pop();
+        console.log("url", urlSplitPoint);
+        return urlSplitPoint;
+    }
     init() {
         //Création de la plus haute div (1ère) lightbox-modal
         var lightboxModal = document.createElement("div");
@@ -39,16 +47,33 @@ class Diapo {
 
         //***************DANS CONTAINER-IMG**********************
         var ul = document.createElement("ul");
-        for (let image of this.listImage) {
-            console.log("Les images ds le for", image);
+        var elmt = null;
+        for (let media of this.listImage) {
+            console.log("Les medias ds le for", media);
+            elmt = this.urlExtension(media);
+            console.log("Les medias ds le for", elmt);
             var li = document.createElement("li");
-            // li.setAttribute("class", "activ");
-            var img = document.createElement("img");
-            img.setAttribute("src", image);
-            li.appendChild(img);
+            if (elmt == "jpg") {
+                // li.setAttribute("class", "activ");
+                var img = document.createElement("img");
+                img.setAttribute("src", media);
+                li.appendChild(img);
+
+            } else {
+                console.log("C'est une video")
+                    // Mettre ici le code pour la vidéo
+                var video = document.createElement("video");
+                video.setAttribute("controls", "");
+                video.setAttribute("src", media);
+                li.appendChild(video);
+
+            }
             ul.appendChild(li);
         }
         containerImg.appendChild(ul);
+        // Modèle html pout vidéo:
+        // <video class="container-video__video" controls>
+        // <source src="assets/photographers/${this.photographerId}/${this.video}" type=video/ogg> <source  type=video/mp4>
 
         // // Selection des liens 
         // const btnTest = document.getElementById("test");

@@ -459,6 +459,11 @@
                 max-width: 600px;
                 padding: 10px 50px 0 50px;
                 display: none;
+                position: fixed;
+                z-index: 100;
+                top: 0;
+                left: 0;
+                background-color: white;
             }
             
             .dialog {
@@ -517,8 +522,18 @@
                 height: auto;
             }
             
+            video {
+                max-width: 100%;
+                height: auto;
+            }
+            
             #lightbox-modal li.activ img {
                 /* Quand la classe est active on fait apparaître les photos */
+                display: block;
+            }
+            
+            #lightbox-modal li.activ video {
+                /* Quand la classe est active on fait apparaître les vidéos */
                 display: block;
             }
             
@@ -529,6 +544,11 @@
             
             #lightbox-modal li img {
                 /* disparition des autres images des li lorsqu'ils n'ont pas la classe active */
+                display: none;
+            }
+            
+            #lightbox-modal li video {
+                /* disparition des autres videos des li lorsqu'ils n'ont pas la classe active */
                 display: none;
             }
             
