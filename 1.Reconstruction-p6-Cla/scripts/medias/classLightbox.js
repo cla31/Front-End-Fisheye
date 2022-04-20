@@ -18,89 +18,93 @@ class Diapo {
         return urlSplitPoint;
     }
     init() {
-        //Création de la plus haute div (1ère) lightbox-modal
-        var lightboxModal = document.createElement("div");
-        lightboxModal.setAttribute("id", "lightbox-modal");
-        this.element.appendChild(lightboxModal);
-        lightboxModal.style.display = "block";
-        //Création de la 2ème div (dialog)
-        const dialog = document.createElement("div");
-        dialog.setAttribute("class", "dialog");
-        lightboxModal.appendChild(dialog);
-        //***************DANS DIALOG**********************
-        //Création de la div previous-button
-        var previousButton = document.createElement("div");
-        previousButton.setAttribute("class", "previous-button");
-        dialog.appendChild(previousButton);
-        //Création de la div container-img
-        var containerImg = document.createElement("div");
-        containerImg.setAttribute("class", "container-img");
-        dialog.appendChild(containerImg);
-        //Création de la div next-button
-        var nextButton = document.createElement("div");
-        nextButton.setAttribute("class", "next-button");
-        dialog.appendChild(nextButton);
-        //Création de la div close
-        var closeBtn = document.createElement("div");
-        closeBtn.setAttribute("class", "close");
-        dialog.appendChild(closeBtn);
 
-        //***************DANS CONTAINER-IMG**********************
-        var ul = document.createElement("ul");
-        var elmt = null;
-        for (let media of this.listImage) {
-            console.log("Les medias ds le for", media);
-            elmt = this.urlExtension(media);
-            console.log("Les medias ds le for", elmt);
-            var li = document.createElement("li");
-            if (elmt == "jpg") {
-                // li.setAttribute("class", "activ");
-                var img = document.createElement("img");
-                img.setAttribute("src", media);
-                li.appendChild(img);
+            //Création de la plus haute div (1ère) lightbox-modal
+            var lightboxModal = document.createElement("div");
+            lightboxModal.setAttribute("id", "lightbox-modal");
+            this.element.appendChild(lightboxModal);
+            lightboxModal.style.display = "block";
+            //Création de la 2ème div (dialog)
+            const dialog = document.createElement("div");
+            dialog.setAttribute("class", "dialog");
+            lightboxModal.appendChild(dialog);
+            //***************DANS DIALOG**********************
+            //Création de la div previous-button
+            var previousButton = document.createElement("div");
+            previousButton.setAttribute("class", "previous-button");
+            dialog.appendChild(previousButton);
+            //Création de la div container-img
+            var containerImg = document.createElement("div");
+            containerImg.setAttribute("class", "container-img");
+            dialog.appendChild(containerImg);
+            //Création de la div next-button
+            var nextButton = document.createElement("div");
+            nextButton.setAttribute("class", "next-button");
+            dialog.appendChild(nextButton);
+            //Création de la div close
+            var closeBtn = document.createElement("div");
+            closeBtn.setAttribute("class", "close");
+            dialog.appendChild(closeBtn);
 
-            } else {
-                console.log("C'est une video")
-                    // Mettre ici le code pour la vidéo
-                var video = document.createElement("video");
-                video.setAttribute("controls", "");
-                video.setAttribute("src", media);
-                li.appendChild(video);
+            //***************DANS CONTAINER-IMG**********************
+            var ul = document.createElement("ul");
+            var elmt = null;
+            for (let media of this.listImage) {
+                console.log("Les medias ds le for", media);
+                elmt = this.urlExtension(media);
+                console.log("Les medias ds le for", elmt);
+                var li = document.createElement("li");
+                if (elmt == "jpg") {
+                    // li.setAttribute("class", "activ");
+                    var img = document.createElement("img");
+                    img.setAttribute("src", media);
+                    li.appendChild(img);
 
+                } else {
+                    console.log("C'est une video")
+                        // Mettre ici le code pour la vidéo
+                    var video = document.createElement("video");
+                    video.setAttribute("controls", "");
+                    video.setAttribute("src", media);
+                    li.appendChild(video);
+
+                }
+                ul.appendChild(li);
             }
-            ul.appendChild(li);
-        }
-        containerImg.appendChild(ul);
-        //************************** */
-        //************************** */
-        //************************** */
-        // A REVOIR
-        //************************** */
-        //************************** */
-        //************************** */
-        //fermeture de la modale avec la croix
-        const closeWbtn = this.element.querySelector(".close");
-        console.log("close btn", closeWbtn);
-        //Fermeture de la fenêtre
-        let click = 0;
-        closeWbtn.addEventListener("click", function(event) {
-            console.log("Je teste la fermeture");
-            event.preventDefault();
-            click++;
-            lightboxModal.style.display = "none";
-            if (click >= 1) {
-                // remove event listener function `abc`
-                closeWbtn.removeEventListener('click', function(event) {
+            containerImg.appendChild(ul);
+            //************************** */
+            //************************** */
+            //************************** */
+            // A REVOIR
+            //************************** */
+            //************************** */
+            //************************** */
+            //fermeture de la modale avec la croix
+            const closeWbtn = this.element.querySelector(".close");
+            console.log("close btn", closeWbtn);
+            //Fermeture de la fenêtre
+            let click = 0;
+
+            closeWbtn.addEventListener("click", function(event) {
+                console.log("Je teste la fermeture");
+                event.preventDefault();
+                click++;
+                // lightboxModal.style.display = "none";
+                console.log("valeur de la cible", event.target)
+                if (event.target === closeWbtn) {
+                    console.log("appui sur la croix!")
                     lightboxModal.style.display = "none";
-                });
-            }
-        });
-
-
-        this.prepareEvent();
-
-    }
-
+                }
+                // if (click >= 1) {
+                //     // remove event listener function `abc`
+                //     closeWbtn.removeEventListener('click', function(event) {
+                //         lightboxModal.style.display = "none";
+                //     });
+                // }
+            });
+            this.prepareEvent();
+        }
+        // window.onload = () => {}
     add(image) {
         console.log("ajout image");
         this.listImage.push(image);

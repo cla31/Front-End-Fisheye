@@ -26,7 +26,7 @@ class ImageMedia {
                     </div>
                     <div class="items-media__note">
                         <p>${this.likes}</p>
-                        <i class="fa-regular fa-heart"></i>
+                        <i class="fa-regular fa-heart"></i>                      
                     </div>
                 </div>
             </div>`
@@ -34,4 +34,5 @@ class ImageMedia {
     path() {
         return `assets/photographers/${this.photographerId}/${this.image}`;
     }
-}
+} { /* <i class="fas fa-heart clic" aria-label="likes"></i> */ }
+// onclick="javascript:btnClick()"

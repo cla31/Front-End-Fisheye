@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- https://stackoverflow.com/questions/61978780/how-can-i-change-color-of-the-heart-button-after-click -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input type="checkbox" class="heart-checkbox" id="heart-checkbox">
+        <label class="heart" for="heart-checkbox"></label>
+    </div>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <center><span id="timesClicked">0</span></center>
+
+    <i class="fa fa-heart-o btn btn-default" onclick="javascript:btnClick()"></i>
+    <script>
+        var timesClicked = 0;
+
+        function btnClick() {
+            timesClicked++;
+            if (timesClicked === 1) {
+                var elem = document.querySelector('i');
+                elem.classList.remove('fa-heart-o');
+                elem.classList.add('fa-heart');
+            }
+            document.getElementById('timesClicked').innerHTML = timesClicked;
+            return true
+        }
+    </script>
+
+</body>
+
+</html>

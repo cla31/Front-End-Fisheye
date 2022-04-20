@@ -146,7 +146,7 @@ function orchestrator(objectsMedias) {
         displayTemplates(objectsMedias);
         sorting(objectsMedias);
         lightbox(objectsMedias);
-
+        likes();
     } catch (erreur) {
         console.log(erreur);
     }
@@ -198,10 +198,136 @@ function lightbox(objectsMedias) {
         console.log(erreur);
     }
 }
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//Les likes
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+// var timesClicked = 0;
+//https://stackoverflow.com/questions/44137453/how-to-fill-font-awesome-after-click-on-the-font-awesome-icon
+
+//1er essai avec une selection
+// var timesClicked = 0;
+
+// function btnClick() {
+//     timesClicked++;
+//     if (timesClicked === 1) {
+//         const elems = document.querySelectorAll('i');
+//         console.log("elem", elems)
+//         const arrayElt = Array.from(elems);
+//         console.log("array elems", arrayElt)
+//         for (let i = 0; i < arrayElt.length; i++) {
+//             i.classList.remove('fa-regular');
+//             i.classList.add('fas');
+//         }
+//     }
+//     console.log("like ok", timesClicked);
+//     return true
+// }
+
+
+//2ème essai avec plusieurs selections
+// var timesClicked = 0;
+
+// function btnClick() {
+//     timesClicked++;
+//     if (timesClicked === 1) {
+//         var elem = document.querySelector('i');
+//         elem.classList.remove('fa-regular');
+//         elem.classList.add('fas');
+//     }
+//     console.log("like ok", timesClicked);
+//     return true
+// }
+
+// var timesClicked = 0;
+
+//3ème essai avec plusieurs selections:
+// Suivre ces étapes et voir ce qui coince là dedans:
+// function likes(objectsMedias) {
+//Récupération de tous les i de la galerie
+//transformation des i en tableau
+//var timesClicked = 0;
+//accrochage de l'event listener aux i de la gallerie avec un foreach
+//Ensuite, ds l'event listener:
+//-> timesClicked++;
+// faire un console log genre "cliqué sur le i";
+// faire le if
+// }
+
+// document.getElementById('timesClicked').innerHTML = timesClicked;
+//3 ème esaai:
+//Problème: je ne peux que cliquer qu'une fois sur un coeur mais par contre n'importe où sur la grille..
+//sans doute à cause du eventListener qui n'est pas remove
+// function likes() {
+//     var elements = document.querySelectorAll('i');
+//     const hearts = Array.from(elements);
+//     var timesClicked = 0;
+//     hearts.forEach((link) => link.addEventListener('click', e => {
+//         // e.preventDefault();
+//         console.log("like cliqué ok");
+//         timesClicked++;
+//         if (timesClicked === 1) {
+//             link.classList.remove('fa-regular');
+//             link.classList.add('fas');
+//         }
+//         console.log("like ok", timesClicked);
+//         return true
+//             //et ici je retourne un inner html avec le nbre de likes mis à jour
+//     }));
+// }
+
+//4ème essai:
+// function likes() {
+//     var elements = document.querySelectorAll('i');
+//     const hearts = Array.from(elements);
+//     var timesClicked = 0;
+//     hearts.forEach((link) => link.addEventListener('click', e => {
+//         // e.preventDefault();
+//         console.log("like cliqué ok");
+//         timesClicked++;
+//         link.classList.remove('fa-regular');
+//         link.classList.add('fas');
+//         console.log("like ok", timesClicked);
+
+//         //et ici je retourne un inner html avec le nbre de likes mis à jour
+//     }));
+// }
+
+//5ème essai
+function likes() {
+    try {
+        var elementsI = document.querySelectorAll('i');
+        const elements = Array.from(elementsI);
+        var timesClicked = 1;
+        elements.forEach((link) => link.addEventListener('click', e => {
+            e.preventDefault();
+            console.log("Clic sur le coeur!!!");
+            // console.log(index);
+            // console.log("Index du coeur", index);
+            var likes = timesClicked++;
+            link.classList.remove('fa-regular');
+            link.classList.add('fas');
+            document.getElementById("likes").innerHTML = `${likes}`;
+        }))
+
+    } catch (erreur) {
+        console.log(erreur);
+    }
+}
+
+
 
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //initialisation de la page
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//Essai if ds le map:
+// const obMed = medias.map(condition => {
+//     if (condition == "image") {
+//         values = condition.filter(function(img) {
+//             return img.image;
+//         });
+//     }
+// });
 
 const datas_with_id = async() => {
     try {
@@ -234,6 +360,7 @@ const datas_with_id = async() => {
         console.log("le tableau des objets medias", objectsMedias);
         //Affichage des médias
         orchestrator(objectsMedias);
+
 
     } catch (erreur) {
         console.log(erreur);

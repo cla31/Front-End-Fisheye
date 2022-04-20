@@ -237,11 +237,15 @@
 .card-media .items-media__note {
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
 }
 .card-media .items-media__note p {
   margin-right: 5px;
 }
 .card-media .items-media__note .fa-regular {
+  margin-top: 18px;
+}
+.card-media .items-media__note .fas {
   margin-top: 18px;
 }
 
@@ -291,7 +295,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border: 2px solid black;
   margin: 0 10px 0 10px;
 }
 

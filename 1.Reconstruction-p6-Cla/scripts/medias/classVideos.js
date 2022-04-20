@@ -34,3 +34,4 @@ class VideoMedia {
         return `assets/photographers/${this.photographerId}/${this.video}`;
     }
 }
+// onclick="javascript:btnClick()"

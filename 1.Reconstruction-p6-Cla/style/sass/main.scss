@@ -272,6 +272,7 @@
                     &__note {
                         display: flex;
                         justify-content: space-between;
+                        cursor: pointer;
                         // border: #901C1C 2px solid;
                         p {
                             margin-right: 5px;
@@ -279,6 +280,17 @@
                         .fa-regular {
                             margin-top: 18px;
                         }
+                        .fas {
+                            margin-top: 18px;
+                        }
+                        // .clic {
+                        //     display: none;
+                        // color: red;
+                        // &:hover {
+                        //     display: block;
+                        //     // color: yellow;
+                        // }
+                        // }
                     }
                 }
             }
@@ -478,7 +490,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-                border: 2px solid black;
+                // border: 2px solid black;
                 margin: 0 10px 0 10px;
             }
             
