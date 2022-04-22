@@ -4,6 +4,8 @@ console.log("query string", queryString_url_id);
 const id_number = queryString_url_id.slice(1);
 console.log("Mon id", id_number);
 
+var objectsMedias = [];
+
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //Pour l'affichage du header
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -37,9 +39,9 @@ function filterElements(datas, elements) {
     }
 }
 
-function templatesObjects(objectsElements) {
+function templatesObjects() {
     try {
-        templates = objectsElements.map(element => { return element.display() });
+        templates = objectsMedias.map(element => { return element.display() });
         return templates;
     } catch (erreur) {
         console.log(erreur);
@@ -47,12 +49,19 @@ function templatesObjects(objectsElements) {
 }
 
 //Affichage des médias
-function displayTemplates(objectsMedias) {
+function displayTemplates() {
     try {
         //Le tableau des templates des médias
-        const templates = templatesObjects(objectsMedias);
+        const templates = templatesObjects();
         //Affichage du tableau de templates
         document.getElementById("medias").innerHTML = `${templates.join('')}`;
+        var elementsI = document.querySelectorAll('i');
+        const elements = Array.from(elementsI);
+        elements.forEach((link, index) => link.addEventListener('click', e => {
+            console.log(objectsMedias[index]);
+            objectsMedias[index].inc();
+            displayTemplates();
+        }));
 
     } catch (erreur) {
         console.log(erreur);
@@ -64,7 +73,7 @@ function displayTemplates(objectsMedias) {
 //Tableau de tri
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 // Par popularité
-function sortByLikes(objectsMedias) {
+function sortByLikes() {
     try {
         const result = objectsMedias.sort((a, b) => {
             if (a.likes > b.likes) {
@@ -83,7 +92,7 @@ function sortByLikes(objectsMedias) {
     }
 }
 //Par titre   ********************************************
-function SortByTitles(objectsMedias) {
+function SortByTitles() {
     try {
         const SortByName = objectsMedias.sort((a, b) =>
             a.title.localeCompare(b.title));
@@ -93,7 +102,7 @@ function SortByTitles(objectsMedias) {
     }
 }
 //Par date   ********************************************
-function SortByDates(objectsMedias) {
+function SortByDates() {
     try {
         const SortByDates = objectsMedias.sort(function(a, b) {
             // Turn your strings into dates, and then subtract them
@@ -108,7 +117,7 @@ function SortByDates(objectsMedias) {
 }
 
 //Gestion du tri
-function sorting(objectsMedias) {
+function sorting() {
     try {
         const sort = document.getElementById('toSort');
         sort.addEventListener('click', function() {
@@ -118,15 +127,15 @@ function sorting(objectsMedias) {
             switch (text) {
                 case 'Popularité':
                     console.log("T'as cliqué sur Popularité!!");
-                    sortByLikes(objectsMedias);
+                    sortByLikes();
                     break;
                 case 'Date':
                     console.log("T'as cliqué sur Date!!");
-                    SortByDates(objectsMedias);
+                    SortByDates();
                     break;
                 case 'Titre':
                     console.log("T'as cliqué sur Titre!!");
-                    SortByTitles(objectsMedias);
+                    SortByTitles();
                     break;
                 default:
                     null;
@@ -141,11 +150,11 @@ function sorting(objectsMedias) {
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //Orchestrator
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function orchestrator(objectsMedias) {
+function orchestrator() {
     try {
-        displayTemplates(objectsMedias);
-        sorting(objectsMedias);
-        lightbox(objectsMedias);
+        displayTemplates();
+        sorting();
+        lightbox();
         likes();
     } catch (erreur) {
         console.log(erreur);
@@ -154,43 +163,71 @@ function orchestrator(objectsMedias) {
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //Lightbox
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function lightbox(objectsMedias) {
+//1er essai
+// function lightbox(objectsMedias) {
+//     try {
+//         paths = objectsMedias.map(elements => { return elements.path() });
+//         //Recup de la classe pour les liens dans le template des objets de médias
+//         const elt = document.getElementsByClassName("lien-media");
+//         //selection de l'attribut video
+//         var media = document.querySelector('video');
+//         console.log("voir media", media);
+//         const arrayElt = Array.from(elt);
+//         // suppression de l'attribut qui empêche le clic
+//         for (let item of arrayElt) {
+//             media.removeAttribute('controls');
+//         }
+//         arrayElt.forEach((link, index) => link.addEventListener('click', e => {
+//             e.preventDefault();
+//             console.log("Clic sur la carte!!!");
+//             console.log(index);
+//             console.log("Index", index);
+//             console.log("Paths", paths);
+//             console.log("recherche 1de l'élément séléctionné dans le tableau", paths[index]);
+//             var first = paths[index];
+//             paths.unshift(paths[index]);
+//             paths.sort((x, y) => {
+//                 if (x == first) {
+//                     return -1;
+//                 } else if (y == first) {
+//                     return 1;
+//                 } else {
+//                     return 0;
+//                 }
+//             });
+//             //Suppression du premier élément du tableau.
+//             paths.shift();
+//             console.log("vue sur paths", paths)
+//             var diapo = new Diapo(paths, "modBox");
+//             diapo.init();
+//             diapo.play();
+
+//         }))
+
+//     } catch (erreur) {
+//         console.log(erreur);
+//     }
+// }
+
+
+//2ème essai
+function lightbox() {
     try {
-        paths = objectsMedias.map(elements => { return elements.path() });
         //Recup de la classe pour les liens dans le template des objets de médias
-        const elt = document.getElementsByClassName("lien-media");
+        const links = document.getElementsByClassName("lien-media");
         //selection de l'attribut video
         var media = document.querySelector('video');
         console.log("voir media", media);
-        const arrayElt = Array.from(elt);
+        const elements = Array.from(links);
         // suppression de l'attribut qui empêche le clic
-        for (let item of arrayElt) {
+        for (let item of elements) {
             media.removeAttribute('controls');
         }
-        arrayElt.forEach((link, index) => link.addEventListener('click', e => {
+        elements.forEach((link, index) => link.addEventListener('click', e => {
             e.preventDefault();
             console.log("Clic sur la carte!!!");
             console.log(index);
             console.log("Index", index);
-            console.log("Paths", paths);
-            console.log("recherche 1de l'élément séléctionné dans le tableau", paths[index]);
-            var first = paths[index];
-            paths.unshift(paths[index]);
-            paths.sort((x, y) => {
-                if (x == first) {
-                    return -1;
-                } else if (y == first) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            });
-            //Suppression du premier élément du tableau.
-            paths.shift();
-            console.log("vue sur paths", paths)
-            var diapo = new Diapo(paths, "modBox");
-            diapo.init();
-            diapo.play();
 
         }))
 
@@ -201,113 +238,183 @@ function lightbox(objectsMedias) {
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //Les likes
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-// var timesClicked = 0;
-//https://stackoverflow.com/questions/44137453/how-to-fill-font-awesome-after-click-on-the-font-awesome-icon
-
-//1er essai avec une selection
-// var timesClicked = 0;
-
-// function btnClick() {
-//     timesClicked++;
-//     if (timesClicked === 1) {
-//         const elems = document.querySelectorAll('i');
-//         console.log("elem", elems)
-//         const arrayElt = Array.from(elems);
-//         console.log("array elems", arrayElt)
-//         for (let i = 0; i < arrayElt.length; i++) {
-//             i.classList.remove('fa-regular');
-//             i.classList.add('fas');
-//         }
-//     }
-//     console.log("like ok", timesClicked);
-//     return true
-// }
-
-
-//2ème essai avec plusieurs selections
-// var timesClicked = 0;
-
-// function btnClick() {
-//     timesClicked++;
-//     if (timesClicked === 1) {
-//         var elem = document.querySelector('i');
-//         elem.classList.remove('fa-regular');
-//         elem.classList.add('fas');
-//     }
-//     console.log("like ok", timesClicked);
-//     return true
-// }
-
-// var timesClicked = 0;
-
-//3ème essai avec plusieurs selections:
-// Suivre ces étapes et voir ce qui coince là dedans:
+// if (timesClicked === 1) {}
+//1er essai
 // function likes(objectsMedias) {
-//Récupération de tous les i de la galerie
-//transformation des i en tableau
-//var timesClicked = 0;
-//accrochage de l'event listener aux i de la gallerie avec un foreach
-//Ensuite, ds l'event listener:
-//-> timesClicked++;
-// faire un console log genre "cliqué sur le i";
-// faire le if
-// }
-
-// document.getElementById('timesClicked').innerHTML = timesClicked;
-//3 ème esaai:
-//Problème: je ne peux que cliquer qu'une fois sur un coeur mais par contre n'importe où sur la grille..
-//sans doute à cause du eventListener qui n'est pas remove
-// function likes() {
-//     var elements = document.querySelectorAll('i');
-//     const hearts = Array.from(elements);
-//     var timesClicked = 0;
-//     hearts.forEach((link) => link.addEventListener('click', e => {
-//         // e.preventDefault();
-//         console.log("like cliqué ok");
-//         timesClicked++;
-//         if (timesClicked === 1) {
+//     try {
+//         var elementsI = document.querySelectorAll('i');
+//         const elements = Array.from(elementsI);
+//         var timesClicked = 1;
+//         elements.forEach((link, index) => link.addEventListener('click', e => {
+//             // e.preventDefault();
+//             console.log("Clic sur le coeur!!!");
+//             console.log("link", link);
+//             console.log("index", index);
+//             // console.log("Index du coeur", index);
+//             allLikes = [];
+//             var likes = timesClicked++;
+//             console.log("nbre likes", likes);
+//             allLikes.push(likes);
+//             // var verif = link + index;
+//             // console.log("verif", verif);
 //             link.classList.remove('fa-regular');
 //             link.classList.add('fas');
-//         }
-//         console.log("like ok", timesClicked);
-//         return true
-//             //et ici je retourne un inner html avec le nbre de likes mis à jour
-//     }));
+//             // document.getElementById("likes").innerHTML = `${likes}`;
+//             console.log("objectsMedias ds like", objectsMedias);
+//             for (let i in objectsMedias) {
+//                 console.log("boucles des ojets " + objectsMedias[i].likes);
+//                 allLikes.push(objectsMedias[i].likes);
+//             }
+//             console.log("allLikes", allLikes);
+//             const addition = (previousValue, currentValue) => previousValue + currentValue;
+//             let totalLikes = allLikes.reduce(addition);
+//             console.log("total likes", totalLikes);
+//             document.getElementById("likes").innerHTML = `${totalLikes}`;
+//             likeCard = objectsMedias[index].likes + 1;
+//             console.log("object medias avec les likes", likeCard);
+//             // console.log("recherche l'élément ds le Dom", document.querySelector(".items-media__note p"));
+//             document.getElementsByClassName("noteLike").innerHTML = `${likeCard}   
+//             `;
+//             //....
+//             // objectsMedias[index].likes = likeCard;
+//             // console.log("objectsMedias[index].likes", objectsMedias[index].likes);
+//             // document.getElementsByClassName("noteLike").innerHTML = `${likeCard}`;
+
+//         }))
+
+//     } catch (erreur) {
+//         console.log(erreur);
+//     }
 // }
 
-//4ème essai:
-// function likes() {
-//     var elements = document.querySelectorAll('i');
-//     const hearts = Array.from(elements);
-//     var timesClicked = 0;
-//     hearts.forEach((link) => link.addEventListener('click', e => {
-//         // e.preventDefault();
-//         console.log("like cliqué ok");
-//         timesClicked++;
-//         link.classList.remove('fa-regular');
-//         link.classList.add('fas');
-//         console.log("like ok", timesClicked);
+//2ème essai
+// function likes(objectsMedias) {
+//     const displays = objectsMedias.map(elements => { return elements.display() });
+//     // console.log("Tableau d'images", displays);
+//     for (let i in displays) {
+//         // noteLike.dataset.indexnumber = i;
+//         console.log("index ", data.indexnumber);
+//     }
+// }
+// noteLike.dataset.indexnumber = index;
 
-//         //et ici je retourne un inner html avec le nbre de likes mis à jour
-//     }));
+
+//3ème essai
+// function likes(objectsMedias) {
+//     try {
+//         console.log("objets médias dans les likes", objectsMedias)
+//         var elementsI = document.querySelectorAll('i');
+//         const elements = Array.from(elementsI);
+//         elements.forEach((link, index) => link.addEventListener('click', e => {
+//             // console.log("elements", elements);
+//             // console.log("Clic sur le coeur!!!");
+//             // console.log("link", link);
+//             // console.log("index", index);
+//             // console.log("Le like de la carte", objectsMedias[index].likes);
+//             // const likeCard = objectsMedias[index].likes;
+//             // console.log("Index du coeur", index);
+//             var indexClic = document.getElementById("noteLike");
+//             console.log("test", indexClic);
+//             indexClic.dataset.indexnumber = index;
+//             console.log("index du html 1", indexClic.dataset.indexnumber);
+//             for (let i in elements) {
+//                 // console.log("Les i ", i);
+//                 if (i === indexClic.dataset.indexnumber) {
+//                     console.log("OK ");
+//                     objectsMedias[index].likes = objectsMedias[index].likes + 1;
+//                     console.log("total like ", objectsMedias[index].likes);
+//                     link.classList.remove('fa-regular');
+//                     link.classList.add('fas');
+//                     console.log("recherche element", document.getElementById("noteLike"));
+//                     // document.getElementById("noteLike").innerHTML = `${objectsMedias[index].likes}`;
+
+//                 }
+//             }
+//         }))
+
+//4ème essai
+// function likes(objectsMedias) {
+//     try {
+//         console.log("objets médias dans les likes", objectsMedias)
+//             // const displays = objectsMedias.map(elements => { return elements.display() });
+//             // console.log("Tableau d'images", displays);
+//         var elementsI = document.querySelectorAll('i');
+//         const elements = Array.from(elementsI);
+//         elements.forEach((link, index) => link.addEventListener('click', e => {
+//             console.log("link", link);
+//             // console.log("elements", elements);
+//             // console.log("Clic sur le coeur!!!");
+//             // console.log("link", link);
+//             // console.log("index", index);
+//             // console.log("Le like de la carte", objectsMedias[index].likes);
+//             // const likeCard = objectsMedias[index].likes;
+//             // console.log("Index du coeur", index);
+//             // console.log("Le  template de l'index", objectsMedias[index].display());
+//             var indexClic = document.getElementById("noteLike");
+//             console.log("test", indexClic);
+//             indexClic.dataset.indexnumber = index;
+//             console.log("index du html 1", indexClic.dataset.indexnumber);
+//             // objectsMedias[index].display() = `Hello`;
+//             for (let i in elements) {
+//                 // console.log("Les i ", i);
+//                 if (i === indexClic.dataset.indexnumber) {
+//                     console.log("Le i ", i);
+//                     console.log("OK ");
+//                     objectsMedias[index].likes = objectsMedias[index].likes + 1;
+//                     console.log("total like ", objectsMedias[index].likes);
+//                     link.classList.remove('fa-regular');
+//                     link.classList.add('fas');
+//                     console.log("recherche element", document.getElementById("noteLike"));
+//                     // console.log("display un élément", displays[index]);
+//                     // document.getElementsByClassName("salut").innerHTML = `${objectsMedias[index].likes}`;
+//                     console.log("recherche element", document.getElementById("noteLike"));
+//                     // document.getElementById("noteLike").innerHTML = `${objectsMedias[index].likes}`;
+//                     //ne fonctionne que sur la 1ère carte:
+//                     const user = document.querySelector("[data-indexnumber]");
+//                     // console.log("user inner", user.innerHTML)
+//                     user.innerHTML = `${objectsMedias[index].likes}`;
+//                     // displayTemplates(objectsMedias);
+
+//                 }
+
+
+//             }
+
+
+//         }))
+
+//     } catch (erreur) {
+//         console.log(erreur);
+//     }
 // }
 
-//5ème essai
+function inc(element) {
+    // var timesClicked = 1;
+    var elem = document.querySelector('i');
+    console.log("elem????", elem);
+    // elem.classList.remove('fa-heart-o');
+    // elem.classList.add('fa-heart');
+    // return timesClicked++;
+
+    console.log("C'est cliqué!!!");
+    console.log("Et voici l'élément", element);
+
+}
+
+//5ème essai:
 function likes() {
     try {
-        var elementsI = document.querySelectorAll('i');
-        const elements = Array.from(elementsI);
-        var timesClicked = 1;
-        elements.forEach((link) => link.addEventListener('click', e => {
-            e.preventDefault();
-            console.log("Clic sur le coeur!!!");
-            // console.log(index);
-            // console.log("Index du coeur", index);
-            var likes = timesClicked++;
-            link.classList.remove('fa-regular');
-            link.classList.add('fas');
-            document.getElementById("likes").innerHTML = `${likes}`;
+        // Display du tableau
+        const displays = objectsMedias.map(elements => { return elements.display() });
+        var indexClic = document.getElementById("noteLike");
+        console.log("test", indexClic);
+        // const array = document.querySelectorAll('i');
+        // console.log("array", array);
+
+        console.log("index du html", indexClic.dataset.id);
+        document.querySelectorAll('i').forEach(displays => displays.addEventListener("click", (e) => {
+            inc(e.currentTarget.dataset.id);
+
         }))
 
     } catch (erreur) {
@@ -315,19 +422,39 @@ function likes() {
     }
 }
 
+// <
+// article
+// id = "voitureelectrique"
+// data - columns = "3"
+// data - index - number = "12314"
+// data - parent = "voitures" >
+//     ... <
+//     /article>
+// var article = document.getElementById('voitureelectrique');
+
+// article.dataset.columns // "3"
+// article.dataset.indexNumber // "12314"
+// article.dataset.parent // "voitures"
+
 
 
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //initialisation de la page
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //Essai if ds le map:
-// const obMed = medias.map(condition => {
-//     if (condition == "image") {
-//         values = condition.filter(function(img) {
+// const objectsMedias = medias.map((elements, datas, values) => {
+//     if (elements == "image") {
+//         values = datas.filter(function(img) {
 //             return img.image;
 //         });
+//     } else if (elements == "video") {
+//         values = datas.filter(function(film) {
+//             return film.video;
+//         });
 //     }
-// });
+//     return values;
+// })
+
 
 const datas_with_id = async() => {
     try {
@@ -340,6 +467,7 @@ const datas_with_id = async() => {
         console.log("Les photographes", photogaphers);
         console.log("Les médias", medias);
         displayPageheader("photograph-header", photogaphers);
+
         //Les médias
         images = filterElements(medias, "image");
         console.log("Images", images);
@@ -359,7 +487,7 @@ const datas_with_id = async() => {
         objectsMedias = objectsImages.concat(objectsVideos)
         console.log("le tableau des objets medias", objectsMedias);
         //Affichage des médias
-        orchestrator(objectsMedias);
+        orchestrator();
 
 
     } catch (erreur) {

@@ -24,8 +24,8 @@ class VideoMedia {
                     <p>${this.title}</p>
                 </div>
                 <div class="items-media__note">
-                    <p>${this.likes}</p>
-                    <i class="fa-regular fa-heart"></i>
+                    <p id="noteLike">${this.likes}</p>
+                    <i class="fa-regular fa-heart" data-id="${this.id}"></i>
                 </div>
             </div>
         </div>`
@@ -34,4 +34,5 @@ class VideoMedia {
         return `assets/photographers/${this.photographerId}/${this.video}`;
     }
 }
-// onclick="javascript:btnClick()"
+
+{ /* <p id="noteLike" data-indexnumber="">${this.likes}</p> */ }

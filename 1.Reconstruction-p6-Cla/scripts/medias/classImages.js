@@ -7,7 +7,6 @@ class ImageMedia {
             this.likes = datas.likes;
             this.date = datas.date;
             this.price = datas.price;
-
         }
         // <img class="container-photo__photo" src="assets/photographers/${this.photographerId}/${this.image}" />
 
@@ -25,14 +24,17 @@ class ImageMedia {
                         <p>${this.title}</p>
                     </div>
                     <div class="items-media__note">
-                        <p>${this.likes}</p>
-                        <i class="fa-regular fa-heart"></i>                      
+                        <p id="noteLike" >${this.likes}</p>
+                        <i class="fa-regular fa-heart" data-id="${this.id}"></i>                      
                     </div>
                 </div>
             </div>`
     }
     path() {
         return `assets/photographers/${this.photographerId}/${this.image}`;
+    }
+    inc() {
+        this.likes++;
     }
 } { /* <i class="fas fa-heart clic" aria-label="likes"></i> */ }
 // onclick="javascript:btnClick()"
