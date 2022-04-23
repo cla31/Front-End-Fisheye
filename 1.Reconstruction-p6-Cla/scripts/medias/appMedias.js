@@ -47,6 +47,10 @@ function templatesObjects() {
         console.log(erreur);
     }
 }
+
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//Les likes (fonctions à inclure des le display)
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 const addition = (previousValue, currentValue) => previousValue + currentValue;
 
 function allLikesJson() {
@@ -70,7 +74,10 @@ let allLikes = [];
 //                  elem.classList.remove('fa-heart-o');
 //                  elem.classList.add('fa-heart');
 //              }
+
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //Affichage des médias
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function displayTemplates() {
     try {
         //Le tableau des templates des médias
@@ -79,10 +86,12 @@ function displayTemplates() {
         document.getElementById("medias").innerHTML = `${templates.join('')}`;
         var elementsI = document.querySelectorAll('i');
         const elements = Array.from(elementsI);
-        // let timesClicked = 0;
+        let timesClicked = 0;
+
         elements.forEach((link, index) => link.addEventListener('click', e => {
             console.log(objectsMedias[index]);
-            // timesClicked++;
+            timesClicked++;
+            console.log("time cliqued", timesClicked);
             // console.log("Valeur du like avant le clic", objectsMedias[index].likes);
             // if (timesClicked === 1) {
             objectsMedias[index].inc();
@@ -272,206 +281,6 @@ function lightbox() {
         console.log(erreur);
     }
 }
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-//Les likes
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-// if (timesClicked === 1) {}
-//1er essai
-// function likes(objectsMedias) {
-//     try {
-//         var elementsI = document.querySelectorAll('i');
-//         const elements = Array.from(elementsI);
-//         var timesClicked = 1;
-//         elements.forEach((link, index) => link.addEventListener('click', e => {
-//             // e.preventDefault();
-//             console.log("Clic sur le coeur!!!");
-//             console.log("link", link);
-//             console.log("index", index);
-//             // console.log("Index du coeur", index);
-//             allLikes = [];
-//             var likes = timesClicked++;
-//             console.log("nbre likes", likes);
-//             allLikes.push(likes);
-//             // var verif = link + index;
-//             // console.log("verif", verif);
-//             link.classList.remove('fa-regular');
-//             link.classList.add('fas');
-//             // document.getElementById("likes").innerHTML = `${likes}`;
-//             console.log("objectsMedias ds like", objectsMedias);
-//             for (let i in objectsMedias) {
-//                 console.log("boucles des ojets " + objectsMedias[i].likes);
-//                 allLikes.push(objectsMedias[i].likes);
-//             }
-//             console.log("allLikes", allLikes);
-//             const addition = (previousValue, currentValue) => previousValue + currentValue;
-//             let totalLikes = allLikes.reduce(addition);
-//             console.log("total likes", totalLikes);
-//             document.getElementById("likes").innerHTML = `${totalLikes}`;
-//             likeCard = objectsMedias[index].likes + 1;
-//             console.log("object medias avec les likes", likeCard);
-//             // console.log("recherche l'élément ds le Dom", document.querySelector(".items-media__note p"));
-//             document.getElementsByClassName("noteLike").innerHTML = `${likeCard}   
-//             `;
-//             //....
-//             // objectsMedias[index].likes = likeCard;
-//             // console.log("objectsMedias[index].likes", objectsMedias[index].likes);
-//             // document.getElementsByClassName("noteLike").innerHTML = `${likeCard}`;
-
-//         }))
-
-//     } catch (erreur) {
-//         console.log(erreur);
-//     }
-// }
-
-//2ème essai
-// function likes(objectsMedias) {
-//     const displays = objectsMedias.map(elements => { return elements.display() });
-//     // console.log("Tableau d'images", displays);
-//     for (let i in displays) {
-//         // noteLike.dataset.indexnumber = i;
-//         console.log("index ", data.indexnumber);
-//     }
-// }
-// noteLike.dataset.indexnumber = index;
-
-
-//3ème essai
-// function likes(objectsMedias) {
-//     try {
-//         console.log("objets médias dans les likes", objectsMedias)
-//         var elementsI = document.querySelectorAll('i');
-//         const elements = Array.from(elementsI);
-//         elements.forEach((link, index) => link.addEventListener('click', e => {
-//             // console.log("elements", elements);
-//             // console.log("Clic sur le coeur!!!");
-//             // console.log("link", link);
-//             // console.log("index", index);
-//             // console.log("Le like de la carte", objectsMedias[index].likes);
-//             // const likeCard = objectsMedias[index].likes;
-//             // console.log("Index du coeur", index);
-//             var indexClic = document.getElementById("noteLike");
-//             console.log("test", indexClic);
-//             indexClic.dataset.indexnumber = index;
-//             console.log("index du html 1", indexClic.dataset.indexnumber);
-//             for (let i in elements) {
-//                 // console.log("Les i ", i);
-//                 if (i === indexClic.dataset.indexnumber) {
-//                     console.log("OK ");
-//                     objectsMedias[index].likes = objectsMedias[index].likes + 1;
-//                     console.log("total like ", objectsMedias[index].likes);
-//                     link.classList.remove('fa-regular');
-//                     link.classList.add('fas');
-//                     console.log("recherche element", document.getElementById("noteLike"));
-//                     // document.getElementById("noteLike").innerHTML = `${objectsMedias[index].likes}`;
-
-//                 }
-//             }
-//         }))
-
-//4ème essai
-// function likes(objectsMedias) {
-//     try {
-//         console.log("objets médias dans les likes", objectsMedias)
-//             // const displays = objectsMedias.map(elements => { return elements.display() });
-//             // console.log("Tableau d'images", displays);
-//         var elementsI = document.querySelectorAll('i');
-//         const elements = Array.from(elementsI);
-//         elements.forEach((link, index) => link.addEventListener('click', e => {
-//             console.log("link", link);
-//             // console.log("elements", elements);
-//             // console.log("Clic sur le coeur!!!");
-//             // console.log("link", link);
-//             // console.log("index", index);
-//             // console.log("Le like de la carte", objectsMedias[index].likes);
-//             // const likeCard = objectsMedias[index].likes;
-//             // console.log("Index du coeur", index);
-//             // console.log("Le  template de l'index", objectsMedias[index].display());
-//             var indexClic = document.getElementById("noteLike");
-//             console.log("test", indexClic);
-//             indexClic.dataset.indexnumber = index;
-//             console.log("index du html 1", indexClic.dataset.indexnumber);
-//             // objectsMedias[index].display() = `Hello`;
-//             for (let i in elements) {
-//                 // console.log("Les i ", i);
-//                 if (i === indexClic.dataset.indexnumber) {
-//                     console.log("Le i ", i);
-//                     console.log("OK ");
-//                     objectsMedias[index].likes = objectsMedias[index].likes + 1;
-//                     console.log("total like ", objectsMedias[index].likes);
-//                     link.classList.remove('fa-regular');
-//                     link.classList.add('fas');
-//                     console.log("recherche element", document.getElementById("noteLike"));
-//                     // console.log("display un élément", displays[index]);
-//                     // document.getElementsByClassName("salut").innerHTML = `${objectsMedias[index].likes}`;
-//                     console.log("recherche element", document.getElementById("noteLike"));
-//                     // document.getElementById("noteLike").innerHTML = `${objectsMedias[index].likes}`;
-//                     //ne fonctionne que sur la 1ère carte:
-//                     const user = document.querySelector("[data-indexnumber]");
-//                     // console.log("user inner", user.innerHTML)
-//                     user.innerHTML = `${objectsMedias[index].likes}`;
-//                     // displayTemplates(objectsMedias);
-
-//                 }
-
-
-//             }
-
-
-//         }))
-
-//     } catch (erreur) {
-//         console.log(erreur);
-//     }
-// }
-
-// function inc(element) {
-//     // var timesClicked = 1;
-//     var elem = document.querySelector('i');
-//     console.log("elem????", elem);
-//     // elem.classList.remove('fa-heart-o');
-//     // elem.classList.add('fa-heart');
-//     // return timesClicked++;
-
-//     console.log("C'est cliqué!!!");
-//     console.log("Et voici l'élément", element);
-
-// }
-
-//5ème essai:
-// function likes() {
-//     try {
-//         // Display du tableau
-//         const displays = objectsMedias.map(elements => { return elements.display() });
-//         var indexClic = document.getElementById("noteLike");
-//         console.log("test", indexClic);
-//         // const array = document.querySelectorAll('i');
-//         // console.log("array", array);
-
-//         console.log("index du html", indexClic.dataset.id);
-//         document.querySelectorAll('i').forEach(displays => displays.addEventListener("click", (e) => {
-//             inc(e.currentTarget.dataset.id);
-
-//         }))
-
-//     } catch (erreur) {
-//         console.log(erreur);
-//     }
-// }
-
-// <
-// article
-// id = "voitureelectrique"
-// data - columns = "3"
-// data - index - number = "12314"
-// data - parent = "voitures" >
-//     ... <
-//     /article>
-// var article = document.getElementById('voitureelectrique');
-
-// article.dataset.columns // "3"
-// article.dataset.indexNumber // "12314"
-// article.dataset.parent // "voitures"
 
 
 
