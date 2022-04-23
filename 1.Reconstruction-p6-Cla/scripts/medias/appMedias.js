@@ -47,7 +47,29 @@ function templatesObjects() {
         console.log(erreur);
     }
 }
+const addition = (previousValue, currentValue) => previousValue + currentValue;
 
+function allLikesJson() {
+    let allLikesJson = [];
+    for (let i in objectsMedias) {
+        // console.log("valeur des likes du json " + objectsMedias[i].likes);
+        allLikesJson.push(objectsMedias[i].likes);
+    }
+    // console.log("tableau des likes json ", allLikesJson);
+    let totalLikesJson = allLikesJson.reduce(addition);
+    // console.log("Total like json", totalLikesJson)
+    return totalLikesJson;
+
+}
+
+let allLikes = [];
+
+// timesClicked++;
+//              if (timesClicked === 1) {
+//                  var elem = document.querySelector('i');
+//                  elem.classList.remove('fa-heart-o');
+//                  elem.classList.add('fa-heart');
+//              }
 //Affichage des médias
 function displayTemplates() {
     try {
@@ -57,17 +79,25 @@ function displayTemplates() {
         document.getElementById("medias").innerHTML = `${templates.join('')}`;
         var elementsI = document.querySelectorAll('i');
         const elements = Array.from(elementsI);
+        // let timesClicked = 0;
         elements.forEach((link, index) => link.addEventListener('click', e => {
             console.log(objectsMedias[index]);
+            // timesClicked++;
+            // console.log("Valeur du like avant le clic", objectsMedias[index].likes);
+            // if (timesClicked === 1) {
             objectsMedias[index].inc();
             displayTemplates();
-            // console.log("les iiiiiiiiii", document.querySelector('i'));
-            // console.log("cible", e.target);
-            // e.target.classList.remove('fa-heart-o');
-            // e.target.classList.add('fa-heart');
+            // }
 
-
-
+            let totalLikesJson = allLikesJson();
+            console.log("les likes du json", totalLikesJson);
+            // console.log("all likes", allLikes);
+            // console.log("Valeur du like après le clic", objectsMedias[index].likes);
+            allLikes.push(objectsMedias[index].likes);
+            // console.log("all likes", allLikes);
+            let totalLikes = allLikes.reduce(addition) + totalLikesJson;
+            // console.log("total likes", totalLikes);
+            document.getElementById("likes").innerHTML = `${totalLikes}`;
         }));
 
     } catch (erreur) {
@@ -162,7 +192,7 @@ function orchestrator() {
         displayTemplates();
         sorting();
         lightbox();
-        likes();
+        // likes();
     } catch (erreur) {
         console.log(erreur);
     }
@@ -395,39 +425,39 @@ function lightbox() {
 //     }
 // }
 
-function inc(element) {
-    // var timesClicked = 1;
-    var elem = document.querySelector('i');
-    console.log("elem????", elem);
-    // elem.classList.remove('fa-heart-o');
-    // elem.classList.add('fa-heart');
-    // return timesClicked++;
+// function inc(element) {
+//     // var timesClicked = 1;
+//     var elem = document.querySelector('i');
+//     console.log("elem????", elem);
+//     // elem.classList.remove('fa-heart-o');
+//     // elem.classList.add('fa-heart');
+//     // return timesClicked++;
 
-    console.log("C'est cliqué!!!");
-    console.log("Et voici l'élément", element);
+//     console.log("C'est cliqué!!!");
+//     console.log("Et voici l'élément", element);
 
-}
+// }
 
 //5ème essai:
-function likes() {
-    try {
-        // Display du tableau
-        const displays = objectsMedias.map(elements => { return elements.display() });
-        var indexClic = document.getElementById("noteLike");
-        console.log("test", indexClic);
-        // const array = document.querySelectorAll('i');
-        // console.log("array", array);
+// function likes() {
+//     try {
+//         // Display du tableau
+//         const displays = objectsMedias.map(elements => { return elements.display() });
+//         var indexClic = document.getElementById("noteLike");
+//         console.log("test", indexClic);
+//         // const array = document.querySelectorAll('i');
+//         // console.log("array", array);
 
-        console.log("index du html", indexClic.dataset.id);
-        document.querySelectorAll('i').forEach(displays => displays.addEventListener("click", (e) => {
-            inc(e.currentTarget.dataset.id);
+//         console.log("index du html", indexClic.dataset.id);
+//         document.querySelectorAll('i').forEach(displays => displays.addEventListener("click", (e) => {
+//             inc(e.currentTarget.dataset.id);
 
-        }))
+//         }))
 
-    } catch (erreur) {
-        console.log(erreur);
-    }
-}
+//     } catch (erreur) {
+//         console.log(erreur);
+//     }
+// }
 
 // <
 // article
