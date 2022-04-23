@@ -112,52 +112,135 @@ function displayTemplates() {
         }));
 
         //pour gérer la lightbox*************:
-        const linksCards = document.getElementsByClassName("lien-media");
-        //selection de l'attribut video
-        var media = document.querySelector('video');
-        console.log("voir media", media);
-        const cards = Array.from(linksCards);
-        // suppression de l'attribut qui empêche le clic
-        for (let item of cards) {
-            media.removeAttribute('controls');
-        }
-        const showMod = document.getElementById("modBox");
-        cards.forEach((link, index) => link.addEventListener('click', e => {
-            e.preventDefault();
-            console.log("Clic sur la carte!!!");
-            console.log(index);
-            console.log("Index", index);
-            // console.log("Show element for modale", showMod);
-            // showMod.style.display = "block";
-            showMod.innerHTML = ` 
-                <div class="dialog">
-                    <div class="previous-button"></div>
-                        <div class="container-img">
-                            <img class="container-photo__photo" src="assets/photographers/${objectsMedias[index].photographerId}/${objectsMedias[index].image}" />
-                            <div class="description">
-                            ${objectsMedias[index].title}
-                            </div>
-                        </div>
-                    <div class="next-button"></div>
-                    <div class="close"></div>
-                </div>                
-                `;
-            //fermeture de la modale 
-            const closeWbtn = document.querySelector(".close");
-            closeWbtn.addEventListener("click", closeWind);
+        // const linksCards = document.getElementsByClassName("lien-media");
+        // //selection de l'attribut video
+        // var media = document.querySelector('video');
+        // console.log("voir media", media);
+        // const cards = Array.from(linksCards);
+        // // suppression de l'attribut qui empêche le clic
+        // for (let item of cards) {
+        //     media.removeAttribute('controls');
+        // }
+        // const showMod = document.getElementById("modBox");
+        // cards.forEach((link, index) => link.addEventListener('click', e => {
+        //     e.preventDefault();
+        //     console.log("Clic sur la carte!!!");
+        //     console.log(index);
+        //     console.log("Index", index);
+        //     // console.log("Show element for modale", showMod);
+        //     // showMod.style.display = "block";
+        //     showMod.innerHTML = ` 
+        //         <div class="dialog">
+        //             <div class="previous-button"></div>
+        //                 <div class="container-img">
+        //                     <img class="container-photo__photo" src="assets/photographers/${objectsMedias[index].photographerId}/${objectsMedias[index].image}" />
+        //                     <div class="description">
+        //                     ${objectsMedias[index].title}
+        //                     </div>
+        //                 </div>
+        //             <div class="next-button"></div>
+        //             <div class="close"></div>
+        //         </div>                
+        //         `;
+        //     //fermeture de la modale 
+        //     const closeWbtn = document.querySelector(".close");
+        //     closeWbtn.addEventListener("click", closeWind);
 
-            function closeWind() {
-                showMod.style.display = "none";
-            }
-        }))
-        cards.forEach((link, index) => link.removeEventListener('click', e => {
-            e.preventDefault();
-        }))
+        //     function closeWind() {
+        //         showMod.style.display = "none";
+        //     }
+        // }))
+        // cards.forEach((link, index) => link.removeEventListener('click', e => {
+        //     e.preventDefault();
+        // }))
 
     } catch (erreur) {
         console.log(erreur);
     }
 
+}
+
+function displayLightbox(elements, selector) {
+    return selector.innerHTML = ` 
+             <div class="dialog">
+                 <div class="previous-button" id="previous"></div>
+                     <div class="container-img">
+                         <img class="container-photo__photo" src="assets/photographers/${elements.photographerId}/${elements.image}" />
+                         <div class="description">
+                         ${elements.title}
+                       </div>
+                    </div>
+                 <div class="next-button" id="next"></div>
+                 <div class="close" id="close-wind"></div>
+            </div>                
+            `;
+}
+
+function next(selector) {
+    document.getElementById(selector).addEventListener("click", function() {
+        console.log("Next!!!!");
+    })
+
+}
+
+function previous(selector) {
+    document.getElementById(selector).addEventListener("click", function() {
+        console.log("Previous!!!!");
+    });
+
+}
+
+function close(selector1, selector2) {
+    document.getElementById(selector1).addEventListener("click", function() {
+        selector2.style.display = "none";
+    });
+
+}
+
+function lightbox() {
+    const displays = objectsMedias.map(elements => { return elements.display() });
+    // console.log("Tableau d'images", displays);
+    const linksCards = document.getElementsByClassName("lien-media");
+    console.log("Tableau de links", linksCards);
+    //selection de l'attribut video
+    var media = document.querySelector('video');
+    console.log("voir media", media);
+    const cards = Array.from(linksCards);
+    // suppression de l'attribut qui empêche le clic
+    for (let item of cards) {
+        media.removeAttribute('controls');
+    }
+    let showMod = document.getElementById("modBox");
+    cards.forEach((link, index) => link.addEventListener('click', e => {
+        e.preventDefault();
+        console.log("Clic sur la carte!!!");
+        console.log(index);
+        console.log("Index", index);
+        // console.log("Show element for modale", showMod);
+        // showMod.style.display = "block";
+        // showMod.innerHTML = ` 
+        //         <div class="dialog">
+        //             <div class="previous-button"></div>
+        //                 <div class="container-img">
+        //                     <img class="container-photo__photo" src="assets/photographers/${objectsMedias[index].photographerId}/${objectsMedias[index].image}" />
+        //                     <div class="description">
+        //                     ${objectsMedias[index].title}
+        //                     </div>
+        //                 </div>
+        //             <div class="next-button"></div>
+        //             <div class="close"></div>
+        //         </div>                
+        //         `;
+        //Avec POO:
+        // lightbox = new DiapoLightbox("modBox", objectsMedias[index].photographerId, objectsMedias[index].image, objectsMedias[index].title)
+        // showMod.innerHTML = lightbox.display();
+        // console.log("La target", e.currentTarget)
+        displayLightbox(objectsMedias[index], showMod);
+        previous("previous");
+        next("next");
+        close("close-wind", showMod);
+        showMod.style.display = "block";
+    }))
 }
 
 
@@ -330,7 +413,7 @@ function orchestrator() {
     try {
         displayTemplates();
         sorting();
-        // lightbox();
+        lightbox();
         // likes();
     } catch (erreur) {
         console.log(erreur);
