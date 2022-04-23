@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   box-sizing: border-box;
 }
@@ -269,13 +268,11 @@
 /* .lightbox {
     color: red;
 } */
-#lightbox-modal {
+#modBox {
   display: flex;
   justify-content: center;
-  border: blue 2px solid;
   max-width: 600px;
   padding: 10px 50px 0 50px;
-  display: none;
   position: fixed;
   z-index: 100;
   top: 0;
@@ -295,17 +292,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  border: 2px solid black;
   margin: 0 10px 0 10px;
 }
 
-ul {
-  margin: 0px;
-  padding: 0px;
-}
-
-.activ {
-  margin: 0px;
-  padding: 0px;
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 .close {
@@ -330,46 +323,6 @@ ul {
   height: 90px;
   background: url('data:image/svg+xml;utf8,<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 12L5 7L0 2L1 0L8 7L1 14L0 12Z" fill="black"/> </svg>') center center/100% 100% no-repeat transparent;
   cursor: pointer;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-video {
-  max-width: 100%;
-  height: auto;
-}
-
-#lightbox-modal li.activ img {
-  /* Quand la classe est active on fait apparaître les photos */
-  display: block;
-}
-
-#lightbox-modal li.activ video {
-  /* Quand la classe est active on fait apparaître les vidéos */
-  display: block;
-}
-
-#lightbox-modal li {
-  /* Pour annuler les points de la liste */
-  list-style-type: none;
-}
-
-#lightbox-modal li img {
-  /* disparition des autres images des li lorsqu'ils n'ont pas la classe active */
-  display: none;
-}
-
-#lightbox-modal li video {
-  /* disparition des autres videos des li lorsqu'ils n'ont pas la classe active */
-  display: none;
-}
-
-.description {
-  border: 2px solid green;
-  max-width: 70%;
 }
 
 /*# sourceMappingURL=style.css.map */

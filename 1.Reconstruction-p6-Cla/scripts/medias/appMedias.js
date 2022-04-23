@@ -78,16 +78,19 @@ let allLikes = [];
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //Affichage des médias
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 function displayTemplates() {
     try {
         //Le tableau des templates des médias
         const templates = templatesObjects();
         //Affichage du tableau de templates
         document.getElementById("medias").innerHTML = `${templates.join('')}`;
+        //Pour gérer les likes*************************
         var elementsI = document.querySelectorAll('i');
         const elements = Array.from(elementsI);
         let timesClicked = 0;
-
         elements.forEach((link, index) => link.addEventListener('click', e => {
             console.log(objectsMedias[index]);
             timesClicked++;
@@ -97,7 +100,6 @@ function displayTemplates() {
             objectsMedias[index].inc();
             displayTemplates();
             // }
-
             let totalLikesJson = allLikesJson();
             console.log("les likes du json", totalLikesJson);
             // console.log("all likes", allLikes);
@@ -109,11 +111,139 @@ function displayTemplates() {
             document.getElementById("likes").innerHTML = `${totalLikes}`;
         }));
 
+        //pour gérer la lightbox*************:
+        const linksCards = document.getElementsByClassName("lien-media");
+        //selection de l'attribut video
+        var media = document.querySelector('video');
+        console.log("voir media", media);
+        const cards = Array.from(linksCards);
+        // suppression de l'attribut qui empêche le clic
+        for (let item of cards) {
+            media.removeAttribute('controls');
+        }
+        const showMod = document.getElementById("modBox");
+        cards.forEach((link, index) => link.addEventListener('click', e => {
+            e.preventDefault();
+            console.log("Clic sur la carte!!!");
+            console.log(index);
+            console.log("Index", index);
+            // console.log("Show element for modale", showMod);
+            // showMod.style.display = "block";
+            showMod.innerHTML = ` 
+                <div class="dialog">
+                    <div class="previous-button"></div>
+                        <div class="container-img">
+                            <img class="container-photo__photo" src="assets/photographers/${objectsMedias[index].photographerId}/${objectsMedias[index].image}" />
+                            <div class="description">
+                            ${objectsMedias[index].title}
+                            </div>
+                        </div>
+                    <div class="next-button"></div>
+                    <div class="close"></div>
+                </div>                
+                `;
+            //fermeture de la modale 
+            const closeWbtn = document.querySelector(".close");
+            closeWbtn.addEventListener("click", closeWind);
+
+            function closeWind() {
+                showMod.style.display = "none";
+            }
+        }))
+        cards.forEach((link, index) => link.removeEventListener('click', e => {
+            e.preventDefault();
+        }))
+
     } catch (erreur) {
         console.log(erreur);
     }
 
 }
+
+
+// function lightbox() {
+//     // console.log("Les objects medias ds la light", objectsMedias)
+//     const linksCards = document.getElementsByClassName("lien-media");
+//     console.log("Les liens des cartes", linksCards)
+//         //selection de l'attribut video
+//     var media = document.querySelector('video');
+//     console.log("voir media", media);
+//     const cards = Array.from(linksCards);
+//     // suppression de l'attribut qui empêche le clic
+//     for (let item of cards) {
+//         media.removeAttribute('controls');
+//     }
+//     const showMod = document.getElementById("modBox");
+//     cards.forEach((link, index) => link.addEventListener('click', e => {
+//         e.preventDefault();
+//         console.log("Clic sur la carte!!!");
+//         console.log(index);
+//         console.log("Index", index);
+//     }))
+//     console.log("Show element for modale", showMod);
+//     // showMod.style.display = "block";
+//     showMod.innerHTML = ` 
+//     <div class="dialog">
+//         <div class="previous-button"></div>
+//             <div class="container-img">
+//                 <img class="container-photo__photo" src="assets/photographers/${objectsMedias[index].photographerId}/${objectsMedias[index].image}" />
+//                 <div class="description">
+//                 ${objectsMedias[index].title}
+//                 </div>
+//             </div>
+//         <div class="next-button"></div>
+//         <div class="close"></div>
+//     </div>                
+//      `;
+// }
+
+//Pour gérer la lightbox (à mettre ds le display template à la suite des likes)
+//pour gérer la lightbox*************:
+// const linksCards = document.getElementsByClassName("lien-media");
+// //selection de l'attribut video
+// var media = document.querySelector('video');
+// console.log("voir media", media);
+// const cards = Array.from(linksCards);
+// // suppression de l'attribut qui empêche le clic
+// for (let item of cards) {
+//     media.removeAttribute('controls');
+// }
+// const showMod = document.getElementById("modBox");
+// cards.forEach((link, index) => link.addEventListener('click', e => {
+//     e.preventDefault();
+//     console.log("Clic sur la carte!!!");
+//     console.log(index);
+//     console.log("Index", index);
+//     // console.log("Show element for modale", showMod);
+//     // showMod.style.display = "block";
+//     showMod.innerHTML = ` 
+//     <div class="dialog">
+//         <div class="previous-button"></div>
+//             <div class="container-img">
+//                 <img class="container-photo__photo" src="assets/photographers/${objectsMedias[index].photographerId}/${objectsMedias[index].image}" />
+//                 <div class="description">
+//                 ${objectsMedias[index].title}
+//                 </div>
+//             </div>
+//         <div class="next-button"></div>
+//         <div class="close"></div>
+//     </div>                
+//      `;
+//     //fermeture de la modale 
+//     const closeWbtn = document.querySelector(".close");
+//     closeWbtn.addEventListener("click", closeWind);
+
+//     function closeWind() {
+//         showMod.style.display = "none";
+//     }
+// }))
+// cards.forEach((link, index) => link.removeEventListener('click', e => {
+//     e.preventDefault();
+
+// }))
+
+
+
 
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //Tableau de tri
@@ -200,7 +330,7 @@ function orchestrator() {
     try {
         displayTemplates();
         sorting();
-        lightbox();
+        // lightbox();
         // likes();
     } catch (erreur) {
         console.log(erreur);
@@ -255,32 +385,32 @@ function orchestrator() {
 //     }
 // }
 
-
+//voir si je fais fonction à part des likes et lightbox si je peux écrire comme ça...
 //2ème essai
-function lightbox() {
-    try {
-        //Recup de la classe pour les liens dans le template des objets de médias
-        const links = document.getElementsByClassName("lien-media");
-        //selection de l'attribut video
-        var media = document.querySelector('video');
-        console.log("voir media", media);
-        const elements = Array.from(links);
-        // suppression de l'attribut qui empêche le clic
-        for (let item of elements) {
-            media.removeAttribute('controls');
-        }
-        elements.forEach((link, index) => link.addEventListener('click', e => {
-            e.preventDefault();
-            console.log("Clic sur la carte!!!");
-            console.log(index);
-            console.log("Index", index);
+// function lightbox() {
+//     try {
+//         //Recup de la classe pour les liens dans le template des objets de médias
+//         const links = document.getElementsByClassName("lien-media");
+//         //selection de l'attribut video
+//         var media = document.querySelector('video');
+//         console.log("voir media", media);
+//         const elements = Array.from(links);
+//         // suppression de l'attribut qui empêche le clic
+//         for (let item of elements) {
+//             media.removeAttribute('controls');
+//         }
+//         elements.forEach((link, index) => link.addEventListener('click', e => {
+//             e.preventDefault();
+//             console.log("Clic sur la carte!!!");
+//             console.log(index);
+//             console.log("Index", index);
 
-        }))
+//         }))
 
-    } catch (erreur) {
-        console.log(erreur);
-    }
-}
+//     } catch (erreur) {
+//         console.log(erreur);
+//     }
+// }
 
 
 
