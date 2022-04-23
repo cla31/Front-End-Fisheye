@@ -7,6 +7,7 @@ class VideoMedia {
         this.likes = datas.likes;
         this.date = datas.date;
         this.price = datas.price;
+        this.heart = "fa-regular";
     }
 
     //Fonction qui gère l'affichage du template de la gallerie:
@@ -25,10 +26,16 @@ class VideoMedia {
                 </div>
                 <div class="items-media__note">
                     <p id="noteLike">${this.likes}</p>
-                    <i class="fa-regular fa-heart" data-id="${this.id}"></i>
+                    <i class="${this.heart}  fa-heart" data-id="${this.id}"></i>
                 </div>
             </div>
         </div>`
+    }
+    inc() {
+        this.likes++;
+        console.log("C'est cliquééééééé", this.likes);
+        this.heart = "fa-solid";
+        console.log("Test Test Test", this.test)
     }
     path() {
         return `assets/photographers/${this.photographerId}/${this.video}`;

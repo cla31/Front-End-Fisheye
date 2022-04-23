@@ -61,6 +61,13 @@ function displayTemplates() {
             console.log(objectsMedias[index]);
             objectsMedias[index].inc();
             displayTemplates();
+            // console.log("les iiiiiiiiii", document.querySelector('i'));
+            // console.log("cible", e.target);
+            // e.target.classList.remove('fa-heart-o');
+            // e.target.classList.add('fa-heart');
+
+
+
         }));
 
     } catch (erreur) {
