@@ -1,11 +1,13 @@
 class DiapoLightbox {
     constructor(selector, photographerId, image, title) {
-        this.selector = document.getElementById(selector);
+        this.selector = selector;
+        this.element = document.getElementById(this.selector);
         this.photographerId = photographerId;
         this.image = image;
         this.title = title;
-        this.selector.innerHTML = this.display();
+        this.element.innerHTML = this.display();
         this.manageEvent();
+        this.element.style.display = "block";
     }
     display() {
         return `
@@ -31,6 +33,7 @@ class DiapoLightbox {
     }
     manageEvent() {
         document.getElementById("clic-close").addEventListener("click", this.closeWind);
+
     }
     closeWind() {
         this.selector.style.display = "none";

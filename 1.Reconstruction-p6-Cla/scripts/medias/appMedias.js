@@ -90,10 +90,10 @@ function displayTemplates() {
         //Pour gérer les likes*************************
         var elementsI = document.querySelectorAll('i');
         const elements = Array.from(elementsI);
-        let timesClicked = 0;
+        var timesClicked = 0;
         elements.forEach((link, index) => link.addEventListener('click', e => {
+            timesClicked++
             console.log(objectsMedias[index]);
-            timesClicked++;
             console.log("time cliqued", timesClicked);
             // console.log("Valeur du like avant le clic", objectsMedias[index].likes);
             // if (timesClicked === 1) {
@@ -160,6 +160,13 @@ function displayTemplates() {
 
 }
 
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//  LIGHTBOX
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+const showMod = document.getElementById("modBox");
+
+
 function urlExtension(url) {
     const urlToSplit = url;
     const urlSplitSlash = url.split('/').pop();
@@ -169,11 +176,12 @@ function urlExtension(url) {
     return urlSplitPoint;
 }
 
-function displayImgLightbox(element, selector) {
+function displayImgLightbox(element, selector, index) {
+    console.log("INDEX DS LE DISPLAY", index)
     console.log("Le chemin de l'objet", element.path())
     elmt = urlExtension(element.path());
     if (elmt == "jpg") {
-        return selector.innerHTML = ` 
+        selector.innerHTML = ` 
         <div class="dialog">
             <div class="previous-button" id="previous"></div>
                 <div class="container-media">
@@ -187,7 +195,7 @@ function displayImgLightbox(element, selector) {
        </div>                
        `;
     } else {
-        return selector.innerHTML = ` 
+        selector.innerHTML = ` 
         <div class="dialog">
             <div class="previous-button" id="previous"></div>
                 <div class="container-media">
@@ -201,31 +209,10 @@ function displayImgLightbox(element, selector) {
        </div>                
        `;
     }
+    playLightbox(index, showMod);
 
-}
-
-function next(selector1, index, selector2) {
-    document.getElementById(selector1).addEventListener("click", function() {
-        console.log("Next!!!!");
-        console.log("Index ds le Next!!!!", index);
-        console.log(objectsMedias[index]);
-        displayImgLightbox(objectsMedias[index + 1], selector2);
-
-    })
-
-}
-// function getFlavorByIndex(originalFlavors, anyIndex){
-
-//     console.log(originalFlavors[anyIndex])
-
-//   } 
-
-function previous(selector, element) {
-    document.getElementById(selector).addEventListener("click", function() {
-        console.log("Previous!!!!");
-        element = element - 1;
-    });
-
+    close("close-wind", showMod);
+    showMod.style.display = "block";
 }
 
 function close(selector1, selector2) {
@@ -235,6 +222,72 @@ function close(selector1, selector2) {
 
 }
 
+function displaySlides(index) {
+    // SI le numéro d'images dans le tableau est supérieur au nombre d'images
+    if (index > objectsMedias.length - 1) {
+        // ALORS revenir à la 1ère image (index 0)
+        index = 0;
+        // console.log("début", index);
+    }
+    // SI le numéro d'images dans le tableau est inférieur à 0
+    if (index < 0) {
+        // ALORS aller à la dernière image du tableau
+        index = objectsMedias.length - 1;
+        // console.log("fin", index);
+    }
+
+}
+
+function playLightbox(index) {
+    // displayImgLightbox(objectsMedias[index], selector);
+    // displaySlides(index);
+    document.getElementById("next").addEventListener("click", function() {
+        // displaySlides((objectsMedias[(index += 1)])); // clic sur précédent : on incrémente (image suivante)
+        console.log("Index ds le Next!!!!", index);
+        console.log("objet média avt increm!!!!", objectsMedias[index]);
+        index++
+        console.log("Index après le clic Next!!!!", index);
+        console.log("objet média après increm!!!!", objectsMedias[index]);
+        displayImgLightbox(objectsMedias[index], showMod, index);
+    });
+    // Ecoute du "click" sur les Contrôles "média suivant" et ""media précédent"
+    document.getElementById("previous").addEventListener("click", function() {
+        // displaySlides((objectsMedias[(index + -1)])); // clic sur précédent : on décrémente (image précédente)
+        console.log("Index ds le Previous!!!!", index);
+        // displayImgLightbox(objectsMedias[(index - 1)], showMod);
+    });
+
+}
+
+// function next(selector1, index, selector2) {
+//     var click = 0;
+//     document.getElementById(selector1).addEventListener("click", function() {
+//         var nbreClick = click++;
+//         console.log("Nbre de clicks", nbreClick);
+//         // console.log("Next!!!!");
+//         console.log("Index ds le Next!!!!", index);
+//         index = index + nbreClick;
+//         console.log("Index ds le Next après clic!!!!", index);
+//         // console.log(objectsMedias[index]);
+//         displayImgLightbox(objectsMedias[index + 1], selector2);
+//     })
+// }
+// function getFlavorByIndex(originalFlavors, anyIndex){
+
+//     console.log(originalFlavors[anyIndex])
+
+//   } 
+
+// function previous(selector1, index, selector2) {
+//     document.getElementById(selector1).addEventListener("click", function() {
+//         console.log("Previous!!!!");
+//         console.log("Index ds le Previous!!!!", index);
+//         console.log(objectsMedias[index]);
+//         displayImgLightbox(objectsMedias[index - 1], selector2);
+
+//     });
+
+// }
 
 function lightbox() {
     const displays = objectsMedias.map(elements => { return elements.display() });
@@ -249,12 +302,13 @@ function lightbox() {
     for (let item of cards) {
         media.removeAttribute('controls');
     }
-    let showMod = document.getElementById("modBox");
+    // let showMod = document.getElementById("modBox");
     cards.forEach((link, index) => link.addEventListener('click', e => {
         e.preventDefault();
         console.log("Clic sur la carte!!!");
         console.log(index);
         console.log("Index", index);
+        console.log("Index objjjjjj", objectsMedias[index]);
         // console.log("Show element for modale", showMod);
         // showMod.style.display = "block";
         // showMod.innerHTML = ` 
@@ -271,14 +325,34 @@ function lightbox() {
         //         </div>                
         //         `;
         //Avec POO:
-        // lightbox = new DiapoLightbox("modBox", objectsMedias[index].photographerId, objectsMedias[index].image, objectsMedias[index].title)
+        // lightbox = new DiapoLightbox("modBox", objectsMedias[index].photographerId, objectsMedias[index].image, objectsMedias[index].title);
         // showMod.innerHTML = lightbox.display();
         // console.log("La target", e.currentTarget)
-        displayImgLightbox(objectsMedias[index], showMod);
-        previous("previous", objectsMedias, objectsMedias[index]);
-        next("next", index, showMod);
-        close("close-wind", showMod);
-        showMod.style.display = "block";
+        //%%%%%%%%%%%%%%%%%%%%%%
+        displayImgLightbox(objectsMedias[index], showMod, index);
+        // document.getElementById("next").addEventListener("click", function() {
+        //     // displaySlides((index += 1)); // clic sur précédent : on incrémente (image suivante)
+        //     console.log("Index ds le Next!!!!", index);
+        //     displayImgLightbox(objectsMedias[(index + 1)], showMod);
+        // });
+        // document.getElementById("previous").addEventListener("click", function() {
+        //     // displaySlides((index -= 1)); // clic sur précédent : on décrémente (image précédente)
+        //     console.log("Index ds le Previous!!!!", index);
+        //     displayImgLightbox(objectsMedias[(index - 1)], showMod);
+        // });
+        //%%%%%%%%%%%%%%%%%%%%%%
+        // previous("previous", objectsMedias, objectsMedias[index]);
+        // next("next", objectsMedias[index], showMod);
+        // playLightbox(index, showMod);
+        //%%%%%%%%%%%%%%%%%%%%%%
+        // close("close-wind", showMod);
+        // showMod.style.display = "block";
+        //%%%%%%%%%%%%%%%%%%%%%%
+        // function close() {
+        //     document.getElementById("modBox").style.display = "none";
+        // }
+
+
     }))
 }
 

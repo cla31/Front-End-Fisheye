@@ -37,10 +37,20 @@ class ImageMedia {
 
 
     inc() {
+        var likes = this.likes;
         this.likes++;
+        console.log("LIKES", likes);
         console.log("C'est cliquééééééé", this.likes);
-        this.heart = "fa-solid";
-        console.log("Test Test Test", this.test);
+        // this.heart = "fa-solid";
+        // console.log("Test Test Test", this.test);
+        if (this.likes < this.likes + 1) {
+            // this.likes++;
+            console.log("C'est cliquééééééé", this.likes);
+            this.heart = "fa-solid";
+            console.log("Test Test Test", this.test);
+        } else {
+            console.log("TROP DE CLIQUES")
+        }
 
 
     }
