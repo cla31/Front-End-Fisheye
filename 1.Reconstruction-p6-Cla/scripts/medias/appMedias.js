@@ -160,32 +160,70 @@ function displayTemplates() {
 
 }
 
-function displayLightbox(elements, selector) {
-    return selector.innerHTML = ` 
-             <div class="dialog">
-                 <div class="previous-button" id="previous"></div>
-                     <div class="container-img">
-                         <img class="container-photo__photo" src="assets/photographers/${elements.photographerId}/${elements.image}" />
-                         <div class="description">
-                         ${elements.title}
-                       </div>
-                    </div>
-                 <div class="next-button" id="next"></div>
-                 <div class="close" id="close-wind"></div>
-            </div>                
-            `;
+function urlExtension(url) {
+    const urlToSplit = url;
+    const urlSplitSlash = url.split('/').pop();
+    console.log("url", urlSplitSlash);
+    const urlSplitPoint = urlSplitSlash.split('.').pop();
+    console.log("url", urlSplitPoint);
+    return urlSplitPoint;
 }
 
-function next(selector) {
-    document.getElementById(selector).addEventListener("click", function() {
+function displayImgLightbox(element, selector) {
+    console.log("Le chemin de l'objet", element.path())
+    elmt = urlExtension(element.path());
+    if (elmt == "jpg") {
+        return selector.innerHTML = ` 
+        <div class="dialog">
+            <div class="previous-button" id="previous"></div>
+                <div class="container-media">
+                    <img class="container-photo__photo" src="assets/photographers/${element.photographerId}/${element.image}" />
+                    <div class="description">
+                    ${element.title}
+                  </div>
+               </div>
+            <div class="next-button" id="next"></div>
+            <div class="close" id="close-wind"></div>
+       </div>                
+       `;
+    } else {
+        return selector.innerHTML = ` 
+        <div class="dialog">
+            <div class="previous-button" id="previous"></div>
+                <div class="container-media">
+                    <video controls width="250"><source src="assets/photographers/${element.photographerId}/${element.video}"type="video/mp4">Sorry, your browser doesn't support embedded videos.</video>
+                    <div class="description">
+                    ${element.title}
+                  </div>
+               </div>
+            <div class="next-button" id="next"></div>
+            <div class="close" id="close-wind"></div>
+       </div>                
+       `;
+    }
+
+}
+
+function next(selector1, index, selector2) {
+    document.getElementById(selector1).addEventListener("click", function() {
         console.log("Next!!!!");
+        console.log("Index ds le Next!!!!", index);
+        console.log(objectsMedias[index]);
+        displayImgLightbox(objectsMedias[index + 1], selector2);
+
     })
 
 }
+// function getFlavorByIndex(originalFlavors, anyIndex){
 
-function previous(selector) {
+//     console.log(originalFlavors[anyIndex])
+
+//   } 
+
+function previous(selector, element) {
     document.getElementById(selector).addEventListener("click", function() {
         console.log("Previous!!!!");
+        element = element - 1;
     });
 
 }
@@ -196,6 +234,7 @@ function close(selector1, selector2) {
     });
 
 }
+
 
 function lightbox() {
     const displays = objectsMedias.map(elements => { return elements.display() });
@@ -235,9 +274,9 @@ function lightbox() {
         // lightbox = new DiapoLightbox("modBox", objectsMedias[index].photographerId, objectsMedias[index].image, objectsMedias[index].title)
         // showMod.innerHTML = lightbox.display();
         // console.log("La target", e.currentTarget)
-        displayLightbox(objectsMedias[index], showMod);
-        previous("previous");
-        next("next");
+        displayImgLightbox(objectsMedias[index], showMod);
+        previous("previous", objectsMedias, objectsMedias[index]);
+        next("next", index, showMod);
         close("close-wind", showMod);
         showMod.style.display = "block";
     }))

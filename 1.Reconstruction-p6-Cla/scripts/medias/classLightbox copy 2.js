@@ -18,7 +18,6 @@ class Diapo {
         return urlSplitPoint;
     }
     init() {
-
             //Création de la plus haute div (1ère) lightbox-modal
             var lightboxModal = document.createElement("div");
             lightboxModal.setAttribute("id", "lightbox-modal");
