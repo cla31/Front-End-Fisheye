@@ -177,7 +177,7 @@ function urlExtension(url) {
 }
 
 function displayImgLightbox(element, selector, index) {
-    console.log("INDEX DS LE DISPLAY", index)
+    // console.log("INDEX DS LE DISPLAY", index)
     console.log("Le chemin de l'objet", element.path())
     elmt = urlExtension(element.path());
     if (elmt == "jpg") {
@@ -210,7 +210,6 @@ function displayImgLightbox(element, selector, index) {
        `;
     }
     playLightbox(index, showMod);
-
     close("close-wind", showMod);
     showMod.style.display = "block";
 }
@@ -222,21 +221,21 @@ function close(selector1, selector2) {
 
 }
 
-function displaySlides(index) {
-    // SI le numéro d'images dans le tableau est supérieur au nombre d'images
-    if (index > objectsMedias.length - 1) {
-        // ALORS revenir à la 1ère image (index 0)
-        index = 0;
-        // console.log("début", index);
-    }
-    // SI le numéro d'images dans le tableau est inférieur à 0
-    if (index < 0) {
-        // ALORS aller à la dernière image du tableau
-        index = objectsMedias.length - 1;
-        // console.log("fin", index);
-    }
+// function displaySlides(index) {
+//     // SI le numéro d'images dans le tableau est supérieur au nombre d'images
+//     if (index > objectsMedias.length - 1) {
+//         // ALORS revenir à la 1ère image (index 0)
+//         index = 0;
+//         // console.log("début", index);
+//     }
+//     // SI le numéro d'images dans le tableau est inférieur à 0
+//     if (index < 0) {
+//         // ALORS aller à la dernière image du tableau
+//         index = objectsMedias.length - 1;
+//         // console.log("fin", index);
+//     }
 
-}
+// }
 
 function playLightbox(index) {
     // displayImgLightbox(objectsMedias[index], selector);
@@ -245,16 +244,30 @@ function playLightbox(index) {
         // displaySlides((objectsMedias[(index += 1)])); // clic sur précédent : on incrémente (image suivante)
         console.log("Index ds le Next!!!!", index);
         console.log("objet média avt increm!!!!", objectsMedias[index]);
-        index++
+        index++;
         console.log("Index après le clic Next!!!!", index);
         console.log("objet média après increm!!!!", objectsMedias[index]);
-        displayImgLightbox(objectsMedias[index], showMod, index);
+        // SI le numéro d'images dans le tableau est supérieur au nombre d'images
+        if (index < objectsMedias.length) {
+            displayImgLightbox(objectsMedias[index], showMod, index);
+        } else {
+            index = 1;
+        }
+
     });
     // Ecoute du "click" sur les Contrôles "média suivant" et ""media précédent"
     document.getElementById("previous").addEventListener("click", function() {
         // displaySlides((objectsMedias[(index + -1)])); // clic sur précédent : on décrémente (image précédente)
         console.log("Index ds le Previous!!!!", index);
         // displayImgLightbox(objectsMedias[(index - 1)], showMod);
+        index--;
+        console.log("taille du tableau", objectsMedias.length)
+        if (index > 0) {
+            displayImgLightbox(objectsMedias[index], showMod, index);
+        } else {
+            // console.log("PROBLEME")
+            index = objectsMedias.length;
+        }
     });
 
 }
