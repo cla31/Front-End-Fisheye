@@ -111,49 +111,6 @@ function displayTemplates() {
             document.getElementById("likes").innerHTML = `${totalLikes}`;
         }));
 
-        //pour gérer la lightbox*************:
-        // const linksCards = document.getElementsByClassName("lien-media");
-        // //selection de l'attribut video
-        // var media = document.querySelector('video');
-        // console.log("voir media", media);
-        // const cards = Array.from(linksCards);
-        // // suppression de l'attribut qui empêche le clic
-        // for (let item of cards) {
-        //     media.removeAttribute('controls');
-        // }
-        // const showMod = document.getElementById("modBox");
-        // cards.forEach((link, index) => link.addEventListener('click', e => {
-        //     e.preventDefault();
-        //     console.log("Clic sur la carte!!!");
-        //     console.log(index);
-        //     console.log("Index", index);
-        //     // console.log("Show element for modale", showMod);
-        //     // showMod.style.display = "block";
-        //     showMod.innerHTML = ` 
-        //         <div class="dialog">
-        //             <div class="previous-button"></div>
-        //                 <div class="container-img">
-        //                     <img class="container-photo__photo" src="assets/photographers/${objectsMedias[index].photographerId}/${objectsMedias[index].image}" />
-        //                     <div class="description">
-        //                     ${objectsMedias[index].title}
-        //                     </div>
-        //                 </div>
-        //             <div class="next-button"></div>
-        //             <div class="close"></div>
-        //         </div>                
-        //         `;
-        //     //fermeture de la modale 
-        //     const closeWbtn = document.querySelector(".close");
-        //     closeWbtn.addEventListener("click", closeWind);
-
-        //     function closeWind() {
-        //         showMod.style.display = "none";
-        //     }
-        // }))
-        // cards.forEach((link, index) => link.removeEventListener('click', e => {
-        //     e.preventDefault();
-        // }))
-
     } catch (erreur) {
         console.log(erreur);
     }
@@ -221,21 +178,6 @@ function close(selector1, selector2) {
 
 }
 
-// function displaySlides(index) {
-//     // SI le numéro d'images dans le tableau est supérieur au nombre d'images
-//     if (index > objectsMedias.length - 1) {
-//         // ALORS revenir à la 1ère image (index 0)
-//         index = 0;
-//         // console.log("début", index);
-//     }
-//     // SI le numéro d'images dans le tableau est inférieur à 0
-//     if (index < 0) {
-//         // ALORS aller à la dernière image du tableau
-//         index = objectsMedias.length - 1;
-//         // console.log("fin", index);
-//     }
-
-// }
 
 function playLightbox(index) {
     // displayImgLightbox(objectsMedias[index], selector);
@@ -251,7 +193,7 @@ function playLightbox(index) {
         if (index < objectsMedias.length) {
             displayImgLightbox(objectsMedias[index], showMod, index);
         } else {
-            index = 1;
+            index = 0;
         }
 
     });
@@ -271,36 +213,6 @@ function playLightbox(index) {
     });
 
 }
-
-// function next(selector1, index, selector2) {
-//     var click = 0;
-//     document.getElementById(selector1).addEventListener("click", function() {
-//         var nbreClick = click++;
-//         console.log("Nbre de clicks", nbreClick);
-//         // console.log("Next!!!!");
-//         console.log("Index ds le Next!!!!", index);
-//         index = index + nbreClick;
-//         console.log("Index ds le Next après clic!!!!", index);
-//         // console.log(objectsMedias[index]);
-//         displayImgLightbox(objectsMedias[index + 1], selector2);
-//     })
-// }
-// function getFlavorByIndex(originalFlavors, anyIndex){
-
-//     console.log(originalFlavors[anyIndex])
-
-//   } 
-
-// function previous(selector1, index, selector2) {
-//     document.getElementById(selector1).addEventListener("click", function() {
-//         console.log("Previous!!!!");
-//         console.log("Index ds le Previous!!!!", index);
-//         console.log(objectsMedias[index]);
-//         displayImgLightbox(objectsMedias[index - 1], selector2);
-
-//     });
-
-// }
 
 function lightbox() {
     const displays = objectsMedias.map(elements => { return elements.display() });
@@ -322,137 +234,9 @@ function lightbox() {
         console.log(index);
         console.log("Index", index);
         console.log("Index objjjjjj", objectsMedias[index]);
-        // console.log("Show element for modale", showMod);
-        // showMod.style.display = "block";
-        // showMod.innerHTML = ` 
-        //         <div class="dialog">
-        //             <div class="previous-button"></div>
-        //                 <div class="container-img">
-        //                     <img class="container-photo__photo" src="assets/photographers/${objectsMedias[index].photographerId}/${objectsMedias[index].image}" />
-        //                     <div class="description">
-        //                     ${objectsMedias[index].title}
-        //                     </div>
-        //                 </div>
-        //             <div class="next-button"></div>
-        //             <div class="close"></div>
-        //         </div>                
-        //         `;
-        //Avec POO:
-        // lightbox = new DiapoLightbox("modBox", objectsMedias[index].photographerId, objectsMedias[index].image, objectsMedias[index].title);
-        // showMod.innerHTML = lightbox.display();
-        // console.log("La target", e.currentTarget)
-        //%%%%%%%%%%%%%%%%%%%%%%
         displayImgLightbox(objectsMedias[index], showMod, index);
-        // document.getElementById("next").addEventListener("click", function() {
-        //     // displaySlides((index += 1)); // clic sur précédent : on incrémente (image suivante)
-        //     console.log("Index ds le Next!!!!", index);
-        //     displayImgLightbox(objectsMedias[(index + 1)], showMod);
-        // });
-        // document.getElementById("previous").addEventListener("click", function() {
-        //     // displaySlides((index -= 1)); // clic sur précédent : on décrémente (image précédente)
-        //     console.log("Index ds le Previous!!!!", index);
-        //     displayImgLightbox(objectsMedias[(index - 1)], showMod);
-        // });
-        //%%%%%%%%%%%%%%%%%%%%%%
-        // previous("previous", objectsMedias, objectsMedias[index]);
-        // next("next", objectsMedias[index], showMod);
-        // playLightbox(index, showMod);
-        //%%%%%%%%%%%%%%%%%%%%%%
-        // close("close-wind", showMod);
-        // showMod.style.display = "block";
-        //%%%%%%%%%%%%%%%%%%%%%%
-        // function close() {
-        //     document.getElementById("modBox").style.display = "none";
-        // }
-
-
     }))
 }
-
-
-// function lightbox() {
-//     // console.log("Les objects medias ds la light", objectsMedias)
-//     const linksCards = document.getElementsByClassName("lien-media");
-//     console.log("Les liens des cartes", linksCards)
-//         //selection de l'attribut video
-//     var media = document.querySelector('video');
-//     console.log("voir media", media);
-//     const cards = Array.from(linksCards);
-//     // suppression de l'attribut qui empêche le clic
-//     for (let item of cards) {
-//         media.removeAttribute('controls');
-//     }
-//     const showMod = document.getElementById("modBox");
-//     cards.forEach((link, index) => link.addEventListener('click', e => {
-//         e.preventDefault();
-//         console.log("Clic sur la carte!!!");
-//         console.log(index);
-//         console.log("Index", index);
-//     }))
-//     console.log("Show element for modale", showMod);
-//     // showMod.style.display = "block";
-//     showMod.innerHTML = ` 
-//     <div class="dialog">
-//         <div class="previous-button"></div>
-//             <div class="container-img">
-//                 <img class="container-photo__photo" src="assets/photographers/${objectsMedias[index].photographerId}/${objectsMedias[index].image}" />
-//                 <div class="description">
-//                 ${objectsMedias[index].title}
-//                 </div>
-//             </div>
-//         <div class="next-button"></div>
-//         <div class="close"></div>
-//     </div>                
-//      `;
-// }
-
-//Pour gérer la lightbox (à mettre ds le display template à la suite des likes)
-//pour gérer la lightbox*************:
-// const linksCards = document.getElementsByClassName("lien-media");
-// //selection de l'attribut video
-// var media = document.querySelector('video');
-// console.log("voir media", media);
-// const cards = Array.from(linksCards);
-// // suppression de l'attribut qui empêche le clic
-// for (let item of cards) {
-//     media.removeAttribute('controls');
-// }
-// const showMod = document.getElementById("modBox");
-// cards.forEach((link, index) => link.addEventListener('click', e => {
-//     e.preventDefault();
-//     console.log("Clic sur la carte!!!");
-//     console.log(index);
-//     console.log("Index", index);
-//     // console.log("Show element for modale", showMod);
-//     // showMod.style.display = "block";
-//     showMod.innerHTML = ` 
-//     <div class="dialog">
-//         <div class="previous-button"></div>
-//             <div class="container-img">
-//                 <img class="container-photo__photo" src="assets/photographers/${objectsMedias[index].photographerId}/${objectsMedias[index].image}" />
-//                 <div class="description">
-//                 ${objectsMedias[index].title}
-//                 </div>
-//             </div>
-//         <div class="next-button"></div>
-//         <div class="close"></div>
-//     </div>                
-//      `;
-//     //fermeture de la modale 
-//     const closeWbtn = document.querySelector(".close");
-//     closeWbtn.addEventListener("click", closeWind);
-
-//     function closeWind() {
-//         showMod.style.display = "none";
-//     }
-// }))
-// cards.forEach((link, index) => link.removeEventListener('click', e => {
-//     e.preventDefault();
-
-// }))
-
-
-
 
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //Tableau de tri
@@ -545,83 +329,6 @@ function orchestrator() {
         console.log(erreur);
     }
 }
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-//Lightbox
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-//1er essai
-// function lightbox(objectsMedias) {
-//     try {
-//         paths = objectsMedias.map(elements => { return elements.path() });
-//         //Recup de la classe pour les liens dans le template des objets de médias
-//         const elt = document.getElementsByClassName("lien-media");
-//         //selection de l'attribut video
-//         var media = document.querySelector('video');
-//         console.log("voir media", media);
-//         const arrayElt = Array.from(elt);
-//         // suppression de l'attribut qui empêche le clic
-//         for (let item of arrayElt) {
-//             media.removeAttribute('controls');
-//         }
-//         arrayElt.forEach((link, index) => link.addEventListener('click', e => {
-//             e.preventDefault();
-//             console.log("Clic sur la carte!!!");
-//             console.log(index);
-//             console.log("Index", index);
-//             console.log("Paths", paths);
-//             console.log("recherche 1de l'élément séléctionné dans le tableau", paths[index]);
-//             var first = paths[index];
-//             paths.unshift(paths[index]);
-//             paths.sort((x, y) => {
-//                 if (x == first) {
-//                     return -1;
-//                 } else if (y == first) {
-//                     return 1;
-//                 } else {
-//                     return 0;
-//                 }
-//             });
-//             //Suppression du premier élément du tableau.
-//             paths.shift();
-//             console.log("vue sur paths", paths)
-//             var diapo = new Diapo(paths, "modBox");
-//             diapo.init();
-//             diapo.play();
-
-//         }))
-
-//     } catch (erreur) {
-//         console.log(erreur);
-//     }
-// }
-
-//voir si je fais fonction à part des likes et lightbox si je peux écrire comme ça...
-//2ème essai
-// function lightbox() {
-//     try {
-//         //Recup de la classe pour les liens dans le template des objets de médias
-//         const links = document.getElementsByClassName("lien-media");
-//         //selection de l'attribut video
-//         var media = document.querySelector('video');
-//         console.log("voir media", media);
-//         const elements = Array.from(links);
-//         // suppression de l'attribut qui empêche le clic
-//         for (let item of elements) {
-//             media.removeAttribute('controls');
-//         }
-//         elements.forEach((link, index) => link.addEventListener('click', e => {
-//             e.preventDefault();
-//             console.log("Clic sur la carte!!!");
-//             console.log(index);
-//             console.log("Index", index);
-
-//         }))
-
-//     } catch (erreur) {
-//         console.log(erreur);
-//     }
-// }
-
-
 
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //initialisation de la page
