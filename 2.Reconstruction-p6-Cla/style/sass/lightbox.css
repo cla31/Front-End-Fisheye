@@ -1,0 +1,31 @@
+/* Tuto grafikart */
+
+.lightbox li.activ img {
+    display: block;
+    background-color: #901C1C;
+}
+
+.lightbox li {
+    list-style-type: none;
+}
+
+.lightbox li img {
+    display: none;
+}
+
+
+/* .lightbox {
+    color: red;
+} */
+
+.lightbox li {
+    list-style-type: none;
+}
+
+.lightbox li.activ img {
+    display: block;
+}
+
+.lightbox li img {
+    display: none;
+}

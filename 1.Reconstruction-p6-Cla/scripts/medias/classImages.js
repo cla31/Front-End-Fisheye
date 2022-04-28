@@ -8,6 +8,7 @@ class ImageMedia {
         this.date = datas.date;
         this.price = datas.price;
         this.heart = "fa-regular";
+        this.value = false;
     }
 
     //Fonction qui gère l'affichage du template de la gallerie:
@@ -36,22 +37,26 @@ class ImageMedia {
     }
 
 
+
     inc() {
-        var likes = this.likes;
-        this.likes++;
-        console.log("LIKES", likes);
-        console.log("C'est cliquééééééé", this.likes);
+        if (this.value == false) {
+            this.likes++;
+            this.heart = "fa-solid";
+            this.value = true;
+        }
+        // this.likes++;
+        // console.log("LIKES", likes);
+        // console.log("C'est cliquééééééé", this.likes);
         // this.heart = "fa-solid";
         // console.log("Test Test Test", this.test);
-        if (this.likes < this.likes + 1) {
-            // this.likes++;
-            console.log("C'est cliquééééééé", this.likes);
-            this.heart = "fa-solid";
-            console.log("Test Test Test", this.test);
-        } else {
-            console.log("TROP DE CLIQUES")
-        }
-
+        // if (this.likes < this.likes + 1) {
+        //     // this.likes++;
+        //     console.log("C'est cliquééééééé", this.likes);
+        //     this.heart = "fa-solid";
+        //     console.log("Test Test Test", this.test);
+        // } else {
+        //     console.log("TROP DE CLIQUES")
+        // }
 
     }
 }

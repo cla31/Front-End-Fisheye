@@ -23,7 +23,6 @@ function displayPageheader(id, datas) {
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function filterElements(datas, elements) {
     try {
-
         if (elements == "image") {
             values = datas.filter(function(img) {
                 return img.image;
@@ -54,15 +53,18 @@ function templatesObjects() {
 const addition = (previousValue, currentValue) => previousValue + currentValue;
 
 function allLikesJson() {
-    let allLikesJson = [];
+    // let allLikesJson = [];
+    let compt = 0;
     for (let i in objectsMedias) {
+        compt = compt + objectsMedias[i].likes;
         // console.log("valeur des likes du json " + objectsMedias[i].likes);
-        allLikesJson.push(objectsMedias[i].likes);
+        // allLikesJson.push(objectsMedias[i].likes);
     }
+    return compt;
     // console.log("tableau des likes json ", allLikesJson);
-    let totalLikesJson = allLikesJson.reduce(addition);
-    // console.log("Total like json", totalLikesJson)
-    return totalLikesJson;
+    // let totalLikesJson = allLikesJson.reduce(addition);
+    // // console.log("Total like json", totalLikesJson)
+    // return totalLikesJson;
 
 }
 
@@ -91,6 +93,9 @@ function displayTemplates() {
         var elementsI = document.querySelectorAll('i');
         const elements = Array.from(elementsI);
         var timesClicked = 0;
+        let totalLikesJson = allLikesJson();
+        document.getElementById("likes").innerHTML = `${totalLikesJson}`;
+        lightbox();
         elements.forEach((link, index) => link.addEventListener('click', e => {
             timesClicked++
             console.log(objectsMedias[index]);
@@ -100,15 +105,15 @@ function displayTemplates() {
             objectsMedias[index].inc();
             displayTemplates();
             // }
-            let totalLikesJson = allLikesJson();
+            // let totalLikesJson = allLikesJson();
             console.log("les likes du json", totalLikesJson);
             // console.log("all likes", allLikes);
             // console.log("Valeur du like après le clic", objectsMedias[index].likes);
-            allLikes.push(objectsMedias[index].likes);
+            // allLikes.push(objectsMedias[index].likes);
             // console.log("all likes", allLikes);
-            let totalLikes = allLikes.reduce(addition) + totalLikesJson;
+            // let totalLikes = allLikes.reduce(addition) + totalLikesJson;
             // console.log("total likes", totalLikes);
-            document.getElementById("likes").innerHTML = `${totalLikes}`;
+            // document.getElementById("likes").innerHTML = `${totalLikesJson}`;
         }));
 
     } catch (erreur) {
@@ -166,7 +171,7 @@ function displayImgLightbox(element, selector, index) {
        </div>                
        `;
     }
-    playLightbox(index, showMod);
+    playLightbox(index);
     close("close-wind", showMod);
     showMod.style.display = "block";
 }
@@ -190,11 +195,11 @@ function playLightbox(index) {
         console.log("Index après le clic Next!!!!", index);
         console.log("objet média après increm!!!!", objectsMedias[index]);
         // SI le numéro d'images dans le tableau est supérieur au nombre d'images
-        if (index < objectsMedias.length) {
-            displayImgLightbox(objectsMedias[index], showMod, index);
-        } else {
+        if (index === objectsMedias.length) {
             index = 0;
+
         }
+        displayImgLightbox(objectsMedias[index], showMod, index);
 
     });
     // Ecoute du "click" sur les Contrôles "média suivant" et ""media précédent"
@@ -204,12 +209,10 @@ function playLightbox(index) {
         // displayImgLightbox(objectsMedias[(index - 1)], showMod);
         index--;
         console.log("taille du tableau", objectsMedias.length)
-        if (index > 0) {
-            displayImgLightbox(objectsMedias[index], showMod, index);
-        } else {
-            // console.log("PROBLEME")
-            index = objectsMedias.length;
+        if (index === -1) {
+            index = objectsMedias.length - 1;
         }
+        displayImgLightbox(objectsMedias[index], showMod, index);
     });
 
 }
@@ -218,10 +221,10 @@ function lightbox() {
     const displays = objectsMedias.map(elements => { return elements.display() });
     // console.log("Tableau d'images", displays);
     const linksCards = document.getElementsByClassName("lien-media");
-    console.log("Tableau de links", linksCards);
+    // console.log("Tableau de links", linksCards);
     //selection de l'attribut video
     var media = document.querySelector('video');
-    console.log("voir media", media);
+    // console.log("voir media", media);
     const cards = Array.from(linksCards);
     // suppression de l'attribut qui empêche le clic
     for (let item of cards) {
@@ -230,10 +233,10 @@ function lightbox() {
     // let showMod = document.getElementById("modBox");
     cards.forEach((link, index) => link.addEventListener('click', e => {
         e.preventDefault();
-        console.log("Clic sur la carte!!!");
-        console.log(index);
-        console.log("Index", index);
-        console.log("Index objjjjjj", objectsMedias[index]);
+        // console.log("Clic sur la carte!!!");
+        // console.log(index);
+        // console.log("Index", index);
+        // console.log("Index objjjjjj", objectsMedias[index]);
         displayImgLightbox(objectsMedias[index], showMod, index);
     }))
 }
@@ -323,7 +326,7 @@ function orchestrator() {
     try {
         displayTemplates();
         sorting();
-        lightbox();
+        // lightbox();
         // likes();
     } catch (erreur) {
         console.log(erreur);

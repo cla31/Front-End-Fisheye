@@ -1,0 +1,332 @@
+* {
+  box-sizing: border-box;
+}
+
+.body {
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  width: 100%;
+}
+.header h1 {
+  color: #901C1C;
+}
+.header__logo {
+  height: 50px;
+}
+@media screen and (max-width: 768px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main #photographers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 100px;
+  width: 100%;
+}
+@media screen and (max-width: 992px) {
+  .main #photographers {
+    grid-template-columns: 1fr;
+  }
+}
+
+.photographer a {
+  text-decoration: none;
+  color: black;
+}
+.photographer p {
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.photographer .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.photographer .card .container-img {
+  overflow: hidden;
+  position: relative;
+  width: 290px;
+  height: 290px;
+}
+.photographer .card .container-img__img {
+  width: 100%;
+  position: absolute;
+  width: 290px;
+  height: 290px;
+  object-fit: cover;
+  top: 8px;
+  clip-path: circle(46%);
+}
+.photographer .card__photographer-name {
+  text-align: center;
+}
+
+.photograph-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #fafafa;
+}
+.photograph-header__title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 5%;
+}
+.photograph-header__title p {
+  margin: 0;
+}
+.photograph-header__button {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.photograph-header__button .contact_button {
+  min-width: 170px;
+  background-color: #901c1c;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.25rem;
+  padding: 10px 10px;
+}
+@media screen and (max-width: 992px) {
+  .photograph-header__button .contact_button {
+    position: fixed;
+    bottom: 220px;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    z-index: 10;
+  }
+}
+.photograph-header__container-img {
+  overflow: hidden;
+  position: relative;
+  width: 290px;
+  height: 290px;
+}
+.photograph-header__container-img__img {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  top: 20px;
+  left: 20px;
+  clip-path: circle(46%);
+}
+@media screen and (max-width: 992px) {
+  .photograph-header__container-img__img {
+    width: 190px;
+    height: 190px;
+  }
+}
+
+.sorting {
+  display: flex;
+}
+@media screen and (max-width: 992px) {
+  .sorting {
+    flex-direction: column;
+  }
+}
+.sorting__p {
+  width: 8%;
+}
+@media screen and (max-width: 992px) {
+  .sorting__p {
+    width: 100%;
+  }
+}
+.sorting__dropdown {
+  position: relative;
+  display: inline-block;
+}
+.sorting__dropdown__sort-button {
+  min-width: 170px;
+  background-color: #901c1c;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.25rem;
+  padding: 10px 10px;
+}
+.sorting__dropdown__sort-button .fa-solid {
+  margin-left: 15px;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gallery #medias {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 100px;
+  width: 100%;
+}
+@media screen and (max-width: 992px) {
+  .gallery #medias {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-media .container-photo {
+  overflow: hidden;
+  position: relative;
+  width: 290px;
+  height: 290px;
+}
+.card-media .container-photo__photo {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.card-media .container-video {
+  overflow: hidden;
+  position: relative;
+  width: 290px;
+  height: 290px;
+}
+.card-media .container-video__video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.card-media .items-media {
+  display: flex;
+  justify-content: space-between;
+  width: 290px;
+}
+.card-media .items-media__note {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.card-media .items-media__note p {
+  margin-right: 5px;
+}
+.card-media .items-media__note .fa-regular {
+  margin-top: 18px;
+}
+.card-media .items-media__note .fa-solid {
+  margin-top: 18px;
+}
+
+.card-infos {
+  position: fixed;
+  display: flex;
+  gap: 65px;
+  bottom: 0;
+  right: 35px;
+  background-color: #db8876;
+  border-radius: 5px 5px 0 0;
+  padding: 20px 30px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  height: 60px;
+}
+.card-infos p {
+  margin: 0px;
+}
+
+/* .lightbox {
+    color: red;
+} */
+#modBox {
+  display: flex;
+  justify-content: center;
+  max-width: 600px;
+  padding: 10px 50px 0 50px;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: white;
+}
+
+.dialog {
+  display: flex;
+  border: pink 2px solid;
+  align-items: center;
+  padding: 0 20px 0 20px;
+  position: relative;
+}
+
+.container-media {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 10px 0 10px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+.close {
+  width: 40px;
+  height: 40px;
+  background: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.36 19.78L12 13.41L5.63997 19.78L4.21997 18.36L10.59 12L4.21997 5.63997L5.63997 4.21997L12 10.59L18.36 4.22997L19.77 5.63997L13.41 12L19.77 18.36L18.36 19.78Z" fill="black"/> </svg>') center center/100% 100% no-repeat transparent;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  z-index: 12;
+  position: absolute;
+  cursor: pointer;
+}
+
+.previous-button {
+  transform: rotate(180deg);
+}
+
+.previous-button,
+.next-button {
+  width: 100px;
+  height: 90px;
+  background: url('data:image/svg+xml;utf8,<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 12L5 7L0 2L1 0L8 7L1 14L0 12Z" fill="black"/> </svg>') center center/100% 100% no-repeat transparent;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */
