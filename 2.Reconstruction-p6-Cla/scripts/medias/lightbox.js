@@ -3,6 +3,7 @@
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 const showMod = document.getElementById("modBox");
+let index = 0;
 
 function lightbox() {
     const displays = fullMedias.map(elements => { return elements.display() });
@@ -17,18 +18,17 @@ function lightbox() {
     }
     cards.forEach((link, index) => link.addEventListener('click', e => {
         e.preventDefault();
-        displayImgLightbox(fullMedias[index], index);
+        displayImgLightbox(fullMedias[index]);
     }))
 }
 
 function urlExtension(url) {
-    const urlToSplit = url;
     const urlSplitSlash = url.split('/').pop();
     const urlSplitPoint = urlSplitSlash.split('.').pop();
     return urlSplitPoint;
 }
 
-function displayImgLightbox(element, index) {
+function displayImgLightbox(element) {
     elmt = urlExtension(element.path());
     if (elmt == "jpg") {
         showMod.innerHTML = ` 
@@ -59,7 +59,7 @@ function displayImgLightbox(element, index) {
        </div>                
        `;
     }
-    playLightbox(index);
+    playLightbox();
     close("close-wind");
     showMod.style.display = "block";
 }
@@ -71,13 +71,13 @@ function close(selector1) {
 }
 
 
-function playLightbox(index) {
+function playLightbox() {
     document.getElementById("next").addEventListener("click", function() {
         index++;
         if (index === fullMedias.length) {
             index = 0;
         }
-        displayImgLightbox(fullMedias[index], index);
+        displayImgLightbox(fullMedias[index]);
     });
     // Ecoute du "click" sur les Contrôles "média suivant" et ""media précédent"
     document.getElementById("previous").addEventListener("click", function() {
@@ -86,7 +86,7 @@ function playLightbox(index) {
         if (index === -1) {
             index = fullMedias.length - 1;
         }
-        displayImgLightbox(fullMedias[index], index);
+        displayImgLightbox(fullMedias[index]);
     });
 
 }
