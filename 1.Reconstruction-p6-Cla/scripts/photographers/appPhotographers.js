@@ -1,6 +1,6 @@
  function displayPhotographers(id, photographers) {
      try {
-         document.getElementById(id).innerHTML = ` ${photographers.map( photograph =>  {return photograph.templateIndexHTML()
+         document.getElementById(id).innerHTML = ` ${photographers.map( photograph =>  {return photograph.displayPhotograph()
         }).join('')}`;
      } catch (erreur) {
          console.log(erreur);
@@ -24,12 +24,12 @@
          const jsonDatas = await getDatas(pathJson);
          const dataPhotos = jsonDatas.photographers;
          // console.log("Les datas des photographes: ", dataPhotos);
-         const objectPhotographers = Objects(dataPhotos, Photographer);
+         const photographers = Objects(dataPhotos, Photographer);
          // console.log("Les objets photographes: ", objectPhotographers);
-         displayPhotographers("photographers", objectPhotographers);
+         displayPhotographers("photographers", photographers);
 
      } catch (erreur) {
          console.log(erreur);
      }
  }
- orchestrator(pathJsonProject);
+ orchestrator();

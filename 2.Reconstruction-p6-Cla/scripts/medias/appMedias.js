@@ -6,6 +6,7 @@ let fullMedias = [];
 
 
 
+
 const datas_with_id = async() => {
     try {
         const jsonDatas = await getDatas(pathJsonProject);
@@ -43,7 +44,7 @@ function header(id, datas) {
     try {
         photograph = new Photographer(datas);
         // console.log("Les photographes", photograph)
-        document.getElementById(id).innerHTML = ` ${photograph.templateHeaderPhotographers()}`;
+        document.getElementById(id).innerHTML = ` ${photograph.displayHeader()}`;
     } catch (erreur) {
         console.log(erreur);
     }
@@ -60,11 +61,35 @@ function displayCards() {
     }
 }
 
+function allLikesJson() {
+    let compt = 0;
+    for (let i in fullMedias) {
+        compt = compt + fullMedias[i].likes;
+    }
+    return compt;
+}
+
 function displayMedias() {
-    // console.log("Test ds display Medias", fullMedias);
-    //Le tableau des templates des médias
-    const cards = displayCards();
-    document.getElementById("medias").innerHTML = `${cards.join('')}`;
+    try { // console.log("Test ds display Medias", fullMedias);
+        //Le tableau des templates des médias
+        const cards = displayCards();
+        //Affichage du tableau de templates
+        document.getElementById("medias").innerHTML = `${cards.join('')}`;
+        //Pour gérer les likes*************************
+        var elementsI = document.querySelectorAll('i');
+        const elements = Array.from(elementsI);
+        let totalLikesJson = allLikesJson();
+        document.getElementById("likes").innerHTML = `${totalLikesJson}`;
+        elements.forEach((link, index) => link.addEventListener('click', e => {
+            // console.log("full media index", fullMedias[index]);
+            fullMedias[index].inc();
+            displayMedias();
+            // console.log("les likes du json", totalLikesJson);
+            // document.getElementById("likes").innerHTML = `${totalLikesJson}`;
+        }));
+    } catch (erreur) {
+        console.log(erreur);
+    }
 
 }
 datas_with_id();

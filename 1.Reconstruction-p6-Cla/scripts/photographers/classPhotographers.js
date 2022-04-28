@@ -9,7 +9,7 @@ class Photographer {
         this.country = datas.country;
     }
 
-    templateIndexHTML() {
+    displayPhotograph() {
         return `
         <div class="photographer">
         <a href="./photographer.html?${this.id}">

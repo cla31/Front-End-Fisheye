@@ -19,7 +19,7 @@ function Objects(elements, Instance) {
 
 }
 
-async function orchestratorIndex(pathJson) {
+async function orchestrator(pathJson) {
     try {
         const jsonDatas = await getDatas(pathJson);
         const dataPhotos = jsonDatas.photographers;
@@ -32,4 +32,4 @@ async function orchestratorIndex(pathJson) {
         console.log(erreur);
     }
 }
-orchestratorIndex(pathJsonProject);
+orchestrator(pathJsonProject);
