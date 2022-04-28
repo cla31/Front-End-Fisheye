@@ -9,13 +9,3 @@ class MediasFactory {
         }
     }
 }
-
-// class MediasFactory {
-//     constructor(media) {
-//         if (media === "video") {
-//             return new VideoMedia(media);
-//         } else {
-//             return new ImageMedia(media);
-//         }
-//     }
-// }

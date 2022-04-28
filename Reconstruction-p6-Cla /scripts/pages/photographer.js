@@ -10,15 +10,11 @@ let fullMedias = [];
 const init = async() => {
     try {
         const jsonDatas = await getDatas(pathJsonProject);
-        // console.log("jsonDatas", jsonDatas);
         const photogapher = jsonDatas.photographers.find(element => element.id == id_number);
         const medias = jsonDatas.media.filter(element => element.photographerId == id_number);
-        // console.log([photogapher, medias]);
         //Affichage du photographe dans le header
         header("photograph-header", photogapher);
         //Les médias
-        // console.log("Les médias", medias);
-        // const test = medias.map(element => { return console.log("Les éléments", element.image) });
         fullMedias = medias.map((element) => {
             if (element.image) {
                 // return console.log("Les éléments", element.image);
@@ -75,7 +71,7 @@ function allLikesJson() {
 }
 
 function displayMedias() {
-    try { // console.log("Test ds display Medias", fullMedias);
+    try {
         //Le tableau des templates des médias
         const cards = displayCards();
         //Affichage du tableau de templates
@@ -90,8 +86,6 @@ function displayMedias() {
             // console.log("full media index", fullMedias[index]);
             fullMedias[index].inc();
             displayMedias();
-            // console.log("les likes du json", totalLikesJson);
-            // document.getElementById("likes").innerHTML = `${totalLikesJson}`;
         }));
     } catch (erreur) {
         console.log(erreur);
