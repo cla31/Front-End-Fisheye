@@ -6,9 +6,7 @@ const showMod = document.getElementById("modBox");
 
 function lightbox() {
     const displays = fullMedias.map(elements => { return elements.display() });
-    // console.log("Tableau d'images", displays);
     const linksCards = document.getElementsByClassName("lien-media");
-    // console.log("Tableau de links", linksCards);
     //selection de l'attribut video
     var media = document.querySelector('video');
     // console.log("voir media", media);
@@ -17,13 +15,8 @@ function lightbox() {
     for (let item of cards) {
         media.removeAttribute('controls');
     }
-    // let showMod = document.getElementById("modBox");
     cards.forEach((link, index) => link.addEventListener('click', e => {
         e.preventDefault();
-        // console.log("Clic sur la carte!!!");
-        // console.log(index);
-        // console.log("Index", index);
-        // console.log("Index objjjjjj", objectsMedias[index]);
         displayImgLightbox(fullMedias[index], index);
     }))
 }
@@ -31,15 +24,11 @@ function lightbox() {
 function urlExtension(url) {
     const urlToSplit = url;
     const urlSplitSlash = url.split('/').pop();
-    // console.log("url", urlSplitSlash);
     const urlSplitPoint = urlSplitSlash.split('.').pop();
-    // console.log("url", urlSplitPoint);
     return urlSplitPoint;
 }
 
 function displayImgLightbox(element, index) {
-    // console.log("INDEX DS LE DISPLAY", index)
-    // console.log("Le chemin de l'objet", element.path())
     elmt = urlExtension(element.path());
     if (elmt == "jpg") {
         showMod.innerHTML = ` 
@@ -79,33 +68,19 @@ function close(selector1) {
     document.getElementById(selector1).addEventListener("click", function() {
         showMod.style.display = "none";
     });
-
 }
 
 
 function playLightbox(index) {
-    // displayImgLightbox(objectsMedias[index], selector);
-    // displaySlides(index);
     document.getElementById("next").addEventListener("click", function() {
-        // displaySlides((objectsMedias[(index += 1)])); // clic sur précédent : on incrémente (image suivante)
-        // console.log("Index ds le Next!!!!", index);
-        // console.log("objet média avt increm!!!!", objectsMedias[index]);
         index++;
-        // console.log("Index après le clic Next!!!!", index);
-        // console.log("objet média après increm!!!!", objectsMedias[index]);
-        // SI le numéro d'images dans le tableau est supérieur au nombre d'images
         if (index === fullMedias.length) {
             index = 0;
-
         }
         displayImgLightbox(fullMedias[index], index);
-
     });
     // Ecoute du "click" sur les Contrôles "média suivant" et ""media précédent"
     document.getElementById("previous").addEventListener("click", function() {
-        // displaySlides((objectsMedias[(index + -1)])); // clic sur précédent : on décrémente (image précédente)
-        console.log("Index ds le Previous!!!!", index);
-        // displayImgLightbox(objectsMedias[(index - 1)], showMod);
         index--;
         console.log("taille du tableau", fullMedias.length)
         if (index === -1) {
