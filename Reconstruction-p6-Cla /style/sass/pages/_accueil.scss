@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+}
+
+.body {
+    font-family: "DM Sans", sans-serif;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    // border: black solid 2px;
+    width: 100%;
+    h1 {
+        color: #901C1C;
+        // border: black solid 2px;
+    }
+    &__logo {
+        height: 50px;
+        // border: black solid 2px;
+    }
+    @media screen and (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+//index.html
+.main {
+    // background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // background-color: green solid 10px;
+    #photographers {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 100px;
+        // border: #901C1C solid;
+        width: 100%;
+        @media screen and (max-width: 992px) {
+            grid-template-columns: 1fr;
+            // border: green solid;
+        }
+    }
+}
+
+.photographer {
+    // background-color: palevioletred;
+    // border: red 2px solid;
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    p {
+        text-align: center;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .card {
+        // border: black 2px solid;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .container-img {
+            overflow: hidden;
+            position: relative;
+            // border: blueviolet 2px solid;
+            width: 290px;
+            height: 290px;
+            &__img {
+                width: 100%;
+                position: absolute;
+                width: 290px;
+                height: 290px;
+                object-fit: cover;
+                top: 8px;
+                clip-path: circle(46%);
+            }
+        }
+        &__photographer-name {
+            text-align: center;
+        }
+    }
+}
