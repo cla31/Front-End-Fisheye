@@ -6,7 +6,7 @@ const showMod = document.getElementById("modBox");
 let index = 0;
 
 function lightbox() {
-    const displays = fullMedias.map(elements => { return elements.display() });
+    // const displays = fullMedias.map(elements => { return elements.display() });
     const linksCards = document.getElementsByClassName("lien-media");
     //selection de l'attribut video
     var media = document.querySelector('video');

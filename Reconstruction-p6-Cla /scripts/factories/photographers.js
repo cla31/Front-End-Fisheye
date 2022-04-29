@@ -35,10 +35,14 @@ class Photographer {
                 <p>${this.tagline}</p>
             </div>
             <div class="photograph-header__button">
-                <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+                <button class="contact_button" id="contact">Contactez-moi</button>
+            </div>
+            <div id="form-contact">
             </div>
             <div class="photograph-header__container-img">
                 <img class="photograph-header__container-img__img" src="assets/photographers/Photographers ID Photos/${this.portrait}" />
             </div>`
     }
 }
+
+// onclick="displayModal()

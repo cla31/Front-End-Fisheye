@@ -3,6 +3,8 @@ const queryString_url_id = window.location.search;
 const id_number = queryString_url_id.slice(1);
 // console.log("Mon id", id_number);
 let fullMedias = [];
+//selection du formulaire de contact ds le DOM (cf class Photographer)
+const modale = document.getElementById("form-contact");
 
 
 
@@ -13,7 +15,8 @@ const init = async() => {
         const photogapher = jsonDatas.photographers.find(element => element.id == id_number);
         const medias = jsonDatas.media.filter(element => element.photographerId == id_number);
         //Affichage du photographe dans le header
-        header("photograph-header", photogapher);
+        photographerName = photogapher.name;
+        header("photograph-header", photogapher, photographerName);
         //Les médias
         fullMedias = medias.map((element) => {
             if (element.image) {
@@ -25,7 +28,8 @@ const init = async() => {
                 return new MediasFactory(element, "video");
             }
         });
-        console.log("Test test test", fullMedias);
+        // console.log("Test test test", fullMedias);
+        // console.log("LE PHOTOGRAPHER", photogapher.name);
         displayMedias();
         sorting();
 
@@ -37,11 +41,20 @@ const init = async() => {
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //Pour l'affichage du header
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function header(id, datas) {
+function header(id, datas, photogapherName) {
     try {
         photograph = new Photographer(datas);
         // console.log("Les photographes", photograph)
         document.getElementById(id).innerHTML = ` ${photograph.displayHeader()}`;
+        //Formulaire de contact
+        const form = document.getElementById("contact");
+        console.log("élément du form");
+        form.addEventListener('click', e => {
+            e.preventDefault();
+            console.log("Cliqué+++++++++++++++");
+            contact(photogapherName);
+        });
+
     } catch (erreur) {
         console.log(erreur);
     }
