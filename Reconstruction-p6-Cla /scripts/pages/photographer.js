@@ -3,8 +3,8 @@ const queryString_url_id = window.location.search;
 const id_number = queryString_url_id.slice(1);
 // console.log("Mon id", id_number);
 let fullMedias = [];
-//selection du formulaire de contact ds le DOM (cf class Photographer)
-const modale = document.getElementById("form-contact");
+
+
 
 
 
@@ -47,14 +47,7 @@ function header(id, datas, photogapherName) {
         // console.log("Les photographes", photograph)
         document.getElementById(id).innerHTML = ` ${photograph.displayHeader()}`;
         //Formulaire de contact
-        const form = document.getElementById("contact");
-        console.log("élément du form");
-        form.addEventListener('click', e => {
-            e.preventDefault();
-            console.log("Cliqué+++++++++++++++");
-            contact(photogapherName);
-        });
-
+        contact(photogapherName);
     } catch (erreur) {
         console.log(erreur);
     }
