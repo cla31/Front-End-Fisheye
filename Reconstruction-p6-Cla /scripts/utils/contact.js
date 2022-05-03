@@ -36,9 +36,7 @@ function contact(photogapherName) {
     }
     //soumission du formulaire
     function submitForm() {
-        //Selection ds le dom du formulaire
         const onlyForm = document.querySelector("#form");
-        // console.log("Juste le formulaire", onlyForm);
         //fermeture du formulaire
         function closeForm() {
             document.getElementById("close-form").addEventListener("click", function() {
@@ -88,8 +86,8 @@ function contact(photogapherName) {
             }
         };
         //check texte (à faire...)
-        //listener sur prénom
-        //Récupération de l'id first dans le DOM
+        //**************************************** */
+        //listener sur prénom:
         let firstInput = document.getElementById("first");
 
         //Ajout du listener sur l'élément et contrôle:
@@ -97,7 +95,6 @@ function contact(photogapherName) {
             firstLastChecker(e.target.value, "first");
         });
         //listener sur nom
-        //Récupération de l'id last dans le DOM
         let lastInput = document.getElementById("last");
 
         //Ajout du listener sur l'élément et contrôle:
@@ -127,12 +124,10 @@ function contact(photogapherName) {
             lastValue = lastInput.value;
             emailValue = emailInput.value;
             textValue = textInput.value;
-            // console.log("Teste envoi du formulaire");
             // Envoi des valeurs de chaque champ (input) vers la fonction de test et validation
             firstLastChecker(firstValue, "first");
             firstLastChecker(lastValue, "last");
             emailChecker(emailValue, "email");
-            //if= si c true envoi du formulaire, reset, vidage des variables.
             if (firstLastChecker(firstValue, "first") &&
                 firstLastChecker(lastValue, "last") &&
                 emailChecker(emailValue, "email")

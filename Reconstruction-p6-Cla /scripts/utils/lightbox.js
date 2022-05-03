@@ -6,7 +6,6 @@ const showMod = document.getElementById("modBox");
 let index = 0;
 
 function lightbox() {
-    // const displays = fullMedias.map(elements => { return elements.display() });
     const linksCards = document.getElementsByClassName("lien-media");
     //selection de l'attribut video
     var media = document.querySelector('video');
@@ -82,7 +81,7 @@ function playLightbox() {
     // Ecoute du "click" sur les Contrôles "média suivant" et ""media précédent"
     document.getElementById("previous").addEventListener("click", function() {
         index--;
-        console.log("taille du tableau", fullMedias.length)
+        // console.log("taille du tableau", fullMedias.length)
         if (index === -1) {
             index = fullMedias.length - 1;
         }

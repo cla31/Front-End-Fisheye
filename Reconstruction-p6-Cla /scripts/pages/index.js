@@ -1,6 +1,6 @@
 function displayPhotographers(id, photographers) {
     try {
-        document.getElementById(id).innerHTML = ` ${photographers.map( photograph =>  {return photograph.templateIndexHTML()
+        document.getElementById(id).innerHTML = ` ${photographers.map( photograph =>  {return photograph.displayPhotographer()
         }).join('')}`;
     } catch (erreur) {
         console.log(erreur);

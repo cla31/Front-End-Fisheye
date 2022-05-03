@@ -52,7 +52,7 @@ function sorting() {
         sort.addEventListener('click', function() {
             // console.log("C'est cliqué!");
             var text = sort.options[sort.selectedIndex].text;
-            console.log(text);
+            // console.log(text);
             switch (text) {
                 case 'Popularité':
                     // console.log("T'as cliqué sur Popularité!!");
