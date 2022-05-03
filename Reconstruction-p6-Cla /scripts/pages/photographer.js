@@ -18,14 +18,24 @@ const init = async() => {
         photographerName = photogapher.name;
         header("photograph-header", photogapher, photographerName);
         //Les médias
-        fullMedias = medias.map((element) => {
-            if (element.image) {
-                // return console.log("Les éléments", element.image);
-                return new MediasFactory(element, "image");
-
+        //version 1
+        // fullMedias = medias.map((element) => {
+        //     const media = new MediasFactory(element);
+        //     return media;
+        // });
+        //version 2
+        // medias.forEach((element) => {
+        //     const media = new MediasFactory(element);
+        //     // console.log("media sur foreach", media)
+        //     fullMedias.push(media);
+        // });
+        medias.forEach((element) => {
+            const media = new MediasFactory(element);
+            if (media != {}) {
+                // console.log("L'objet n'est pas vide");
+                fullMedias.push(media);
             } else {
-                // return console.log("Les éléments", element.video);
-                return new MediasFactory(element, "video");
+                console.log("L'objet est vide");
             }
         });
         // console.log("Test test test", fullMedias);

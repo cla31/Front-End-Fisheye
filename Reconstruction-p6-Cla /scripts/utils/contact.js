@@ -11,23 +11,27 @@ function contact(photogapherName) {
             <div class="first-formData">
                 <label for="prenom">Prénom</label><br>
                 <input type="text" name="prenom" id="first"/>
+                <br>
                 <span></span>
             </div>       
             <div class="last-formData">
                 <label for="nom">Nom</label><br>
                 <input type="text" name="nom" id="last"/>
+                <br>
                 <span></span>
             </div>       
             <div class="email-formData">
                 <label for="email">Email</label><br>
                 <input type="email" name="email" id="email"/>
+                <br>
                 <span></span>
             </div>        
-            <p>
+            <div class="textarea-formData">
                 <label for="message">Message</label><br />
-                <textarea name="ameliorer" id="improve"></textarea>
+                <textarea name="textarea" id="textarea"></textarea>
+                <br>
                 <span></span>
-            </p>
+            </div> 
             <input type="submit" value="Envoyer">
             </form>
             <div class="close-contact" id="close-form">Close</div>    
@@ -85,7 +89,21 @@ function contact(photogapherName) {
                 return true;
             }
         };
-        //check texte (à faire...)
+        //check texte
+        const textareaChecker = (value, tag) => {
+            if (value == "") {
+                errorDisplay(tag, "Le champ doit être rempli!");
+            } else if (value.length > 0 && (value.length < 7 || value.length > 500)) {
+                errorDisplay(tag, "Veuillez entrer entre 5 et 500 caractères ");
+
+            } else if (!value.match(/^[a-zA-Z0-9_.-]*$/)) {
+                errorDisplay(tag, "Le message n'est pas valide");
+
+            } else {
+                errorDisplay(tag, "", true);
+                return true;
+            }
+        };
         //**************************************** */
         //listener sur prénom:
         let firstInput = document.getElementById("first");
@@ -108,8 +126,11 @@ function contact(photogapherName) {
         emailInput.addEventListener('change', (e) => {
             emailChecker(e.target.value, "email");
         });
-        //listener sur texte (à faire)
-        let textInput = document.getElementById("improve");
+        //listener sur texte
+        let textInput = document.getElementById("textarea");
+        textInput.addEventListener('change', (e) => {
+            textareaChecker(e.target.value, "textarea");
+        });
 
         //Ajout du listener sur l'élément et contrôle:
         // textInput.addEventListener('change', (e) => {
@@ -130,7 +151,8 @@ function contact(photogapherName) {
             emailChecker(emailValue, "email");
             if (firstLastChecker(firstValue, "first") &&
                 firstLastChecker(lastValue, "last") &&
-                emailChecker(emailValue, "email")
+                emailChecker(emailValue, "email") &&
+                textareaChecker(textValue, "textarea")
             ) {
                 console.log("Prénom: ", firstValue);
                 console.log("Nom: ", lastValue);
