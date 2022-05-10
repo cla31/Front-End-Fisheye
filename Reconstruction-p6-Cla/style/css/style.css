@@ -294,87 +294,230 @@
   margin: 0px;
 }
 
-#modBox {
-  display: flex;
-  justify-content: center;
-  max-width: 600px;
-  padding: 10px 50px 0 50px;
+#lightboxModal {
+  box-sizing: border-box;
+  display: none;
   position: fixed;
-  z-index: 100;
-  top: 0;
   left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
   background-color: white;
+  padding: 30px 30px;
+  margin: 0;
 }
 
-.dialog {
+#lightboxModal .lightboxContainer {
   display: flex;
-  border: pink 2px solid;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  padding: 0 20px 0 20px;
-  position: relative;
+  height: 100%;
 }
 
-.container-media {
+#lightboxModal .angleContainer {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 0 10px 0 10px;
+  height: 100%;
+  margin: 0px;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+#lightboxModal .prev,
+#lightboxModal .next {
+  cursor: pointer;
+  color: #901c1c;
+  font-size: 4em;
+  margin: auto 20px;
 }
 
-video {
-  max-width: 100%;
-  height: auto;
+#lightboxModal .prev:hover,
+#lightboxModal .next:hover,
+#lightboxModal .prev:focus,
+#lightboxModal .next:focus {
+  color: #d3573c;
+  outline: none;
 }
 
-.close {
-  width: 40px;
-  height: 40px;
-  background: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.36 19.78L12 13.41L5.63997 19.78L4.21997 18.36L10.59 12L4.21997 5.63997L5.63997 4.21997L12 10.59L18.36 4.22997L19.77 5.63997L13.41 12L19.77 18.36L18.36 19.78Z" fill="black"/> </svg>') center center/100% 100% no-repeat transparent;
+#lightboxModal .crossCloseLightbox {
   position: fixed;
-  top: 0px;
-  right: 0px;
-  z-index: 12;
+  top: 30px;
+  right: 54px;
+}
+
+#lightboxModal .crossCloseLightbox:focus {
+  outline: none;
+}
+
+#lightboxModal .svgCross:hover {
   position: absolute;
   cursor: pointer;
+  fill: #d3573c;
 }
 
-.previous-button {
-  transform: rotate(180deg);
+#lightboxModal .crossCloseLightbox:focus .svgCross {
+  fill: #d3573c;
+  outline: none;
 }
 
-.previous-button,
-.next-button {
-  width: 100px;
-  height: 90px;
-  background: url('data:image/svg+xml;utf8,<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 12L5 7L0 2L1 0L8 7L1 14L0 12Z" fill="black"/> </svg>') center center/100% 100% no-repeat transparent;
-  cursor: pointer;
+#lightboxModal .lightboxMediaContainer {
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 88%;
 }
 
-#form-contact {
+#lightboxModal .viewContainer {
+  width: 100%;
+  height: 95%;
+}
+
+#lightboxModal .media {
+  margin: 0px auto;
+  object-fit: contain;
+  height: 100%;
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+#lightboxModal .media:focus {
+  outline: #d3573c solid 2px;
+}
+
+#lightboxModal .legendContainer {
+  height: 5%;
+}
+
+#lightboxModal .legend {
+  margin: 12px 0px 0px 0px;
+  color: #901c1c;
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
+#lightboxModal .legend:focus {
+  color: #d3573c;
+  outline: none;
+}
+
+element.style {
+  display: block;
+}
+
+#contact_modal {
   display: none;
-  background-color: aqua;
+  position: fixed;
+  z-index: 25;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
-.close-contact {
-  background: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.36 19.78L12 13.41L5.63997 19.78L4.21997 18.36L10.59 12L4.21997 5.63997L5.63997 4.21997L12 10.59L18.36 4.22997L19.77 5.63997L13.41 12L19.77 18.36L18.36 19.78Z" fill="black"/> </svg>') center center/100% 100% no-repeat transparent;
+aside {
+  display: block;
+}
+
+#contact_modal .contentModal {
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 1%;
+  left: 25%;
+  padding: 35px 35px 35px;
+  margin: 0 auto;
+}
+
+#contact_modal #headerModal {
+  margin: 0 0 20px 0;
+  padding: 0;
+}
+
+#contact_modal form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+form {
+  display: block;
+  margin-top: 0em;
+}
+
+#contact_modal form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
+}
+
+#contact_modal .formData {
+  margin: 0px 0px 5px;
+  padding: 0px;
+}
+
+#contact_modal label {
+  color: #312e2e;
+  font-size: 2.25em;
+  font-weight: normal;
+  line-height: 1.5em;
+  margin: 0px;
+  padding: 0px;
+}
+
+label {
+  cursor: default;
+}
+
+#contact_modal input {
+  height: 68px;
+}
+
+#contact_modal input,
+#contact_modal textarea {
+  padding: 0px 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+}
+
+#contact_modal input,
+#contact_modal textarea {
+  color: black;
+  font-size: 1.8em;
+  line-height: 1.5em;
+  margin: 0px;
+  padding: 0px;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+#contact_modal .crossCloseModal {
   cursor: pointer;
-}
-
-.error input {
-  color: red;
-  border: 3px solid red;
-}
-
-.error span {
-  visibility: visible;
-  opacity: 1;
-  color: red;
-  font-size: 12px;
+  position: absolute;
+  top: 34px;
+  right: 35px;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -108,15 +108,15 @@ function sorting() {
             var text = e.target.id;
             switch (text) {
                 case 'filter_pop':
-                    console.log("T'as cliqué sur Popularité!!");
+                    // console.log("T'as cliqué sur Popularité!!");
                     sortByLikes();
                     break;
                 case 'filter_date':
-                    console.log("T'as cliqué sur Date!!");
+                    // console.log("T'as cliqué sur Date!!");
                     SortByDates();
                     break;
                 case 'filter_titre':
-                    console.log("T'as cliqué sur Titre!!");
+                    // console.log("T'as cliqué sur Titre!!");
                     SortByTitles();
                     break;
                 default:

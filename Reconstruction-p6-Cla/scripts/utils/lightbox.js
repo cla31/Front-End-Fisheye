@@ -2,7 +2,8 @@
 //  LIGHTBOX
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-const showMod = document.getElementById("modBox");
+// const showMod = document.getElementById("modBox");
+const showMod = document.getElementById("lightboxModal");
 let index = 0;
 
 function lightbox() {
@@ -29,33 +30,78 @@ function urlExtension(url) {
 
 function displayImgLightbox(element) {
     elmt = urlExtension(element.path());
+    // if (elmt == "jpg") {
+    //     showMod.innerHTML = ` 
+    //     <div class="dialog">
+    //         <div class="previous-button" id="previous"></div>
+    //             <div class="container-media">
+    //                 <img class="container-photo__photo" src="assets/photographers/${element.photographerId}/${element.image}" />
+    //                 <div class="description">
+    //                 ${element.title}
+    //               </div>
+    //            </div>
+    //         <div class="next-button" id="next"></div>
+    //         <div class="close" id="close-wind"></div>
+    //    </div>                
+    //    `;
+    // } else {
+    //     showMod.innerHTML = ` 
+    //     <div class="dialog">
+    //         <div class="previous-button" id="previous"></div>
+    //             <div class="container-media">
+    //                 <video controls width="250"><source src="assets/photographers/${element.photographerId}/${element.video}"type="video/mp4">Sorry, your browser doesn't support embedded videos.</video>
+    //                 <div class="description">
+    //                 ${element.title}
+    //               </div>
+    //            </div>
+    //         <div class="next-button" id="next"></div>
+    //         <div class="close" id="close-wind"></div>
+    //    </div>                
+    //    `;
+    // }
     if (elmt == "jpg") {
         showMod.innerHTML = ` 
-        <div class="dialog">
-            <div class="previous-button" id="previous"></div>
-                <div class="container-media">
-                    <img class="container-photo__photo" src="assets/photographers/${element.photographerId}/${element.image}" />
-                    <div class="description">
-                    ${element.title}
-                  </div>
-               </div>
-            <div class="next-button" id="next"></div>
-            <div class="close" id="close-wind"></div>
-       </div>                
+        <div class="lightboxContainer">
+        <div class="angleContainer">
+            <em class="fas fa-angle-left prev" id="previous" tabindex="0" aria-label="image précédente"></em>
+        </div>
+        <div class="lightboxMediaContainer">
+            <div class="viewContainer"><img class="media" src="assets/photographers/${element.photographerId}/${element.image}" id="${element.photographerId}" alt="${element.title}" aria-label="${element.title}" tabindex="0"></div>
+            <div class="legendContainer">
+                <h1 class="legend" tabindex="0">${element.title}</h1>
+            </div>
+        </div>
+        <div class="angleContainer">
+            <em class="fas fa-angle-right next"  id="next" tabindex="0" aria-label="image suivante"></em>
+        </div>
+    </div>
+    <div class="crossCloseLightbox" id="close-wind" tabindex="0" aria-label="fermeture de la lightbox">
+        <svg width="42" height="42" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+    <path class="svgCross" d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z" fill="#901C1C"></path>
+  </svg>
+    </div>           
        `;
     } else {
         showMod.innerHTML = ` 
-        <div class="dialog">
-            <div class="previous-button" id="previous"></div>
-                <div class="container-media">
-                    <video controls width="250"><source src="assets/photographers/${element.photographerId}/${element.video}"type="video/mp4">Sorry, your browser doesn't support embedded videos.</video>
-                    <div class="description">
-                    ${element.title}
-                  </div>
-               </div>
-            <div class="next-button" id="next"></div>
-            <div class="close" id="close-wind"></div>
-       </div>                
+        <div class="lightboxContainer">
+        <div class="angleContainer">
+            <em class="fas fa-angle-left prev" id="previous" tabindex="0" aria-label="image précédente"></em>
+        </div>
+        <div class="lightboxMediaContainer">
+            <div class="viewContainer"><video class="media movie" src="assets/photographers/${element.photographerId}/${element.video}" id="${element.photographerId}" poster="" alt="${element.title}" aria-label="${element.title}" tabindex="0" controls=""></video></div>
+            <div class="legendContainer">
+                <h1 class="legend" tabindex="0">${element.title}</h1>
+            </div>
+        </div>
+        <div class="angleContainer">
+            <em class="fas fa-angle-right next"  id="next" tabindex="0" aria-label="image suivante"></em>
+        </div>
+    </div>
+    <div class="crossCloseLightbox" id="close-wind" tabindex="0" aria-label="fermeture de la lightbox">
+        <svg width="42" height="42" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+        <path class="svgCross" d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z" fill="#901C1C"></path>
+      </svg>
+    </div>         
        `;
     }
     playLightbox();

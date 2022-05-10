@@ -16,7 +16,7 @@ const init = async() => {
         const medias = jsonDatas.media.filter(element => element.photographerId == id_number);
         //Affichage du photographe dans le header
         photographerName = photogapher.name;
-        header("photograph-header", photogapher, photographerName);
+        photographDatas("photograph-header", "price", photogapher, photographerName);
         //Les médias
         //version 1
         // fullMedias = medias.map((element) => {
@@ -51,11 +51,14 @@ const init = async() => {
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //Pour l'affichage du header
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function header(id, datas, photogapherName) {
+function photographDatas(idHeader, idPrice, datas, photogapherName) {
     try {
         photograph = new Photographer(datas);
         // console.log("Les photographes", photograph)
-        document.getElementById(id).innerHTML = ` ${photograph.displayHeader()}`;
+        document.getElementById(idHeader).innerHTML = ` ${photograph.displayHeader()}`;
+        //Pour le prix
+        document.getElementById(idPrice).innerHTML = ` ${photograph.displayPrice()}`;
+
         //Formulaire de contact
         contact(photogapherName);
     } catch (erreur) {

@@ -43,6 +43,9 @@ class Photographer {
                 <img class="photograph-header__container-img__img" src="assets/photographers/Photographers ID Photos/${this.portrait}" />
             </div>`
     }
+    displayPrice() {
+        return `${this.price}`
+    }
 }
 
 // onclick="displayModal()

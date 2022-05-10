@@ -1,37 +1,34 @@
-#modBox {
-    display: flex;
-    justify-content: center;
-    // border: blue 2px solid;
-    max-width: 600px;
-    padding: 10px 50px 0 50px;
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    left: 0;
-    background-color: white;
-}
-
-.dialog {
-    display: flex;
-    border: pink 2px solid;
-    align-items: center;
-    padding: 0 20px 0 20px;
-    position: relative;
-}
-
-.container-media {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    // border: 2px solid black;
-    margin: 0 10px 0 10px;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
+// #modBox {
+//     display: flex;
+//     justify-content: center;
+//     // border: blue 2px solid;
+//     max-width: 600px;
+//     padding: 10px 50px 0 50px;
+//     position: fixed;
+//     z-index: 100;
+//     top: 0;
+//     left: 0;
+//     background-color: white;
+// }
+// .dialog {
+//     display: flex;
+//     border: pink 2px solid;
+//     align-items: center;
+//     padding: 0 20px 0 20px;
+//     position: relative;
+// }
+// .container-media {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: flex-start;
+//     // border: 2px solid black;
+//     margin: 0 10px 0 10px;
+// }
+// img {
+//     max-width: 100%;
+//     height: auto;
+// }
+//Asuppr?
 // .container-video {
 //     display: flex;
 //     flex-direction: column;
@@ -39,32 +36,135 @@ img {
 //     // border: 2px solid black;
 //     margin: 0 10px 0 10px;
 // }
-video {
-    max-width: 100%;
-    height: auto;
+////////////////////////
+// video {
+//     max-width: 100%;
+//     height: auto;
+// }
+// .close {
+//     width: 40px;
+//     height: 40px;
+//     background: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.36 19.78L12 13.41L5.63997 19.78L4.21997 18.36L10.59 12L4.21997 5.63997L5.63997 4.21997L12 10.59L18.36 4.22997L19.77 5.63997L13.41 12L19.77 18.36L18.36 19.78Z" fill="black"/> </svg>') center center / 100% 100% no-repeat transparent;
+//     position: fixed;
+//     top: 0px;
+//     right: 0px;
+//     z-index: 12;
+//     position: absolute;
+//     cursor: pointer;
+// }
+// .previous-button {
+//     transform: rotate(180deg);
+// }
+// .previous-button,
+// .next-button {
+//     width: 100px;
+//     height: 90px;
+//     // background: url(../../scripts/medias/svg/arrow.svg) center center /40px 20px no-repeat;
+//     background: url('data:image/svg+xml;utf8,<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 12L5 7L0 2L1 0L8 7L1 14L0 12Z" fill="black"/> </svg>') center center / 100% 100% no-repeat transparent;
+//     cursor: pointer;
+// }
+#lightboxModal {
+    box-sizing: border-box;
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: white;
+    padding: 30px 30px;
+    margin: 0;
 }
 
-.close {
-    width: 40px;
-    height: 40px;
-    background: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.36 19.78L12 13.41L5.63997 19.78L4.21997 18.36L10.59 12L4.21997 5.63997L5.63997 4.21997L12 10.59L18.36 4.22997L19.77 5.63997L13.41 12L19.77 18.36L18.36 19.78Z" fill="black"/> </svg>') center center / 100% 100% no-repeat transparent;
+#lightboxModal .lightboxContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+#lightboxModal .angleContainer {
+    display: flex;
+    height: 100%;
+    margin: 0px;
+}
+
+#lightboxModal .prev,
+#lightboxModal .next {
+    cursor: pointer;
+    color: #901c1c;
+    font-size: 4em;
+    margin: auto 20px;
+}
+
+#lightboxModal .prev:hover,
+#lightboxModal .next:hover,
+#lightboxModal .prev:focus,
+#lightboxModal .next:focus {
+    color: #d3573c;
+    outline: none;
+}
+
+#lightboxModal .crossCloseLightbox {
     position: fixed;
-    top: 0px;
-    right: 0px;
-    z-index: 12;
+    top: 30px;
+    right: 54px;
+}
+
+#lightboxModal .crossCloseLightbox:focus {
+    outline: none;
+}
+
+#lightboxModal .svgCross:hover {
     position: absolute;
     cursor: pointer;
+    fill: #d3573c;
 }
 
-.previous-button {
-    transform: rotate(180deg);
+#lightboxModal .crossCloseLightbox:focus .svgCross {
+    fill: #d3573c;
+    outline: none;
 }
 
-.previous-button,
-.next-button {
-    width: 100px;
-    height: 90px;
-    // background: url(../../scripts/medias/svg/arrow.svg) center center /40px 20px no-repeat;
-    background: url('data:image/svg+xml;utf8,<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 12L5 7L0 2L1 0L8 7L1 14L0 12Z" fill="black"/> </svg>') center center / 100% 100% no-repeat transparent;
-    cursor: pointer;
+#lightboxModal .lightboxMediaContainer {
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 88%;
+}
+
+#lightboxModal .viewContainer {
+    width: 100%;
+    height: 95%;
+}
+
+#lightboxModal .media {
+    margin: 0px auto;
+    object-fit: contain;
+    height: 100%;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+#lightboxModal .media:focus {
+    outline: #d3573c solid 2px;
+}
+
+#lightboxModal .legendContainer {
+    height: 5%;
+}
+
+#lightboxModal .legend {
+    margin: 12px 0px 0px 0px;
+    color: #901c1c;
+    font-size: 1.5em;
+    font-weight: 400;
+}
+
+#lightboxModal .legend:focus {
+    color: #d3573c;
+    outline: none;
 }

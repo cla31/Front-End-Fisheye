@@ -1,23 +1,139 @@
-#form-contact {
+// #form-contact {
+//     display: none;
+//     background-color: aqua;
+// }
+// .close-contact {
+//     background: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.36 19.78L12 13.41L5.63997 19.78L4.21997 18.36L10.59 12L4.21997 5.63997L5.63997 4.21997L12 10.59L18.36 4.22997L19.77 5.63997L13.41 12L19.77 18.36L18.36 19.78Z" fill="black"/> </svg>') center center / 100% 100% no-repeat transparent;
+//     cursor: pointer;
+//     // background-color: crimson;
+// }
+// //Gestion des erreurs
+// .error input {
+//     color: red;
+//     border: 3px solid red;
+// }
+// .error span {
+//     visibility: visible;
+//     opacity: 1;
+//     color: red;
+//     font-size: 12px;
+// }
+element.style {
+    display: block;
+}
+
+#contact_modal {
     display: none;
-    background-color: aqua;
+    position: fixed;
+    z-index: 25;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
-.close-contact {
-    background: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.36 19.78L12 13.41L5.63997 19.78L4.21997 18.36L10.59 12L4.21997 5.63997L5.63997 4.21997L12 10.59L18.36 4.22997L19.77 5.63997L13.41 12L19.77 18.36L18.36 19.78Z" fill="black"/> </svg>') center center / 100% 100% no-repeat transparent;
+aside {
+    display: block;
+}
+
+#contact_modal .contentModal {
+    border-radius: 5px;
+    background-color: #db8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 1%;
+    left: 25%;
+    padding: 35px 35px 35px;
+    margin: 0 auto;
+}
+
+#contact_modal #headerModal {
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+#contact_modal form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+#contact_modal form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 26px;
+}
+
+#contact_modal .formData {
+    margin: 0px 0px 5px;
+    padding: 0px;
+}
+
+#contact_modal label {
+    color: #312e2e;
+    font-size: 2.25em;
+    font-weight: normal;
+    line-height: 1.5em;
+    margin: 0px;
+    padding: 0px;
+}
+
+label {
+    cursor: default;
+}
+
+#contact_modal input {
+    height: 68px;
+}
+
+#contact_modal input,
+#contact_modal textarea {
+    padding: 0px 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+}
+
+#contact_modal input,
+#contact_modal textarea {
+    color: black;
+    font-size: 1.8em;
+    line-height: 1.5em;
+    margin: 0px;
+    padding: 0px;
+}
+
+button,
+input {
+    overflow: visible;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+
+#contact_modal .crossCloseModal {
     cursor: pointer;
-    // background-color: crimson;
-}
-
-//Gestion des erreurs
-.error input {
-    color: red;
-    border: 3px solid red;
-}
-
-.error span {
-    visibility: visible;
-    opacity: 1;
-    color: red;
-    font-size: 12px;
+    position: absolute;
+    top: 34px;
+    right: 35px;
 }
