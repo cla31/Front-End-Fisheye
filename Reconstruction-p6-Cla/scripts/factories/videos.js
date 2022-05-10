@@ -13,7 +13,7 @@ class VideoMedia {
     //Fonction qui gère l'affichage du template de la gallerie:
     display() {
         return `
-        <div class="card-media">
+        <article class="card-media">
             <div class="container-video">
                 <a href="assets/photographers/${this.photographerId}/${this.video}"class="lien-media">
                     <video class="container-video__video" controls>
@@ -29,7 +29,7 @@ class VideoMedia {
                     <i class="${this.heart}  fa-heart" data-id="${this.id}"></i>
                 </div>
             </div>
-        </div>`
+        </article>`
     }
     inc() {
         this.likes++;

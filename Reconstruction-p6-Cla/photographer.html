@@ -23,7 +23,7 @@
         <div class="photograph-header" id="photograph-header">
         </div>
         <section class="sorting">
-            <div class="sorting__p">
+            <!-- <div class="sorting__p">
                 <p>Trier par</p>
             </div>
             <div class="sorting__dropdown">
@@ -32,6 +32,16 @@
                     <option value="date">Date</option> 
                     <option value="title">Titre</option> 
                 </select>
+            </div> -->
+            <div id="filter_container" aria-label="Filtrage des médias">
+                <p>Trier par</p>
+                <nav id="filter_elements">
+                    <span class="fas fa-chevron-up" id="up" aria-label="Fermer les filtres" role="button"></span>
+                    <span class="fas fa-chevron-down" id="down" aria-label="Ouvrir les filtres"></span>
+                    <button class="filter_element" id="filter_pop">Popularité</button>
+                    <button class="filter_element" id="filter_date">Date</button>
+                    <button class="filter_element" id="filter_titre">Titre</button>
+                </nav>
             </div>
         </section>
         <section class="gallery">
