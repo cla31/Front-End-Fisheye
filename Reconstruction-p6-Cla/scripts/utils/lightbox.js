@@ -30,35 +30,6 @@ function urlExtension(url) {
 
 function displayImgLightbox(element) {
     elmt = urlExtension(element.path());
-    // if (elmt == "jpg") {
-    //     showMod.innerHTML = ` 
-    //     <div class="dialog">
-    //         <div class="previous-button" id="previous"></div>
-    //             <div class="container-media">
-    //                 <img class="container-photo__photo" src="assets/photographers/${element.photographerId}/${element.image}" />
-    //                 <div class="description">
-    //                 ${element.title}
-    //               </div>
-    //            </div>
-    //         <div class="next-button" id="next"></div>
-    //         <div class="close" id="close-wind"></div>
-    //    </div>                
-    //    `;
-    // } else {
-    //     showMod.innerHTML = ` 
-    //     <div class="dialog">
-    //         <div class="previous-button" id="previous"></div>
-    //             <div class="container-media">
-    //                 <video controls width="250"><source src="assets/photographers/${element.photographerId}/${element.video}"type="video/mp4">Sorry, your browser doesn't support embedded videos.</video>
-    //                 <div class="description">
-    //                 ${element.title}
-    //               </div>
-    //            </div>
-    //         <div class="next-button" id="next"></div>
-    //         <div class="close" id="close-wind"></div>
-    //    </div>                
-    //    `;
-    // }
     if (elmt == "jpg") {
         showMod.innerHTML = ` 
         <div class="lightboxContainer">

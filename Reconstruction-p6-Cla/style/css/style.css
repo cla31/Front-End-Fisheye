@@ -400,10 +400,6 @@
   outline: none;
 }
 
-element.style {
-  display: block;
-}
-
 #contact_modal {
   display: none;
   position: fixed;

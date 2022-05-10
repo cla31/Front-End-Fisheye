@@ -37,7 +37,7 @@ class Photographer {
             <div class="photograph-header__button">
                 <button class="contact_button" id="contact">Contactez-moi</button>
             </div>
-            <div id="form-contact">
+            <div id="form-contact" style="display:none">
             </div>
             <div class="photograph-header__container-img">
                 <img class="photograph-header__container-img__img" src="assets/photographers/Photographers ID Photos/${this.portrait}" />

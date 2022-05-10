@@ -17,18 +17,7 @@ const init = async() => {
         //Affichage du photographe dans le header
         photographerName = photogapher.name;
         photographDatas("photograph-header", "price", photogapher, photographerName);
-        //Les médias
-        //version 1
-        // fullMedias = medias.map((element) => {
-        //     const media = new MediasFactory(element);
-        //     return media;
-        // });
-        //version 2
-        // medias.forEach((element) => {
-        //     const media = new MediasFactory(element);
-        //     // console.log("media sur foreach", media)
-        //     fullMedias.push(media);
-        // });
+        //Les médias   
         medias.forEach((element) => {
             const media = new MediasFactory(element);
             if (media != {}) {
@@ -38,8 +27,6 @@ const init = async() => {
                 console.log("L'objet est vide");
             }
         });
-        // console.log("Test test test", fullMedias);
-        // console.log("LE PHOTOGRAPHER", photogapher.name);
         displayMedias();
         sorting();
 

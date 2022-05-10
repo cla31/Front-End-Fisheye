@@ -3,43 +3,6 @@ function contact(photogapherName) {
     const modale = document.getElementById("form-contact");
 
     //Pour afficher le formulaire
-    // function displayForm(photogapherName, modale) {
-    //     modale.style.display = "block";
-    //     modale.innerHTML =
-    //         ` <p>Contactez-moi <br> ${photogapherName}</p>
-    //         <form id="form">        
-    //         <div class="first-formData">
-    //             <label for="prenom">Prénom</label><br>
-    //             <input type="text" name="prenom" id="first"/>
-    //             <br>
-    //             <span></span>
-    //         </div>       
-    //         <div class="last-formData">
-    //             <label for="nom">Nom</label><br>
-    //             <input type="text" name="nom" id="last"/>
-    //             <br>
-    //             <span></span>
-    //         </div>       
-    //         <div class="email-formData">
-    //             <label for="email">Email</label><br>
-    //             <input type="email" name="email" id="email"/>
-    //             <br>
-    //             <span></span>
-    //         </div>        
-    //         <div class="textarea-formData">
-    //             <label for="message">Message</label><br />
-    //             <textarea name="textarea" id="textarea"></textarea>
-    //             <br>
-    //             <span></span>
-    //         </div> 
-    //         <input type="submit" value="Envoyer">
-    //         </form>
-    //         <div class="close-contact" id="close-form">Close</div>    
-    //     `;
-
-    // }
-
-    //Pour afficher le formulaire
     function displayForm(photogapherName, modale) {
         modale.style.display = "block";
         modale.innerHTML =
@@ -185,11 +148,6 @@ function contact(photogapherName) {
         textInput.addEventListener('change', (e) => {
             textareaChecker(e.target.value, "textarea");
         });
-
-        //Ajout du listener sur l'élément et contrôle:
-        // textInput.addEventListener('change', (e) => {
-        //     console.log(e.target.value, "Message pour amélioration")
-        // });
         //validation du formulaire
         onlyForm.addEventListener('submit', (e) => {
             //empêche l'envoi du formulaire

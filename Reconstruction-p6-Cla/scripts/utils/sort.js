@@ -81,28 +81,6 @@ function SortByDates() {
 //Gestion du tri
 function sorting() {
     try {
-        // const sort = document.getElementById('toSort');
-        // sort.addEventListener('click', function() {
-        //     // console.log("C'est cliqué!");
-        //     var text = sort.options[sort.selectedIndex].text;
-        //     // console.log(text);
-        //     switch (text) {
-        //         case 'Popularité':
-        //             // console.log("T'as cliqué sur Popularité!!");
-        //             sortByLikes();
-        //             break;
-        //         case 'Date':
-        //             // console.log("T'as cliqué sur Date!!");
-        //             SortByDates();
-        //             break;
-        //         case 'Titre':
-        //             // console.log("T'as cliqué sur Titre!!");
-        //             SortByTitles();
-        //             break;
-        //         default:
-        //             null;
-        //     }
-        // });
         const sort = document.getElementById('filter_elements');
         sort.addEventListener('click', e => {
             var text = e.target.id;
