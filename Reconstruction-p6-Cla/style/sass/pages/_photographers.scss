@@ -59,48 +59,7 @@
     }
 }
 
-// .sorting {
-//     display: flex;
-//     @media screen and (max-width: 992px) {
-//         flex-direction: column;
-//     }
-//     &__p {
-//         width: 8%;
-//         // border: 2px solid black;
-//         @media screen and (max-width: 992px) {
-//             width: 100%;
-//         }
-//     }
-//     &__dropdown {
-//         position: relative;
-//         display: inline-block;
-//         // &:hover &__child {
-//         //     display: block;
-//         // }
-//         &__sort-button {
-//             min-width: 170px;
-//             background-color: #901c1c;
-//             color: white;
-//             border-radius: 5px;
-//             border: none;
-//             cursor: pointer;
-//             font-weight: 500;
-//             font-size: 1.25rem;
-//             padding: 10px 10px;
-//             .fa-solid {
-//                 margin-left: 15px;
-//             }
-//         }
-//     }
-// }
-// *******************************************
-// *******************************************
-//************************************************
-//************************************************
-// .sorting {
-//     display: flex;
-//     position: relative;
-// }
+//Filtres
 #filter_container {
     display: flex;
     justify-content: flex-start;
