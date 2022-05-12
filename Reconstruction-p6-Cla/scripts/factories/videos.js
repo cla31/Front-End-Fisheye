@@ -17,7 +17,7 @@ class VideoMedia {
             <div class="container-video">
                 <a href="assets/photographers/${this.photographerId}/${this.video}"class="lien-media">
                     <video class="container-video__video" controls>
-                    <source src="assets/photographers/${this.photographerId}/${this.video}" type=video/ogg> <source  type=video/mp4>
+                    <source src="assets/photographers/${this.photographerId}/${this.video}" alt="${this.title}" type=video/ogg> <source  type=video/mp4>
                 </a>
             </div>
             <div class="items-media">

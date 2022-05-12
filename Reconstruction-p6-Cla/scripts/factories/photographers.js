@@ -37,8 +37,8 @@ class Photographer {
             <div class="photograph-header__button">
                 <button class="contact_button" id="contact">Contactez-moi</button>
             </div>
-            <div id="form-contact" style="display:none">
-            </div>
+            <aside id="contact_modal" aria-hidden="false" aria-labelledby="contactPhotographerH1" arial-modal="true">
+            </aside>
             <div class="photograph-header__container-img">
                 <img class="photograph-header__container-img__img" src="assets/photographers/Photographers ID Photos/${this.portrait}" alt="portrait de${this.name} " />
             </div>`

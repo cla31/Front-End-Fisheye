@@ -18,7 +18,7 @@ class ImageMedia {
             <article class="card-media">
                 <div class="container-photo">
                     <a href="assets/photographers/${this.photographerId}/${this.image}" class="lien-media">
-                        <img class="container-photo__photo" src="assets/photographers/${this.photographerId}/${this.image}" />
+                        <img class="container-photo__photo" src="assets/photographers/${this.photographerId}/${this.image}"alt="${this.title}" />
                     </a>
                 </div>
                 <div class="items-media">
