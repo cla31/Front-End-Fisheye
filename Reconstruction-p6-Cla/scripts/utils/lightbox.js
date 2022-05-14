@@ -32,21 +32,21 @@ function displayImgLightbox(element) {
     elmt = urlExtension(element.path());
     if (elmt == "jpg") {
         showMod.innerHTML = ` 
-        <div class="lightboxContainer">
-            <div class="angleContainer">
-                <em class="fas fa-angle-left prev" id="previous" tabindex="0" aria-label="image précédente"></em>
+        <div class="lightboxContainer" aria-label="emplacement photo">
+            <div class="angleContainer" aria-label="bouton image précédente">
+                <em class="fas fa-angle-left prev" id="previous" aria-label="image précédente"></em>
             </div>
-            <div class="lightboxMediaContainer">
-                <div class="viewContainer"><img class="media" src="assets/photographers/${element.photographerId}/${element.image}" id="${element.photographerId}" alt="${element.title}" aria-label="${element.title}" tabindex="0"></div>
-                <div class="legendContainer">
-                    <h1 class="legend" tabindex="0">${element.title}</h1>
+            <div class="lightboxMediaContainer" aria-label="box du média">
+                <div class="viewContainer" aria-label="box image"><img class="media" src="assets/photographers/${element.photographerId}/${element.image}" id="${element.photographerId}" alt="${element.title}" aria-label="${element.title}"></div>
+                <div class="legendContainer" aria-label="titre image">
+                    <h1 class="legend" >${element.title}</h1>
                 </div>
             </div>
-            <div class="angleContainer">
-                <em class="fas fa-angle-right next"  id="next" tabindex="0" aria-label="image suivante"></em>
+            <div class="angleContainer" aria-label="bouton image suivante">
+                <em class="fas fa-angle-right next"  id="next" aria-label="image suivante"></em>
             </div>
         </div>
-        <div class="crossCloseLightbox" id="close-wind" tabindex="0" aria-label="fermeture de la lightbox">
+        <div class="crossCloseLightbox" id="close-wind" aria-label="fermeture de la lightbox">
             <svg width="42" height="42" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
                 <path class="svgCross" d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z" fill="#901C1C"></path>
             </svg>
@@ -54,23 +54,23 @@ function displayImgLightbox(element) {
        `;
     } else {
         showMod.innerHTML = ` 
-        <div class="lightboxContainer">
-            <div class="angleContainer">
-                <em class="fas fa-angle-left prev" id="previous" tabindex="0" aria-label="image précédente"></em>
+        <div class="lightboxContainer" aria-label="emplacement vidéo">
+            <div class="angleContainer" aria-label="bouton image précédente">
+                <em class="fas fa-angle-left prev" id="previous" aria-label="image précédente"></em>
             </div>
-            <div class="lightboxMediaContainer">
-                <div class="viewContainer"><video class="media movie" src="assets/photographers/${element.photographerId}/${element.video}" id="${element.photographerId}" poster="" alt="${element.title}" aria-label="${element.title}" tabindex="0" controls=""></video></div>
-                <div class="legendContainer">
+            <div class="lightboxMediaContainer" aria-label="box du média">
+                <div class="viewContainer" aria-label="box video"><video class="media movie" src="assets/photographers/${element.photographerId}/${element.video}" id="${element.photographerId}" poster="" alt="${element.title}" aria-label="${element.title}" tabindex="0" controls=""></video></div>
+                <div class="legendContainer" aria-label="titre image">
                     <h1 class="legend" tabindex="0">${element.title}</h1>
                 </div>
             </div>
-            <div class="angleContainer">
-                <em class="fas fa-angle-right next"  id="next" tabindex="0" aria-label="image suivante"></em>
+            <div class="angleContainer" aria-label="bouton image suivante">
+                <em class="fas fa-angle-right next"  id="next" aria-label="image suivante"></em>
             </div>
         </div>
-        <div class="crossCloseLightbox" id="close-wind" tabindex="0" aria-label="fermeture de la lightbox">
+        <div class="crossCloseLightbox" id="close-wind" aria-label="fermeture de la lightbox">
             <svg width="42" height="42" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
-            <path class="svgCross" d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z" fill="#901C1C"></path>
+                <path class="svgCross" d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z" fill="#901C1C"></path>
             </svg>
         </div>         
        `;
