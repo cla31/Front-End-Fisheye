@@ -12,8 +12,8 @@ class Photographer {
     displayPhotographer() {
         return `
         <article class="photographer">
-            <a href="./photographer.html?${this.id}"  tabindex="0" role="Lien + titre + image" aria-label="Portrait de ${this.name}">
-                <div class="card">
+            <a href="./photographer.html?${this.id}"  tabindex="0" role="link" aria-label="lien vers galerie photographe" aria-label="Portrait de ${this.name}">
+                <div class="card" aria-label="Bloc image et description">
                     <div class="container-img" aria-label="Bloc image">
                         <img class="container-img__img" src="assets/photographers/Photographers ID Photos/${this.portrait}" alt="Portrait de ${this.name}" />
                     </div>

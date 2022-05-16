@@ -15,7 +15,7 @@ class VideoMedia {
     display() {
         return `
         <article class="card-media">
-            <div class="container-video" aria-label="vidéo et lien visionneuse">
+            <div class="container-video" aria-label="vidéo et lien visionneuse" role="link" >
                 <a href="assets/photographers/${this.photographerId}/${this.video}" class="lien-media" aria-label="ouvrir la visionneuse">
                     <video class="container-video__video" aria-label="${this.title}" tabindex="0" controls>
                     <source src="assets/photographers/${this.photographerId}/${this.video}" alt="${this.title}" type=video/ogg> <source  type=video/mp4>

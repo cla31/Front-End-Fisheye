@@ -15,8 +15,8 @@ class ImageMedia {
     display() {
         return `
             <article class="card-media" >
-                <div class="container-photo" aria-label="photo et lien visionneuse">
-                    <a href="assets/photographers/${this.photographerId}/${this.image}" class="lien-media" aria-label="ouvrir la visionneuse">
+                <div class="container-photo" aria-label="photo et lien visionneuse" role="link">
+                    <a href="assets/photographers/${this.photographerId}/${this.image}" class="lien-media"  aria-label="ouvrir la visionneuse">
                         <img class="container-photo__photo" src="assets/photographers/${this.photographerId}/${this.image}" alt="${this.title}" aria-label="${this.title}" tabindex="0"/>
                     </a>
                 </div>
