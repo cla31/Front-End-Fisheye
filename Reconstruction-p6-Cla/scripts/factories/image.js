@@ -15,18 +15,18 @@ class ImageMedia {
     display() {
         return `
             <article class="card-media" >
-                <div class="container-photo" aria-label="photo et lien diaporama">
-                    <a href="assets/photographers/${this.photographerId}/${this.image}" class="lien-media" >
-                        <img class="container-photo__photo" src="assets/photographers/${this.photographerId}/${this.image}"alt="${this.title}"/>
+                <div class="container-photo" aria-label="photo et lien visionneuse">
+                    <a href="assets/photographers/${this.photographerId}/${this.image}" class="lien-media" aria-label="ouvrir la visionneuse">
+                        <img class="container-photo__photo" src="assets/photographers/${this.photographerId}/${this.image}" alt="${this.title}" aria-label="${this.title}" tabindex="0"/>
                     </a>
                 </div>
                 <div class="items-media" aria-label="description du média">
                     <div class="items-media__title" aria-label="titre du média">
-                        <p>${this.title}</p>
+                        <p tabindex="0">${this.title}</p>
                     </div>
                     <div class="items-media__note" aria-label="notes et likes">
-                        <p id="noteLike">${this.likes}</p>                        
-                        <i class="${this.heart} fa-heart aria-label="likes"></i>                                         
+                        <p class="noteLike">${this.likes}</p>                        
+                        <em class="${this.heart} fa-heart" aria-label="likes" tabindex="0"></em>                                         
                     </div>
                 </div>
             </article>`

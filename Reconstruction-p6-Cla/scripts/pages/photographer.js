@@ -83,7 +83,7 @@ function displayMedias() {
         //Affichage du tableau de templates
         document.getElementById("medias").innerHTML = `${cards.join('')}`;
         //Pour gérer les likes*************************
-        var elementsI = document.querySelectorAll('i');
+        var elementsI = document.querySelectorAll('em');
         const elements = Array.from(elementsI);
         let totalLikesJson = allLikesJson();
         lightbox();
@@ -92,6 +92,15 @@ function displayMedias() {
             // console.log("full media index", fullMedias[index]);
             fullMedias[index].inc();
             displayMedias();
+        }));
+        //gérer les likes au clavier
+        elements.forEach((link, index) => link.addEventListener('keydown', e => {
+            if (e.key === "Enter") {
+                fullMedias[index].inc();
+                displayMedias();
+                console.log("Touche appuyée", e.key);
+            }
+            // console.log("Touche appuyée", e.key);
         }));
     } catch (erreur) {
         console.log(erreur);
