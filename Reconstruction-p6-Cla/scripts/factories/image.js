@@ -13,12 +13,11 @@ class ImageMedia {
 
     //Fonction qui gère l'affichage du template de la gallerie:
     display() {
-
         return `
-            <article class="card-media">
+            <article class="card-media" >
                 <div class="container-photo" aria-label="photo et lien diaporama">
-                    <a href="assets/photographers/${this.photographerId}/${this.image}" class="lien-media">
-                        <img class="container-photo__photo" src="assets/photographers/${this.photographerId}/${this.image}"alt="${this.title}" />
+                    <a href="assets/photographers/${this.photographerId}/${this.image}" class="lien-media" >
+                        <img class="container-photo__photo" src="assets/photographers/${this.photographerId}/${this.image}"alt="${this.title}"/>
                     </a>
                 </div>
                 <div class="items-media" aria-label="description du média">
@@ -26,8 +25,8 @@ class ImageMedia {
                         <p>${this.title}</p>
                     </div>
                     <div class="items-media__note" aria-label="notes et likes">
-                        <p id="noteLike" >${this.likes}</p>                        
-                        <i class="${this.heart} fa-heart" aria-label="likes"></i>                                         
+                        <p id="noteLike">${this.likes}</p>                        
+                        <i class="${this.heart} fa-heart aria-label="likes"></i>                                         
                     </div>
                 </div>
             </article>`

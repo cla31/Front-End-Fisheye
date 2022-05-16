@@ -251,11 +251,22 @@
   background-color: #db8876;
   color: black;
 }
+#filter_date:focus,
+#filter_titre:focus {
+  width: 100%;
+  background-color: greenyellow;
+  color: black;
+}
 
 #filter_pop {
   border-radius: 5px 5px 0px 0px;
 }
 #filter_pop:hover {
+  background-color: #db8876;
+  color: black;
+}
+#filter_pop:focus {
+  width: 100%;
   background-color: #db8876;
   color: black;
 }
@@ -293,6 +304,10 @@
   height: 290px;
 }
 .card-media .container-photo:hover {
+  outline: 2px solid #db8876;
+  border-radius: 5px;
+}
+.card-media .container-photo:focus {
   outline: 2px solid #db8876;
   border-radius: 5px;
 }
@@ -377,7 +392,6 @@
 }
 
 .lightboxMediaContainer {
-  outline: #db8876 2px solid;
   padding: 70px;
   border-radius: 10px;
 }
@@ -488,6 +502,10 @@
 
 aside {
   display: block;
+}
+
+#headerModal h1 {
+  color: black;
 }
 
 #contact_modal .contentModal {

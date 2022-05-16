@@ -152,11 +152,21 @@
         background-color: #db8876;
         color: black;
     }
+    &:focus {
+        width: 100%;
+        background-color: greenyellow;
+        color: black;
+    }
 }
 
 #filter_pop {
     border-radius: 5px 5px 0px 0px;
     &:hover {
+        background-color: #db8876;
+        color: black;
+    }
+    &:focus {
+        width: 100%;
         background-color: #db8876;
         color: black;
     }
@@ -201,6 +211,10 @@
         width: 290px;
         height: 290px;
         &:hover {
+            outline: 2px solid #db8876;
+            border-radius: 5px;
+        }
+        &:focus {
             outline: 2px solid #db8876;
             border-radius: 5px;
         }

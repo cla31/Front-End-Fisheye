@@ -15,7 +15,7 @@ class VideoMedia {
         return `
         <article class="card-media">
             <div class="container-video" aria-label="vidéo et lien diaporama">
-                <a href="assets/photographers/${this.photographerId}/${this.video}"class="lien-media">
+                <a href="assets/photographers/${this.photographerId}/${this.video}" class="lien-media">
                     <video class="container-video__video" controls>
                     <source src="assets/photographers/${this.photographerId}/${this.video}" alt="${this.title}" type=video/ogg> <source  type=video/mp4>
                 </a>

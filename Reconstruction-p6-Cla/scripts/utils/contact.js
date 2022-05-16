@@ -8,10 +8,9 @@ function contact(photogapherName) {
         modale.innerHTML =
             ` 
                 <div class="contentModal">
-                    <header id="headerModal">
-                        <h1 id="contactPhotographerH1">Contactez ${photogapherName}</h1>
-                    </header>
-
+                    <div id="headerModal">
+                        <h1 tabindex="0" id="contactPhotographerH1">Contactez-moi <br> ${photogapherName}</h1>
+                    </div>
                     <form name="reserve" action="photographer.html" method="get" id="form">
                         <div class="modal-body">
                             <div class="formData first-formData">
@@ -41,8 +40,8 @@ function contact(photogapherName) {
                         </div>
                         <input class="contactButton" value="Envoyer" type="submit">
                     </form>
-                    <div class="crossCloseModal" id="close-form" aria-label="Fermeture du formulaire">
-                        <svg width="42" height="42" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <div class="crossCloseModal"  tabindex="0" id="close-form" aria-label="Fermeture du formulaire">
+                        <svg width="42" height="42" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
                             <path class="svgCross" d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z" fill="white"></path>
                         </svg>
                     </div>
@@ -57,13 +56,20 @@ function contact(photogapherName) {
     //soumission du formulaire
     function submitForm() {
         const onlyForm = document.querySelector("#form");
-        //fermeture du formulaire
+        //fermeture du formulaire au clic
         function closeForm() {
-            document.getElementById("close-form").addEventListener("click", function() {
+            document.getElementById("close-form").addEventListener("click", function(e) {
                 modale.style.display = "none";
+                // console.log(e.target.className);
             });
         }
         closeForm();
+        // fermeture du formulaire : Ecoute de la touche "Enter" sur la croix de la modale
+        document.getElementById("close-form").addEventListener("keyup", function(e) {
+            if (e.key === "Enter") {
+                modale.style.display = "none";
+            }
+        });
         //fonction qui gère le contenu des inputs
         const errorDisplay = (tag, message, valid) => {
             const container = document.querySelector("." + tag + "-formData");
@@ -172,12 +178,17 @@ function contact(photogapherName) {
 
                 //Fermeture de la Modale
                 closeForm();
+                closeSubmit();
                 // Effacement des champs du formulaire
                 document.getElementById("form").reset();
                 firstValue = "";
                 lastValue = "";
                 emailValue = "";
                 textValue = "";
+
+                function closeSubmit() {
+                    modale.style.display = "none";
+                }
             }
 
         });

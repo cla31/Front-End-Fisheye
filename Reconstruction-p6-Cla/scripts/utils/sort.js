@@ -34,6 +34,17 @@ iconChevron.addEventListener("clic", (e) => {
 iconChevronUp.addEventListener("clic", (e) => {
     hideFilters(e);
 });
+// Ecoute de l'évènement clavier pour développer et fermer les filtres
+iconChevron.addEventListener("keyup", (e) => {
+    if (e.key === 'Enter') {
+        displayFilters(e);
+    }
+});
+iconChevronUp.addEventListener("keyup", (e) => {
+    if (e.key === 'Enter') {
+        hideFilters(e);
+    }
+});
 // Par popularité
 function sortByLikes() {
     try {

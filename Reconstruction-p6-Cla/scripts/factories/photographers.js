@@ -12,7 +12,7 @@ class Photographer {
     displayPhotographer() {
         return `
         <article class="photographer">
-            <a href="./photographer.html?${this.id}" role="Lien + titre + image" aria-label="Portrait de ${this.name}">
+            <a href="./photographer.html?${this.id}"  tabindex="0" role="Lien + titre + image" aria-label="Portrait de ${this.name}">
                 <div class="card">
                     <div class="container-img" aria-label="Bloc image">
                         <img class="container-img__img" src="assets/photographers/Photographers ID Photos/${this.portrait}" alt="Portrait de ${this.name}" />
@@ -20,7 +20,7 @@ class Photographer {
                     <h2 class="card__photographer-name">${this.name}</h2>
                 </div>
             </a>
-            <div class="infos" aria-label="infos photos">
+            <div class="infos" aria-label="infos photos" tabindex="0">
                 <p class="city">${this.city}</p>
                 <p class="slogan">${this.tagline}</p>
                 <p class="price">${this.price}€/jour</p>
