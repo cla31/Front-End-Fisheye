@@ -25,9 +25,9 @@ class VideoMedia {
                 <div class="items-media__title" aria-label="titre du média">
                     <p tabindex="0">${this.title}</p>
                 </div>
-                <div class="items-media__note" aria-label="notes et likes">
-                    <p class="noteLike">${this.likes}</p>
-                    <em class="${this.heart}  fa-heart" data-id="${this.id}" aria-label="likes" tabindex="0"></em>
+                <div class="items-media__note" aria-label="Nombre total des likes obtenus par le photographe">
+                    <p class="noteLike" aria-label="${this.likes} personnes aiment ce média">${this.likes}</p>
+                    <em class="${this.heart}  fa-heart" data-id="${this.id}" aria-label="likes" tabindex="0" role="button"></em>
                 </div>
             </div>
         </article>`

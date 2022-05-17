@@ -65,7 +65,8 @@
   align-items: center;
 }
 .photographer .card h2 {
-  color: #db8876;
+  color: #D3573C;
+  font-size: 2.25em;
 }
 .photographer .card:hover {
   outline: 2px solid #db8876;
@@ -106,13 +107,15 @@
   background-color: #fafafa;
 }
 .photograph-header h1 {
-  color: #db8876;
+  color: #D3573C;
+  font-size: 3em;
 }
 .photograph-header .localisation {
   color: #901C1C;
 }
 .photograph-header .description {
-  color: grey;
+  color: #525252;
+  font-size: 1.125em;
 }
 .photograph-header h1:hover {
   outline: 2px solid #db8876;
@@ -127,8 +130,9 @@
   align-items: flex-start;
   padding-left: 5%;
 }
-.photograph-header__title p {
+.photograph-header__title h2 {
   margin: 0;
+  font-size: 1.5 em;
 }
 .photograph-header__button {
   display: flex;
@@ -339,6 +343,7 @@
   display: flex;
   justify-content: space-between;
   width: 290px;
+  color: #901C1C;
 }
 .card-media .items-media:hover {
   outline: 2px solid #db8876;

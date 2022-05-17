@@ -15,15 +15,15 @@ class Photographer {
             <a href="./photographer.html?${this.id}"  tabindex="0" role="link" aria-label="lien vers galerie photographe" aria-label="Portrait de ${this.name}">
                 <div class="card" aria-label="Bloc image et description">
                     <div class="container-img" aria-label="Bloc image">
-                        <img class="container-img__img" src="assets/photographers/Photographers ID Photos/${this.portrait}" alt="Portrait de ${this.name}" />
+                        <img class="container-img__img" tabindex="0" src="assets/photographers/Photographers ID Photos/${this.portrait}" alt="Portrait de ${this.name}" />
                     </div>
-                    <h2 class="card__photographer-name">${this.name}</h2>
+                    <h2 class="card__photographer-name" tabindex="0" aria-label="${this.name}">${this.name}</h2>
                 </div>
             </a>
             <div class="infos" aria-label="infos photos" tabindex="0">
-                <p class="city">${this.city}</p>
-                <p class="slogan">${this.tagline}</p>
-                <p class="price">${this.price}€/jour</p>
+                <p class="city" tabindex="0" aria-label="${this.city}">${this.city}</p>
+                <p class="slogan" tabindex="0" aria-label="${this.tagline}">${this.tagline}</p>
+                <p class="price" tabindex="0" aria-label="${this.price}euros par jour">${this.price}€/jour</p>
             </div>
         </article>`
     }
@@ -32,19 +32,19 @@ class Photographer {
     displayHeader() {
         return `        
             <div class="photograph-header__title" aria-label="Entête du photographe">
-                <h1>${this.name}</h1>
+                <h1 tabindex="0" aria-label="${this.name}">${this.name}</h1>
                 <div class="legend" aria-label="description et localisation">
-                    <p class="localisation">${this.city}, ${this.country}</p>
-                    <p class="description">${this.tagline}</p>
+                    <h2 class="localisation" aria-label="${this.city}, ${this.country}" tabindex="0">${this.city}, ${this.country}</h2>
+                    <p class="description" aria-label="${this.tagline}" tabindex="0">${this.tagline}</p>
                 </div>
             </div>
             <div class="photograph-header__button">
-                <button class="contact_button" id="contact" aria-label="Contactez-moi, ouvrir le formulaire">Contactez-moi</button>
+                <button class="contact_button" id="contact" aria-label="Contactez-moi, ouvrir le formulaire" tabindex="0">Contactez-moi</button>
             </div>
             <aside id="contact_modal">
             </aside>
             <div class="photograph-header__container-img" aria-label="portrait du photographe">
-                <img class="photograph-header__container-img__img" src="assets/photographers/Photographers ID Photos/${this.portrait}" alt="portrait de${this.name} " />
+                <img class="photograph-header__container-img__img" tabindex="0" src="assets/photographers/Photographers ID Photos/${this.portrait}" alt="portrait de${this.name}" />
             </div>`
     }
     displayPrice() {

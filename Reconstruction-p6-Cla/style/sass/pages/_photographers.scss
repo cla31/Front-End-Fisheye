@@ -4,13 +4,15 @@
     background-color: #fafafa;
     // border: #901c1c solid 2px;
     h1 {
-        color: #db8876;
+        color: #D3573C;
+        font-size: 3em;
     }
     .localisation {
         color: #901C1C;
     }
     .description {
-        color: grey;
+        color: #525252;
+        font-size: 1.125em;
     }
     h1 {
         &:hover {
@@ -29,8 +31,9 @@
         align-items: flex-start;
         // border: red 2px solid;
         padding-left: 5%;
-        p {
+        h2 {
             margin: 0;
+            font-size: 1.5 em;
         }
     }
     &__button {
@@ -249,6 +252,7 @@
         justify-content: space-between;
         // border: blue 2px solid;
         width: 290px;
+        color: #901C1C;
         &:hover {
             outline: 2px solid #db8876;
             border-radius: 5px;
