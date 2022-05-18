@@ -115,8 +115,8 @@ function contact(photogapherName) {
         const textareaChecker = (value, tag) => {
             if (value == "") {
                 errorDisplay(tag, "Le champ doit être rempli!");
-            } else if (value.length > 0 && (value.length < 7 || value.length > 500)) {
-                errorDisplay(tag, "Veuillez entrer entre 5 et 500 caractères ");
+            } else if (value.length > 0 && (value.length < 4 || value.length > 500)) {
+                errorDisplay(tag, "Veuillez entrer entre 4 et 500 caractères ");
 
             } else if (!value.match(/^[a-zA-Z0-9_.-]*$/)) {
                 errorDisplay(tag, "Le message n'est pas valide");

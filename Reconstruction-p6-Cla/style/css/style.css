@@ -22,6 +22,16 @@
 .header h1 {
   color: #901C1C;
 }
+.header h1:focus {
+  outline: 2px solid #D3573C;
+  border-radius: 5px;
+  padding: 2px;
+}
+.header a:focus {
+  outline: 2px solid #D3573C;
+  border-radius: 5px;
+  padding: 2px;
+}
 .header__logo {
   height: 50px;
 }
@@ -54,6 +64,11 @@
   text-decoration: none;
   color: black;
 }
+.photographer a:focus {
+  display: inline-block;
+  outline: 2px solid #D3573C;
+  border-radius: 15px;
+}
 .photographer p {
   text-align: center;
   margin-top: 0px;
@@ -67,10 +82,6 @@
 .photographer .card h2 {
   color: #D3573C;
   font-size: 2.25em;
-}
-.photographer .card:hover {
-  outline: 2px solid #db8876;
-  border-radius: 15px;
 }
 .photographer .card .container-img {
   overflow: hidden;
@@ -87,18 +98,42 @@
   top: 8px;
   clip-path: circle(46%);
 }
+.photographer .card .container-img__img:focus {
+  outline: 2px solid #D3573C;
+  border-radius: 15px;
+}
 .photographer .card__photographer-name {
   text-align: center;
 }
-.photographer .infos:hover {
-  outline: 2px solid #db8876;
+.photographer .card__photographer-name:focus {
+  outline: 2px solid #D3573C;
+  border-radius: 15px;
+}
+.photographer .infos:focus {
+  outline: 2px solid #D3573C;
   border-radius: 15px;
 }
 .photographer .infos .city {
   color: #901C1C;
 }
+.photographer .infos .city:focus {
+  outline: 2px solid #D3573C;
+  border-radius: 15px;
+}
+.photographer .infos .slogan:focus {
+  outline: 2px solid #D3573C;
+  border-radius: 15px;
+}
 .photographer .infos .price {
   color: grey;
+}
+.photographer .infos .price:focus {
+  outline: 2px solid #D3573C;
+  border-radius: 15px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .photograph-header {
@@ -110,18 +145,17 @@
   color: #D3573C;
   font-size: 3em;
 }
+.photograph-header h1:focus {
+  outline: 2px solid #D3573C;
+  border-radius: 5px;
+  padding: 2px;
+}
 .photograph-header .localisation {
   color: #901C1C;
 }
 .photograph-header .description {
   color: #525252;
   font-size: 1.125em;
-}
-.photograph-header h1:hover {
-  outline: 2px solid #db8876;
-}
-.photograph-header .legend:hover {
-  outline: 2px solid #db8876;
 }
 .photograph-header__title {
   display: flex;
@@ -133,6 +167,16 @@
 .photograph-header__title h2 {
   margin: 0;
   font-size: 1.5 em;
+}
+.photograph-header__title h2:focus {
+  outline: 2px solid #D3573C;
+  border-radius: 5px;
+  padding: 2px;
+}
+.photograph-header__title p:focus {
+  outline: 2px solid #D3573C;
+  border-radius: 5px;
+  padding: 2px;
 }
 .photograph-header__button {
   display: flex;
@@ -157,6 +201,9 @@
 .photograph-header__button .contact_button:focus {
   background-color: #db8876;
   color: black;
+  outline: 2px solid black;
+  border-radius: 5px;
+  padding: 4px;
 }
 @media screen and (max-width: 992px) {
   .photograph-header__button .contact_button {
@@ -172,6 +219,11 @@
   position: relative;
   width: 290px;
   height: 290px;
+}
+.photograph-header__container-img:focus {
+  outline: 2px solid #D3573C;
+  border-radius: 5px;
+  padding: 4px;
 }
 .photograph-header__container-img__img {
   position: absolute;
@@ -226,6 +278,12 @@
   right: 1.4rem;
   cursor: pointer;
 }
+.fa-chevron-down:focus,
+.fa-chevron-up:focus {
+  border-radius: 5px;
+  padding: 4px;
+  background-color: #db8876;
+}
 
 #filter_elements button {
   padding: 1rem;
@@ -258,8 +316,10 @@
 #filter_date:focus,
 #filter_titre:focus {
   width: 100%;
-  background-color: greenyellow;
+  background-color: #db8876;
   color: black;
+  outline: 2px solid black;
+  border-radius: 5px;
 }
 
 #filter_pop {
@@ -270,9 +330,10 @@
   color: black;
 }
 #filter_pop:focus {
-  width: 100%;
   background-color: #db8876;
   color: black;
+  outline: 2px solid black;
+  border-radius: 5px;
 }
 
 #filter_titre {
@@ -301,19 +362,15 @@
   flex-direction: column;
   align-items: center;
 }
+.card-media a:focus {
+  outline: 2px solid #db8876;
+  border-radius: 5px;
+}
 .card-media .container-photo {
   overflow: hidden;
   position: relative;
   width: 290px;
   height: 290px;
-}
-.card-media .container-photo:hover {
-  outline: 2px solid #db8876;
-  border-radius: 5px;
-}
-.card-media .container-photo:focus {
-  outline: 2px solid #db8876;
-  border-radius: 5px;
 }
 .card-media .container-photo__photo {
   width: 100%;
@@ -322,15 +379,16 @@
   object-fit: cover;
   border-radius: 5px;
 }
+.card-media .container-photo__photo:focus {
+  outline: 4px solid #db8876;
+  border: 4px solid #db8876;
+  border-radius: 15px;
+}
 .card-media .container-video {
   overflow: hidden;
   position: relative;
   width: 290px;
   height: 290px;
-}
-.card-media .container-video:hover {
-  outline: 2px solid #db8876;
-  border-radius: 5px;
 }
 .card-media .container-video__video {
   width: 100%;
@@ -339,13 +397,18 @@
   object-fit: cover;
   border-radius: 5px;
 }
+.card-media .container-video__video:focus {
+  outline: 4px solid #db8876;
+  border: 4px solid #db8876;
+  border-radius: 15px;
+}
 .card-media .items-media {
   display: flex;
   justify-content: space-between;
   width: 290px;
   color: #901C1C;
 }
-.card-media .items-media:hover {
+.card-media .items-media__title p:focus {
   outline: 2px solid #db8876;
   border-radius: 5px;
 }
@@ -357,11 +420,23 @@
 .card-media .items-media__note p {
   margin-right: 5px;
 }
+.card-media .items-media__note p:focus {
+  outline: 2px solid #db8876;
+  border-radius: 5px;
+}
 .card-media .items-media__note .fa-regular {
   margin-top: 18px;
 }
+.card-media .items-media__note .fa-regular:focus {
+  outline: 2px solid #db8876;
+  border-radius: 5px;
+}
 .card-media .items-media__note .fa-solid {
   margin-top: 18px;
+}
+.card-media .items-media__note .fa-solid:focus {
+  outline: 2px solid #db8876;
+  border-radius: 5px;
 }
 
 .card-infos {
@@ -512,6 +587,14 @@ aside {
 #headerModal h1 {
   color: black;
 }
+#headerModal h1:hover {
+  outline: 2px solid black;
+  border-radius: 5px;
+}
+#headerModal h1:focus {
+  outline: 2px solid black;
+  border-radius: 5px;
+}
 
 #contact_modal .contentModal {
   border-radius: 5px;
@@ -580,6 +663,16 @@ label {
   border: none;
   border-radius: 5px;
 }
+#contact_modal input:hover,
+#contact_modal textarea:hover {
+  outline: 2px solid black;
+  border-radius: 5px;
+}
+#contact_modal input:focus,
+#contact_modal textarea:focus {
+  outline: 2px solid black;
+  border-radius: 5px;
+}
 
 #contact_modal input,
 #contact_modal textarea {
@@ -610,6 +703,25 @@ textarea {
   position: absolute;
   top: 34px;
   right: 35px;
+}
+#contact_modal .crossCloseModal:hover {
+  outline: 2px solid black;
+  border-radius: 5px;
+}
+#contact_modal .crossCloseModal:focus {
+  outline: 2px solid black;
+  border-radius: 5px;
+}
+
+.contactButton:hover {
+  outline: 2px solid black;
+  border-radius: 5px;
+  background-color: #db8876;
+}
+.contactButton:focus {
+  outline: 2px solid black;
+  border-radius: 5px;
+  background-color: #db8876;
 }
 
 /*# sourceMappingURL=style.css.map */

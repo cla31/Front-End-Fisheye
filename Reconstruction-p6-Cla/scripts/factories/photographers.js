@@ -43,8 +43,8 @@ class Photographer {
             </div>
             <aside id="contact_modal">
             </aside>
-            <div class="photograph-header__container-img" aria-label="portrait du photographe">
-                <img class="photograph-header__container-img__img" tabindex="0" src="assets/photographers/Photographers ID Photos/${this.portrait}" alt="portrait de${this.name}" />
+            <div class="photograph-header__container-img" aria-label="portrait du photographe" tabindex="0">
+                <img class="photograph-header__container-img__img" tabindex="0" src="assets/photographers/Photographers ID Photos/${this.portrait}" alt="portrait de${this.name}" tabindex="1" />
             </div>`
     }
     displayPrice() {

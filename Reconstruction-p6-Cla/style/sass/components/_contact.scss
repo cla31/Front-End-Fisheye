@@ -19,6 +19,14 @@ aside {
 
 #headerModal h1 {
     color: black;
+    &:hover {
+        outline: 2px solid black;
+        border-radius: 5px;
+    }
+    &:focus {
+        outline: 2px solid black;
+        border-radius: 5px;
+    }
 }
 
 #contact_modal .contentModal {
@@ -87,6 +95,14 @@ label {
     width: 100%;
     border: none;
     border-radius: 5px;
+    &:hover {
+        outline: 2px solid black;
+        border-radius: 5px;
+    }
+    &:focus {
+        outline: 2px solid black;
+        border-radius: 5px;
+    }
 }
 
 #contact_modal input,
@@ -118,4 +134,25 @@ textarea {
     position: absolute;
     top: 34px;
     right: 35px;
+    &:hover {
+        outline: 2px solid black;
+        border-radius: 5px;
+    }
+    &:focus {
+        outline: 2px solid black;
+        border-radius: 5px;
+    }
+}
+
+.contactButton {
+    &:hover {
+        outline: 2px solid black;
+        border-radius: 5px;
+        background-color: #db8876;
+    }
+    &:focus {
+        outline: 2px solid black;
+        border-radius: 5px;
+        background-color: #db8876;
+    }
 }

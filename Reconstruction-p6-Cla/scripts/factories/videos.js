@@ -26,7 +26,7 @@ class VideoMedia {
                     <p tabindex="0">${this.title}</p>
                 </div>
                 <div class="items-media__note" aria-label="Nombre total des likes obtenus par le photographe">
-                    <p class="noteLike" aria-label="${this.likes} personnes aiment ce média">${this.likes}</p>
+                    <p class="noteLike" aria-label="${this.likes} personnes aiment ce média" tabindex="0">${this.likes}</p>
                     <em class="${this.heart}  fa-heart" data-id="${this.id}" aria-label="likes" tabindex="0" role="button"></em>
                 </div>
             </div>
