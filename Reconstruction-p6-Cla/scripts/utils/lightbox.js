@@ -5,6 +5,7 @@
 // const showMod = document.getElementById("modBox");
 const showMod = document.getElementById("lightboxModal");
 let index = 0;
+const galleryBack = document.getElementById("medias");
 // const linksCards = document.getElementsByClassName("lien-media");
 
 function lightbox() {
@@ -25,7 +26,9 @@ function lightbox() {
         if (e.key === "Enter") {
             e.preventDefault();
             displayImgLightbox(fullMedias[index]);
-            console.log("Touche appuyée", e.key);
+            // console.log("Touche appuyée", e.key);
+            console.log("Gallery", galleryBack);
+
         }
         // console.log("Touche appuyée", e.key);
     }));
@@ -86,11 +89,12 @@ function displayImgLightbox(element) {
        `;
     }
     const hiddenMedias = document.getElementById("medias");
-    console.log("hiddenMedias", hiddenMedias);
+    // console.log("hiddenMedias", hiddenMedias);
     hiddenMedias.setAttribute("aria-hidden", true);
     showMod.style.display = "block";
+    galleryBack.style.display = "none";
     //La lightbox a le focus
-    showMod.focus();
+    // showMod.focus();
     playLightbox();
     close("close-wind");
 
@@ -101,7 +105,19 @@ function displayImgLightbox(element) {
 function close(selector1) {
     document.getElementById(selector1).addEventListener("click", function() {
         showMod.style.display = "none";
+        galleryBack.style.display = "grid";
     });
+    document.getElementById(selector1).addEventListener("keydown", function(e) {
+        if (
+            e.key === "Enter" &&
+            e.target.className.includes("crossCloseLightbox")
+        ) {
+            console.log("Croix fermeture");
+            showMod.style.display = "none";
+            galleryBack.style.display = "grid";
+        }
+    });
+
 }
 
 
@@ -123,49 +139,28 @@ function playLightbox() {
         displayImgLightbox(fullMedias[index]);
     });
 
-    // // Ecoute des flèches gauche et droite du clavier
-    // document.addEventListener("keyup", function(e) {
-    //     if (e.key === "ArrowRight") {
-    //         console.log("Flèche droite");
-    //         index++;
-    //         if (index === fullMedias.length) {
-    //             index = 0;
-    //         }
-    //         displayImgLightbox(fullMedias[index]);
 
-    //     }
-
-    //     if (e.key === "ArrowLeft") {
-    //         console.log("Flèche gauche");
-    //         index--;
-    //         // console.log("taille du tableau", fullMedias.length)
-    //         if (index === -1) {
-    //             index = fullMedias.length - 1;
-    //         }
-    //         displayImgLightbox(fullMedias[index]);
-    //     }
-    // });
-
-    // Ecoute du clavier sur les icônes "média suivant", "media précédent" et la croix de fermeture
-    document.addEventListener("keyup", function(e) {
-        // Touche Entrée détectée sur la flèche droite : incrémentation (image suivante)
-        if (e.key === "Enter" && e.target.className.includes("prev")) {
-            console.log("Selection précedent");
+    // Ecoute du clavier sur les icônes "média suivant", "media précédent" 
+    document.getElementById("next").addEventListener("keyup", function(e) {
+        if (e.key === "Enter" || e.key === "ArrowRight") {
+            // console.log("Selection suivante");
+            index++;
+            if (index === fullMedias.length) {
+                index = 0;
+            }
+            displayImgLightbox(fullMedias[index]);
 
         }
-        // Touche Entrée détectée sur la flèche gauche, décrémentation (image suivante)
-        if (e.key === "Enter" && e.target.className.includes("next")) {
-            console.log("Selection suivant");
+    });
 
-        }
-        // Touche Entrée détectée sur la croix : fermeture de la lightbox
-        if (
-            e.key === "Enter" &&
-            e.target.className.includes("crossCloseLightbox")
-        ) {
-            console.log("Croix fermeture");
-            //   tableauMedias[index].focus();
-            //   closeLightbox();
+    document.getElementById("previous").addEventListener("keyup", function(e) {
+        if (e.key === "Enter" || e.key === "ArrowLeft") {
+            // console.log("Selection précedente");
+            index--;
+            if (index === -1) {
+                index = fullMedias.length - 1;
+            }
+            displayImgLightbox(fullMedias[index]);
         }
     });
 

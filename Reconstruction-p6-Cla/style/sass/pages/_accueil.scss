@@ -69,12 +69,19 @@
     // border: red 2px solid;
     a {
         text-decoration: none;
+        // border: red 2px solid;
         // color: black;
         &:focus {
-            margin-left: 70px;
+            margin: 0 30px 0 60px;
             display: inline-block;
             outline: 2px solid #D3573C;
             border-radius: 15px;
+            @media screen and (max-width: 992px) {
+                margin: 0 0 0 190px;
+            }
+            @media screen and (max-width: 768px) {
+                margin: 0 0 0 0px;
+            }
         }
     }
     p {
