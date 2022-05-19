@@ -15,12 +15,12 @@ class VideoMedia {
     display() {
         return `
         <article class="card-media">
-            <div class="container-video" aria-label="vidéo et lien visionneuse" role="link" >
-                <a href="assets/photographers/${this.photographerId}/${this.video}" class="lien-media" aria-label="ouvrir la visionneuse">
-                    <video class="container-video__video" aria-label="${this.title}" tabindex="0" controls>
-                    <source src="assets/photographers/${this.photographerId}/${this.video}" alt="${this.title}" type=video/ogg> <source  type=video/mp4>
-                </a>
-            </div>
+            <a href="assets/photographers/${this.photographerId}/${this.video}" class="lien-media" aria-label="ouvrir la visionneuse">
+                <div class="container-media" aria-label="vidéo et lien visionneuse">
+                        <video class="container-media__video" aria-label="${this.title}" controls>
+                        <source src="assets/photographers/${this.photographerId}/${this.video}" type=video/ogg> <source src="assets/photographers/${this.photographerId}/${this.video}"  type=video/mp4>       
+                </div>
+            </a>
             <div class="items-media" aria-label="description du média">
                 <div class="items-media__title" aria-label="titre du média">
                     <p tabindex="0">${this.title}</p>

@@ -15,11 +15,11 @@ class ImageMedia {
     display() {
         return `
             <article class="card-media" >
-                <div class="container-photo" aria-label="photo et lien visionneuse" role="link">
-                    <a href="assets/photographers/${this.photographerId}/${this.image}" class="lien-media"  aria-label="ouvrir la visionneuse">
-                        <img class="container-photo__photo" src="assets/photographers/${this.photographerId}/${this.image}" alt="${this.title}" aria-label="${this.title}" tabindex="0"/>
-                    </a>
-                </div>
+                <a href="assets/photographers/${this.photographerId}/${this.image}" class="lien-media" aria-label="ouvrir la visionneuse" tabindex="0">
+                    <div class="container-media" aria-label="photo et lien visionneuse">
+                        <img class="container-media__photo" src="assets/photographers/${this.photographerId}/${this.image}" alt="${this.title}" aria-label="${this.title}"/>                  
+                    </div>
+                </a>
                 <div class="items-media" aria-label="description du média">
                     <div class="items-media__title" aria-label="titre du média">
                         <p tabindex="0">${this.title}</p>

@@ -69,8 +69,9 @@
     // border: red 2px solid;
     a {
         text-decoration: none;
-        color: black;
+        // color: black;
         &:focus {
+            margin-left: 70px;
             display: inline-block;
             outline: 2px solid #D3573C;
             border-radius: 15px;
@@ -135,7 +136,7 @@
             border-radius: 15px;
         }
         .price {
-            color: grey;
+            color: #757575;
             &:focus {
                 outline: 2px solid #D3573C;
                 border-radius: 15px;

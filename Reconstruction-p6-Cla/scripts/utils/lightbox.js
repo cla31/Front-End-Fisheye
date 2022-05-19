@@ -85,7 +85,9 @@ function displayImgLightbox(element) {
         </div>         
        `;
     }
-    // showMod.setAttribute("aria-hidden", false);
+    const hiddenMedias = document.getElementById("medias");
+    console.log("hiddenMedias", hiddenMedias);
+    hiddenMedias.setAttribute("aria-hidden", true);
     showMod.style.display = "block";
     //La lightbox a le focus
     showMod.focus();

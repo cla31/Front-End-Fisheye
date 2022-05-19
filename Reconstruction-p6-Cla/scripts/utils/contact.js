@@ -33,7 +33,7 @@ function contact(photogapherName) {
                             </div>
 
                             <div class="formData textarea-formData">
-                                <label for="message">Votre message</label>
+                                <label for="textarea">Votre message</label>
                                 <textarea class="text-control" id="textarea" name="message" maxlength="500" placeholder="500 caractères maximum."></textarea>
                                 <span></span>
                             </div>

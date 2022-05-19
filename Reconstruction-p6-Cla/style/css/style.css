@@ -62,9 +62,9 @@
 
 .photographer a {
   text-decoration: none;
-  color: black;
 }
 .photographer a:focus {
+  margin-left: 70px;
   display: inline-block;
   outline: 2px solid #D3573C;
   border-radius: 15px;
@@ -125,7 +125,7 @@
   border-radius: 15px;
 }
 .photographer .infos .price {
-  color: grey;
+  color: #757575;
 }
 .photographer .infos .price:focus {
   outline: 2px solid #D3573C;
@@ -362,45 +362,33 @@
   flex-direction: column;
   align-items: center;
 }
-.card-media a:focus {
-  outline: 2px solid #db8876;
-  border-radius: 5px;
+.card-media .lien-media {
+  display: inline-block;
 }
-.card-media .container-photo {
+.card-media .lien-media:focus {
+  border: 4px solid #db8876;
+  border-radius: 15px;
+}
+.card-media .container-media {
   overflow: hidden;
   position: relative;
   width: 290px;
   height: 290px;
 }
-.card-media .container-photo__photo {
+.card-media .container-media__photo {
   width: 100%;
   height: 100%;
   position: absolute;
   object-fit: cover;
   border-radius: 5px;
+  object-position: 80% 18%;
 }
-.card-media .container-photo__photo:focus {
-  outline: 4px solid #db8876;
-  border: 4px solid #db8876;
-  border-radius: 15px;
-}
-.card-media .container-video {
-  overflow: hidden;
-  position: relative;
-  width: 290px;
-  height: 290px;
-}
-.card-media .container-video__video {
+.card-media .container-media__video {
   width: 100%;
   height: 100%;
   position: absolute;
   object-fit: cover;
   border-radius: 5px;
-}
-.card-media .container-video__video:focus {
-  outline: 4px solid #db8876;
-  border: 4px solid #db8876;
-  border-radius: 15px;
 }
 .card-media .items-media {
   display: flex;
@@ -676,7 +664,6 @@ label {
 
 #contact_modal input,
 #contact_modal textarea {
-  color: black;
   font-size: 1.8em;
   line-height: 1.5em;
   margin: 0px;
@@ -713,15 +700,22 @@ textarea {
   border-radius: 5px;
 }
 
-.contactButton:hover {
-  outline: 2px solid black;
-  border-radius: 5px;
-  background-color: #db8876;
+#contact_modal .contactButton {
+  background-color: #901C1C;
+  color: white;
+  width: 50%;
 }
-.contactButton:focus {
+#contact_modal .contactButton:hover {
   outline: 2px solid black;
   border-radius: 5px;
   background-color: #db8876;
+  color: black;
+}
+#contact_modal .contactButton:focus {
+  outline: 2px solid black;
+  border-radius: 5px;
+  background-color: #db8876;
+  color: black;
 }
 
 /*# sourceMappingURL=style.css.map */

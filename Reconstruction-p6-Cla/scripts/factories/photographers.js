@@ -12,18 +12,18 @@ class Photographer {
     displayPhotographer() {
         return `
         <article class="photographer">
-            <a href="./photographer.html?${this.id}"  tabindex="0" role="link" aria-label="lien vers galerie photographe" aria-label="Portrait de ${this.name}">
-                <div class="card" aria-label="Bloc image et description">
-                    <div class="container-img" aria-label="Bloc image">
-                        <img class="container-img__img" tabindex="0" src="assets/photographers/Photographers ID Photos/${this.portrait}" alt="Portrait de ${this.name}" />
+            <a href="./photographer.html?${this.id}" tabindex="0" role="link" aria-label="Portrait de ${this.name} et lien vers galerie photos de ${this.name}">
+                <div class="card">
+                    <div class="container-img">
+                        <img class="container-img__img" src="assets/photographers/Photographers_ID_Photos/${this.portrait}" alt="Portrait de ${this.name}" />
                     </div>
                     <h2 class="card__photographer-name" tabindex="0" aria-label="${this.name}">${this.name}</h2>
                 </div>
             </a>
-            <div class="infos" aria-label="infos photos" tabindex="0">
+            <div class="infos" aria-label="informations sur le photographe" tabindex="0">
                 <p class="city" tabindex="0" aria-label="${this.city}">${this.city}</p>
                 <p class="slogan" tabindex="0" aria-label="${this.tagline}">${this.tagline}</p>
-                <p class="price" tabindex="0" aria-label="${this.price}euros par jour">${this.price}€/jour</p>
+                <p class="price" tabindex="0" aria-label="${this.price} euros par jour">${this.price}€/jour</p>
             </div>
         </article>`
     }
@@ -44,7 +44,7 @@ class Photographer {
             <aside id="contact_modal">
             </aside>
             <div class="photograph-header__container-img" aria-label="portrait du photographe" tabindex="0">
-                <img class="photograph-header__container-img__img" tabindex="0" src="assets/photographers/Photographers ID Photos/${this.portrait}" alt="portrait de${this.name}" tabindex="1" />
+                <img class="photograph-header__container-img__img" tabindex="0" src="assets/photographers/Photographers_ID_Photos/${this.portrait}" alt="portrait de${this.name}" tabindex="1" />
             </div>`
     }
     displayPrice() {

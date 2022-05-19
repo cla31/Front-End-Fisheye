@@ -107,7 +107,7 @@ label {
 
 #contact_modal input,
 #contact_modal textarea {
-    color: black;
+    // color: black;
     font-size: 1.8em;
     line-height: 1.5em;
     margin: 0px;
@@ -144,15 +144,20 @@ textarea {
     }
 }
 
-.contactButton {
+#contact_modal .contactButton {
+    background-color: #901C1C;
+    color: white;
+    width: 50%;
     &:hover {
         outline: 2px solid black;
         border-radius: 5px;
         background-color: #db8876;
+        color: black;
     }
     &:focus {
         outline: 2px solid black;
         border-radius: 5px;
         background-color: #db8876;
+        color: black
     }
 }
